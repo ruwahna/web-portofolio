@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppind',sans-serif;
+}
+
+body{
+    background-color: #0d1b3e;
+    color: white;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%; /*jarak kanan kiri*/
+}
+
+nav ul {
+    display: flex;
+    list-style: none; /*mengilangkan bule list*/
+
+}
