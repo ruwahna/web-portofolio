@@ -6,43 +6,39 @@
     <title>portofolio indah</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home-page">
     <nav>
         <div class="logo">Indah</div>
         <ul>
-            <li><a href="#" class="active">beranda</a></li>
-            <li><a href="#">tentang saya</a></li>
-            <li><a href="#">portofolio</a></li>
-            <li><a href="#">pendidikan</a></li>
-            <li><a href="#">pengalaman</a></li>
-            <li><a href="#">kontak</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About me</a></li>
+            <li><a href="portfolio-projects.html">Portofolio</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-    <section class="hero">
-        <div class="hero-text">
-            <span>HAY! I'M</span>
-            <h1>Indah Ruwahna Anugraheni</h1>
-            <h2>I'M A UX Desaigner + Web Developer</h2>
-            <p>portofolio ini menampilkann proyek yang sudah saya buat</p>
-            <button class="btn-hubungi">Hubungi saya</button>
 
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>UX Designer</h1>
+            <h2>And Web Developer</h2>
+            <p>
+                Menciptakan Website Yang Inovatif, Fungsional, dan User-Friendly
+                untuk Solusi Digital.
+            </p>
+
+            <div class="hero-actions">
+                <a href="portfolio-projects.html" class="btn btn-primary">Project</a>
+                <a href="contact.html" class="btn btn-secondary">Contacts</a>
+            </div>
         </div>
 
         <div class="hero-image">
-            <img src="/assets/foto indah.png" alt="">
-
+            <img src="assets/foto indah.png" alt="Foto Indah">
         </div>
     </section>
 
-    <script>
-        const links = document.querySelectorAll('nav ul li a');
-        links.forEach(item => {
-            item.addEventListener('click', function() {
-                links.forEach(link => link.classList.remove('active'));
-
-                this.classList.add('active');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
