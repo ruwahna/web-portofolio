@@ -343,7 +343,7 @@ body.about-page .btn-secondary {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
 }
 
@@ -377,6 +377,62 @@ body.about-page .btn-secondary {
     background:
         linear-gradient(rgba(16, 24, 49, 0.12), rgba(16, 24, 49, 0.12)),
         url("assets/e-commerce flower shop.png") center/cover no-repeat;
+}
+
+.thumb-zero {
+    background: linear-gradient(135deg, #243a74, #8fb4e8 58%, #dbe7ff);
+}
+
+.thumb-agri {
+    background: linear-gradient(135deg, #1b4f86, #d9eef8 58%, #fff6dc);
+}
+
+.thumb-three,
+.thumb-four,
+.thumb-five,
+.thumb-six,
+.thumb-seven {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.thumb-three {
+    background: linear-gradient(135deg, #245b9a, #b4d8f0);
+}
+
+.thumb-four {
+    background: linear-gradient(135deg, #2e4b89, #dae6ff 56%, #9cb9ff);
+}
+
+.thumb-five {
+    background: linear-gradient(135deg, #4f77b8, #dfe8ff);
+}
+
+.thumb-six {
+    background: linear-gradient(135deg, #27446f, #9ec6ea 56%, #edf5ff);
+}
+
+.thumb-seven {
+    background: linear-gradient(135deg, #0f1f35, #5f3c2b 45%, #c99c62);
+}
+
+.thumb-three span,
+.thumb-four span,
+.thumb-five span,
+.thumb-six span,
+.thumb-seven span {
+    position: relative;
+    z-index: 1;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(9, 20, 44, 0.26);
+    backdrop-filter: blur(4px);
 }
 
 .thumb-empty {
@@ -442,6 +498,10 @@ body.about-page .btn-secondary {
     color: #bbcbef;
     min-height: 48px;
     margin-bottom: 10px;
+}
+
+.portfolio-grid .project-card:nth-child(n + 3) .project-thumb {
+    height: 124px;
 }
 
 .project-actions {
