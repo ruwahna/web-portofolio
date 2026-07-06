@@ -926,10 +926,225 @@ body.about-page .btn-secondary {
     object-fit: contain;
 }
 
+
+/* ==========================================================================
+   EDUCATION TIMELINE STYLES
+   ========================================================================== */
+.education-section {
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 32px;
+    margin-top: 30px;
+}
+
+.timeline-container::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, #7f73ff 0%, #00d5ff 100%);
+    opacity: 0.4;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -32px;
+    top: 14px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #0b1741;
+    border: 3px solid #00d5ff;
+    box-shadow: 0 0 8px rgba(0, 213, 255, 0.5);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background: #00d5ff;
+    transform: scale(1.2);
+    box-shadow: 0 0 14px rgba(0, 213, 255, 0.85);
+}
+
+.timeline-card {
+    background: rgba(12, 22, 58, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.35s ease;
+}
+
+.timeline-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(127, 115, 255, 0.35);
+    box-shadow: 0 12px 30px rgba(127, 115, 255, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    background: rgba(15, 27, 72, 0.65);
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.timeline-title-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.timeline-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(0, 213, 255, 0.1);
+    color: #00d5ff;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 213, 255, 0.2);
+}
+
+.timeline-item:nth-child(even) .timeline-icon-wrapper {
+    background: rgba(127, 115, 255, 0.1);
+    color: #7f73ff;
+    border-color: rgba(127, 115, 255, 0.2);
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    border-color: #7f73ff;
+    box-shadow: 0 0 8px rgba(127, 115, 255, 0.5);
+}
+
+.timeline-item:nth-child(even):hover .timeline-dot {
+    background: #7f73ff;
+    box-shadow: 0 0 14px rgba(127, 115, 255, 0.85);
+}
+
+.timeline-title-group h3 {
+    font-size: 1.18rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.timeline-subtitle {
+    font-size: 0.9rem;
+    color: #00d5ff;
+    font-weight: 500;
+}
+
+.timeline-item:nth-child(even) .timeline-subtitle {
+    color: #7f73ff;
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(127, 115, 255, 0.12);
+    border: 1px solid rgba(127, 115, 255, 0.25);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #b3abff;
+    letter-spacing: 0.5px;
+}
+
+.timeline-body p {
+    color: #b8c8eb;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.timeline-body ul {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.timeline-body ul li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 0.85rem;
+    color: #a3b6de;
+    margin-bottom: 6px;
+    line-height: 1.45;
+}
+
+.timeline-body ul li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: #7f73ff;
+    font-size: 1.1rem;
+    top: -2px;
+}
+
+.timeline-body ul li:last-child {
+    margin-bottom: 0;
+}
+
 @media (max-width: 900px) {
     nav {
         padding: 14px 5%;
     }
+
+    .timeline-container {
+        padding-left: 24px;
+    }
+
+    .timeline-container::before {
+        left: 5px;
+    }
+
+    .timeline-dot {
+        left: -24px;
+        width: 14px;
+        height: 14px;
+        top: 16px;
+        border-width: 2px;
+    }
+
+    .timeline-card {
+        padding: 16px;
+    }
+
+    .timeline-title-group {
+        gap: 10px;
+    }
+
+    .timeline-icon-wrapper {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+    }
+
+    .timeline-icon-wrapper svg {
+        width: 20px;
+        height: 20px;
+    }
+
 
     nav ul {
         display: none;
