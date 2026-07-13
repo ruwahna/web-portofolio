@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Plus Jakarta Sans", "Poppins", sans-serif;
 }
 
 html {
@@ -60,6 +62,506 @@ nav ul li a.active {
     gap: 32px;
     padding: 36px 6% 44px;
     min-height: calc(100vh - 82px);
+}
+
+.portfolio-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 32px;
+    align-items: center;
+    padding: 64px 80px;
+    min-height: 560px;
+    max-width: 1200px;
+    margin: 40px auto;
+    width: 90%;
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 20% 80%, rgba(126, 112, 255, 0.12) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(12, 24, 62, 0.9) 0%, rgba(6, 14, 40, 0.98) 100%);
+    background-size: auto, auto, 28px 28px, 28px 28px, auto;
+    border: none;
+    border-radius: 36px;
+    box-shadow: 
+        0 24px 70px rgba(0, 0, 0, 0.55),
+        inset 0 0 24px rgba(0, 210, 255, 0.04);
+    overflow: hidden;
+}
+
+.portfolio-left {
+    color: #cfe7ff;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.portfolio-hero .academy {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.academy-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 210, 255, 0.06);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    padding: 6px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.08);
+}
+
+.academy-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.academy-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.academy-tagline {
+    font-size: 0.68rem;
+    color: rgba(0, 210, 255, 0.85);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 1px;
+}
+
+.portfolio-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3.6rem, 8vw, 6.2rem);
+    color: #7fb3ff;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    line-height: 1.08;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.portfolio-title span {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.title-sparkle {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-left: -2px;
+    color: #00d2ff;
+    animation: sparkle-glow 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.8));
+}
+
+@keyframes sparkle-glow {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+    50% { transform: scale(1.25) rotate(15deg); opacity: 1; }
+}
+
+.subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0 28px;
+    flex-wrap: wrap;
+}
+
+.role {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.2px;
+}
+
+.name-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0052ff;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 18px rgba(0, 82, 255, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.name-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 82, 255, 0.55);
+}
+
+.name-badge .name {
+    color: #ffffff;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.name-badge .badge-icon {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.progress-bar {
+    width: min(400px, 95%);
+    height: 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 999px;
+    margin: 24px 0 36px;
+    position: relative;
+}
+
+.progress {
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(90deg, #00d2ff, #7e70ff);
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+    position: relative;
+}
+
+.progress::after {
+    content: "";
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    width: 12px;
+    height: 12px;
+    background: #00d2ff;
+    border: 2.5px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00d2ff;
+}
+
+.search-pill {
+    display: inline-flex;
+    gap: 12px;
+    background: rgba(5, 12, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 10px 10px 24px;
+    border-radius: 999px;
+    width: min(580px, 100%);
+    align-items: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.search-pill:hover,
+.search-pill:focus-within {
+    border-color: rgba(0, 210, 255, 0.35);
+    box-shadow: 0 0 18px rgba(0, 210, 255, 0.12);
+}
+
+.search-pill input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.95);
+    outline: none;
+    font-size: 0.92rem;
+    letter-spacing: 0.2px;
+    cursor: default;
+    font-family: inherit;
+}
+
+.search-pill .search-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #00d2ff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-pill .search-btn:hover {
+    background: #00d2ff;
+    color: #050c26;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+    transform: scale(1.08);
+}
+
+.portfolio-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.neo-card {
+    width: 100%;
+    max-width: 370px;
+    height: 480px;
+    position: relative;
+    background-color: rgba(11, 23, 65, 0.55);
+    background-image: 
+        linear-gradient(rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 210, 255, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border: 1px solid rgba(0, 210, 255, 0.22);
+    border-radius: 32px;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(0, 210, 255, 0.1),
+        inset 0 0 20px rgba(0, 210, 255, 0.05);
+    backdrop-filter: blur(12px);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: visible;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.neo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 45px rgba(0, 210, 255, 0.25),
+        inset 0 0 25px rgba(0, 210, 255, 0.1);
+    border-color: rgba(0, 210, 255, 0.55);
+}
+
+.neo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.neo-year {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    letter-spacing: -0.5px;
+}
+
+.neo-sub {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(0, 210, 255, 0.85);
+    letter-spacing: 2px;
+    margin-top: 6px;
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+.neo-tape {
+    position: absolute;
+    left: -15px;
+    right: -15px;
+    background: rgba(0, 210, 255, 0.06);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 10px 0;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 210, 255, 0.25);
+    border-bottom: 1px solid rgba(0, 210, 255, 0.25);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+}
+
+.tape-top {
+    top: 96px;
+    transform: rotate(-4deg);
+}
+
+.tape-bottom {
+    bottom: 48px;
+    transform: rotate(3deg);
+}
+
+.tape-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-tape 18s linear infinite;
+}
+
+@keyframes scroll-tape {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+.polaroid-frame {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    padding: 8px 8px 24px 8px;
+    border-radius: 18px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(0, 210, 255, 0.08);
+    z-index: 3;
+    width: 78%;
+    max-width: 250px;
+    align-self: center;
+    margin-top: 10px;
+    transform: rotate(-1.5deg);
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    backdrop-filter: blur(10px);
+}
+
+.polaroid-frame:hover {
+    transform: rotate(1deg) translateY(-8px) scale(1.05);
+    box-shadow: 
+        0 20px 45px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(0, 210, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.polaroid-img-container {
+    width: 100%;
+    aspect-ratio: 0.82;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #050c26;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.polaroid-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.96) contrast(1.04);
+}
+
+.neo-name-banner {
+    position: absolute;
+    bottom: 96px;
+    left: 24px;
+    background: linear-gradient(135deg, #7e70ff 0%, #ff2a85 100%);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+    box-shadow: 0 8px 22px rgba(255, 42, 133, 0.3);
+    transform: rotate(-2.5deg);
+    z-index: 4;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    backdrop-filter: blur(6px);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.neo-card:hover .neo-name-banner {
+    transform: rotate(-1deg) translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255, 42, 133, 0.45);
+    background: linear-gradient(135deg, #8b7eff 0%, #ff4797 100%);
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.floating-magnifier {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 5;
+    filter: drop-shadow(0 0 8px rgba(255, 42, 133, 0.4));
+    animation: float-magnifier 4s ease-in-out infinite;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.floating-magnifier:hover {
+    transform: scale(1.15) rotate(12deg);
+    filter: drop-shadow(0 0 15px rgba(255, 42, 133, 0.7));
+}
+
+@keyframes float-magnifier {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(4deg); }
+}
+
+.neo-controls {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 5;
+    background: rgba(5, 12, 38, 0.85);
+    border: 1px solid rgba(0, 210, 255, 0.35);
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+.neo-controls svg {
+    transition: stroke 0.25s ease;
+}
+
+.neo-controls:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 42, 133, 0.4);
+    border-color: #ff2a85;
+    background: rgba(255, 42, 133, 0.15);
+}
+
+.neo-controls:hover svg {
+    stroke: #ff2a85;
+}
+
+.follow-btn {
+    position: absolute;
+    right: 48px;
+    top: 48px;
+    background: rgba(0, 210, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(0, 210, 255, 0.35);
+    padding: 12px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.12);
+    z-index: 10;
+}
+
+.follow-btn:hover {
+    background: rgba(0, 210, 255, 0.22);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.45);
+    border-color: rgba(0, 210, 255, 0.7);
+    transform: translateY(-2px);
 }
 
 .hero-text {
@@ -1148,6 +1650,122 @@ body.about-page .btn-secondary {
 
     nav ul {
         display: none;
+    }
+
+    .portfolio-hero {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 36px;
+        padding: 90px 24px 48px;
+        margin: 20px auto;
+        text-align: center;
+        border-radius: 28px;
+        min-height: auto;
+    }
+
+    .portfolio-left {
+        align-items: center;
+    }
+
+    .portfolio-hero .academy {
+        margin-bottom: 18px;
+        justify-content: center;
+    }
+
+    .portfolio-title {
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .subtitle-row {
+        justify-content: center;
+        gap: 12px;
+        margin: 12px 0 20px;
+    }
+
+    .progress-bar {
+        margin: 16px auto 24px;
+    }
+
+    .search-pill {
+        padding: 8px 8px 8px 16px;
+        width: 100%;
+    }
+
+    .search-pill input {
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    .portfolio-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .neo-card {
+        max-width: 290px;
+        height: 380px;
+        margin: 0 auto;
+        padding: 16px 14px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(0, 210, 255, 0.25);
+    }
+
+    .neo-year {
+        font-size: 1.6rem;
+    }
+
+    .neo-sub {
+        font-size: 0.65rem;
+    }
+
+    .neo-tape {
+        left: -10px;
+        right: -10px;
+        padding: 7px 0;
+        font-size: 0.65rem;
+    }
+
+    .tape-top {
+        top: 76px;
+    }
+
+    .tape-bottom {
+        bottom: 36px;
+    }
+
+    .polaroid-frame {
+        max-width: 185px;
+        padding: 6px 6px 18px 6px;
+        margin-top: 4px;
+        border-radius: 10px;
+    }
+
+    .neo-name-banner {
+        bottom: 74px;
+        left: 12px;
+        font-size: 0.78rem;
+        padding: 5px 12px;
+    }
+
+    .floating-magnifier svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .neo-controls {
+        width: 28px;
+        height: 28px;
+        bottom: 8px;
+        right: 8px;
+        border-radius: 6px;
+    }
+
+    .follow-btn {
+        right: 24px;
+        top: 24px;
+        padding: 8px 24px;
+        font-size: 0.85rem;
     }
 
     .hero {
