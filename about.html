@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me - Indah</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.7">
 </head>
 <body class="about-page">
     <nav>
@@ -19,30 +19,164 @@
         </ul>
     </nav>
 
+    <!-- Tech Logo Ticker Row -->
+    <div class="tech-ticker-wrapper">
+        <div class="tech-ticker-content">
+            <span>FIGMA //</span>
+            <span>HTML5 //</span>
+            <span>CSS3 //</span>
+            <span>JAVASCRIPT //</span>
+            <span>GIT & GITHUB //</span>
+            <span>VS CODE //</span>
+            <span>RESPONSIVE DESIGN //</span>
+            <span>FIGMA //</span>
+            <span>HTML5 //</span>
+            <span>CSS3 //</span>
+            <span>JAVASCRIPT //</span>
+            <span>GIT & GITHUB //</span>
+            <span>VS CODE //</span>
+            <span>RESPONSIVE DESIGN //</span>
+        </div>
+    </div>
+
     <section class="hero about-hero" id="about-me">
-        <div class="hero-text">
-            <span class="hero-intro">Hello! I'm</span>
-            <h1>Indah Ruwahna Anugraheni</h1>
-            <p>
-                Saya adalah mahasiswa Teknik Informatika yang berfokus pada pengembangan front-end.
-                Saya suka menyusun tampilan yang rapi, responsif, dan enak dipakai.
-            </p>
-            <div class="hero-actions">
-                <a href="portfolio-projects.html" class="btn btn-primary">View Projects</a>
-                <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+        <div class="hero-image">
+            <!-- Left Side: Portrait Photo in rounded container -->
+            <div class="about-photo-wrapper">
+                <div class="about-photo-card">
+                    <img src="assets/foto indah.png" alt="Foto Indah">
+                </div>
+                <!-- Dynamic background rings positioned behind -->
+                <div class="about-hud-ring ring-top-right"></div>
+                <div class="about-hud-ring ring-bottom-left"></div>
             </div>
         </div>
 
-        <div class="hero-image">
-            <img src="assets/foto indah.png" alt="Foto Indah">
+        <div class="hero-text">
+            <div class="about-info-content">
+                <!-- Right Side: Biographical Details -->
+                <span class="about-badge">ABOUT ME</span>
+                <h1 class="about-heading">I Am Available for <span>UI/UX Design</span> & <span>Web Projects</span></h1>
+                
+                <p class="about-desc">
+                    Saya adalah mahasiswa Teknik Informatika di Universitas Putra Bangsa yang berfokus pada pengembangan Front-end dan perancangan antarmuka pengguna (UI/UX). Saya suka menciptakan desain yang rapi, bersih, responsif, dan memberikan kenyamanan bagi pengguna.
+                </p>
+
+                <!-- Stats row -->
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-num text-cyan">12+</span>
+                        <span class="stat-lbl">Proyek Web</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num text-cyan">2+</span>
+                        <span class="stat-lbl">Tahun Belajar</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num text-cyan">8+</span>
+                        <span class="stat-lbl">Desain Figma</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="contact.html" class="btn btn-primary">Get In Touch &rarr;</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="about">
-        <div class="about-content">
-            <h2>What I Focus On</h2>
-            <p>UI yang jelas, struktur yang mudah dipahami, dan pengalaman pengguna yang tetap ringan di desktop maupun mobile.</p>
-            <p>Tools yang sering saya gunakan: HTML, CSS, JavaScript, Figma, dan GitHub.</p>
+    <!-- Section What I Focus On -->
+    <section class="focus-section">
+        <h2 class="section-heading">What I Focus On</h2>
+        <div class="focus-grid">
+            <!-- Focus Card 1 -->
+            <div class="focus-card">
+                <div class="focus-icon-box">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                </div>
+                <h3>UI/UX Design</h3>
+                <p>Merancang tata letak yang bersih, terstruktur, intuitif, dan enak dilihat menggunakan Figma.</p>
+            </div>
+
+            <!-- Focus Card 2 -->
+            <div class="focus-card">
+                <div class="focus-icon-box">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7fb3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                        <line x1="12" y1="2" x2="12" y2="22"/>
+                    </svg>
+                </div>
+                <h3>Front-end Coding</h3>
+                <p>Menulis kode antarmuka yang rapi, responsif, dan mudah dipahami dengan standar web modern.</p>
+            </div>
+
+            <!-- Focus Card 3 -->
+            <div class="focus-card">
+                <div class="focus-icon-box">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                </div>
+                <h3>Modern Tools</h3>
+                <p>Bekerja secara kolaboratif menggunakan kontrol versi Git/GitHub untuk mengelola kode proyek web.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Skills Set -->
+    <section class="skills-section">
+        <h2 class="section-heading">Technical Skills</h2>
+        <div class="skills-grid">
+            <!-- Skill 1 -->
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">HTML5 & CSS3</span>
+                    <span class="skill-val">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill fill-html"></div>
+                </div>
+            </div>
+
+            <!-- Skill 2 -->
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">JavaScript (ES6+)</span>
+                    <span class="skill-val">75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill fill-js"></div>
+                </div>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">UI/UX Design & Figma</span>
+                    <span class="skill-val">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill fill-figma"></div>
+                </div>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="skill-item">
+                <div class="skill-info">
+                    <span class="skill-name">Git & GitHub</span>
+                    <span class="skill-val">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill fill-git"></div>
+                </div>
+            </div>
         </div>
     </section>
 
