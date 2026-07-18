@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsif - Indah</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #b8c8eb;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .article-content h2 {
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+        }
+        .code-box {
+            background: #070f2b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.92rem;
+            color: #8bd7ff;
+            margin: 24px 0;
+            overflow-x: auto;
+        }
+        .article-hero-img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+    <main class="project-detail-page cert-more-page">
+        <section class="project-detail-shell cert-more-shell">
+            <div class="project-detail-breadcrumb">
+                <a href="../../portfolio-article.html" class="detail-back">Back</a>
+                <span>Articles</span>
+                <span>Layout Responsif</span>
+            </div>
+
+            <div class="article-content">
+                <h1 class="cert-more-title" style="text-align: left; margin-bottom: 20px;">Menyusun Layout Responsif dengan CSS Modern</h1>
+                <img class="article-hero-img" src="../../assets/responsive_layout_thumbnail.png" alt="Responsive Layout Thumbnail">
+                
+                <p>
+                    Saat ini, website diakses dari berbagai macam perangkat: HP, tablet, laptop, hingga monitor desktop ultra-wide. 
+                    Oleh karena itu, menyusun tata letak (layout) yang fleksibel dan responsif adalah keharusan bagi setiap developer Front-end.
+                </p>
+
+                <h2>1. Menggunakan CSS Flexbox</h2>
+                <p>
+                    Flexbox (Flexible Box Layout) sangat baik digunakan untuk mengatur tata letak satu dimensi (baik mendatar atau tegak). 
+                    Dengan Flexbox, elemen anak dapat menyesuaikan ukurannya secara fleksibel sesuai dengan ruang kontainer induk.
+                </p>
+
+                <div class="code-box">
+.parent-container {
+    display: flex;
+    flex-wrap: wrap; /* Memungkinkan elemen membungkus ke bawah jika sempit */
+    justify-content: space-between;
+    gap: 16px;
+}
+                </div>
+
+                <h2>2. CSS Grid untuk Layout Dua Dimensi</h2>
+                <p>
+                    Jika Anda perlu menyusun tata letak dalam bentuk baris dan kolom sekaligus (seperti galeri foto atau grid portofolio), CSS Grid adalah alat yang terbaik. 
+                    Anda bisa menggunakan rumus `repeat(auto-fit, minmax(...))` untuk membuat grid responsif tanpa media query.
+                </p>
+
+                <div class="code-box">
+.grid-container {
+    display: grid;
+    /* Grid otomatis menyesuaikan kolom berdasarkan lebar layar minimum 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+                </div>
+
+                <h2>3. Media Queries untuk Penyesuaian Presisi</h2>
+                <p>
+                    Media Query memungkinkan kita menulis CSS khusus yang hanya aktif pada ukuran layar tertentu (breakpoint). 
+                    Sebaiknya gunakan pendekatan Mobile-First (menulis gaya HP dulu, lalu menambahkan Media Query untuk layar yang lebih besar).
+                </p>
+
+                <div class="code-box">
+/* Gaya dasar untuk HP (Lebar layar &lt; 768px) */
+.content-box {
+    flex-direction: column;
+    padding: 12px;
+}
+
+/* Penyesuaian untuk Tablet & Laptop (Lebar layar &gt;= 768px) */
+@media (min-width: 768px) {
+    .content-box {
+        flex-direction: row;
+        padding: 24px;
+    }
+}
+                </div>
+
+                <h2>Kesimpulan</h2>
+                <p>
+                    Kombinasi antara **Flexbox**, **Grid**, dan **Media Queries** adalah kunci untuk menghasilkan website yang responsif dan nyaman digunakan di segala perangkat. 
+                    Selalu uji website Anda pada berbagai ukuran layar menggunakan inspect element browser saat melakukan proses pembangunan layout.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasar UX Writing - Indah</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #b8c8eb;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .article-content h2 {
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 24px;
+            padding-left: 20px;
+        }
+        .article-content li {
+            margin-bottom: 10px;
+        }
+        .example-box {
+            background: rgba(12, 22, 58, 0.45);
+            border-left: 4px solid #7e70ff;
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+        .example-bad {
+            color: #ff5252;
+            font-weight: 600;
+        }
+        .example-good {
+            color: #00e676;
+            font-weight: 600;
+        }
+        .article-hero-img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 32px;
+        }
+    </style>
+</head>
+<body>
+    <main class="project-detail-page cert-more-page">
+        <section class="project-detail-shell cert-more-shell">
+            <div class="project-detail-breadcrumb">
+                <a href="../../portfolio-article.html" class="detail-back">Back</a>
+                <span>Articles</span>
+                <span>Dasar UX Writing</span>
+            </div>
+
+            <div class="article-content">
+                <h1 class="cert-more-title" style="text-align: left; margin-bottom: 20px;">Dasar UX Writing: Menulis untuk Pengalaman Pengguna</h1>
+                <img class="article-hero-img" src="../../assets/ux_writing_thumbnail.png" alt="UX Writing Thumbnail">
+                
+                <p>
+                    UX Writing adalah praktik menulis salinan (copy) yang memandu pengguna di dalam produk digital, seperti aplikasi atau website. 
+                    Tujuan utamanya adalah membantu pengguna mencapai tujuan mereka dengan cara yang paling intuitif, efisien, dan menyenangkan.
+                </p>
+
+                <h2>Tiga Pilar Utama UX Writing</h2>
+                <p>Setiap teks yang muncul di antarmuka pengguna (tombol, pesan error, label menu) harus memenuhi tiga kriteria dasar ini:</p>
+                
+                <ul>
+                    <li><strong>Clear (Jelas):</strong> Pengguna tidak perlu berpikir keras untuk memahami arti teks. Hindari jargon teknis yang membingungkan.</li>
+                    <li><strong>Concise (Singkat):</strong> Gunakan kata sesedikit mungkin tanpa mengurangi kejelasan makna. Pengguna tidak membaca teks di layar, mereka memindai (scan) teks.</li>
+                    <li><strong>Useful (Berguna):</strong> Setiap kata harus mengarahkan pengguna ke langkah berikutnya atau memberikan informasi yang benar-benar mereka butuhkan.</li>
+                </ul>
+
+                <h2>Contoh Penerapan UX Writing</h2>
+                <p>Mari kita lihat perbandingan teks di antarmuka yang kurang baik dengan teks yang sudah dioptimalkan:</p>
+
+                <div class="example-box">
+                    <h3>1. Pesan Konfirmasi Penghapusan</h3>
+                    <p class="example-bad">❌ Sebelum (Kurang Baik): "Apakah Anda yakin ingin menghapus data ini? Aksi ini tidak dapat dibatalkan." (Tombol: "OK" dan "Batal")</p>
+                    <p class="example-good">✅ Sesudah (UX Writing Baik): "Hapus artikel ini permanen?" (Tombol: "Hapus" dan "Batal")</p>
+                </div>
+
+                <div class="example-box">
+                    <h3>2. Pesan Error Login</h3>
+                    <p class="example-bad">❌ Sebelum (Kurang Baik): "Terjadi kesalahan otentikasi. Silakan periksa kredensial Anda dan coba lagi nanti."</p>
+                    <p class="example-good">✅ Sesudah (UX Writing Baik): "Password yang Anda masukkan salah. Silakan coba lagi."</p>
+                </div>
+
+                <h2>Kesimpulan</h2>
+                <p>
+                    UX Writing yang baik tidak terlihat. Ketika teks di antarmuka dirancang dengan baik, pengguna akan mengalir menyelesaikan tugas mereka tanpa hambatan. 
+                    Sebagai desainer UI/UX atau developer Front-end, membiasakan diri menulis copy yang berpusat pada pengguna (*user-centered copy*) adalah skill yang sangat berharga.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
