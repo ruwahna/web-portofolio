@@ -2728,6 +2728,11 @@ body.about-page .btn-secondary {
     box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
 }
 
+.social-icons-placeholder .social-icon {
+    cursor: default;
+    pointer-events: none;
+}
+
 
 
 /* Simple Contact Layout */
@@ -2785,4 +2790,4 @@ body.about-page .btn-secondary {
     color: #ffffff;
     box-shadow: 0 5px 15px rgba(157, 112, 255, 0.3);
 }
-
+
