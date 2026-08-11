@@ -507,6 +507,33 @@
             curtain.style.opacity = '.3';
             setTimeout(function () { window.location.href = href; }, 320);
         });
-    }
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       17. PORTFOLIO PROJECT CATEGORY FILTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    window.filterProjects = function (cat, btn) {
+        var btns = document.querySelectorAll('.filter-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.remove('active');
+        }
+        if (btn) btn.classList.add('active');
+
+        var cards = document.querySelectorAll('.project-card');
+        for (var j = 0; j < cards.length; j++) {
+            var card = cards[j];
+            var rawCat = card.getAttribute('data-category') || '';
+            var categories = rawCat.split(' ');
+            if (cat === 'all' || categories.indexOf(cat) !== -1) {
+                card.style.display = 'flex';
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+                card.classList.remove('filter-hide');
+            } else {
+                card.style.display = 'none';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                card.classList.add('filter-hide');
+            }
+        }
+    };
 
 })();
