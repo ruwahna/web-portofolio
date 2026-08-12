@@ -8,7 +8,7 @@
 </head>
 <body class="about-page">
     <nav>
-        <div class="logo">Indah</div>
+        <a href="index.html" class="logo">Indah<span class="logo-dot">.</span></a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html" class="active">About me</a></li>
@@ -87,21 +87,29 @@
                 <!-- Stats row -->
                 <div class="about-stats">
                     <div class="stat-card">
-                        <span class="stat-num text-cyan">12+</span>
+                        <span class="stat-num text-cyan"><span data-count="12">0</span>+</span>
                         <span class="stat-lbl">Proyek Web</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-num text-cyan">2+</span>
+                        <span class="stat-num text-cyan"><span data-count="2">0</span>+</span>
                         <span class="stat-lbl">Tahun Berkarya</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-num text-cyan">8+</span>
+                        <span class="stat-num text-cyan"><span data-count="8">0</span>+</span>
                         <span class="stat-lbl">Desain Figma</span>
                     </div>
                 </div>
 
-                <div class="hero-actions">
+                <div class="hero-actions" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 24px;">
                     <a href="contact.html" class="btn btn-primary">Get In Touch &rarr;</a>
+                    <a href="assets/CV_Indah_Ruwahna.pdf" download="CV_Indah_Ruwahna.pdf" target="_blank" class="btn btn-cv">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>Unduh CV</span>
+                    </a>
                 </div>
             </div>
         </div>

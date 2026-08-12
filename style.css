@@ -29,9 +29,50 @@ nav {
 }
 
 nav .logo {
-    font-size: 1.95rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-family: "Playfair Display", "Plus Jakarta Sans", serif;
+    font-size: 2.15rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(120deg, #ffffff 0%, #00d2ff 35%, #7e70ff 70%, #ffffff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: logo-shimmer 4s linear infinite;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), filter 0.35s ease;
+    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.3));
+    position: relative;
+}
+
+nav .logo:hover {
+    transform: scale(1.08) translateY(-1px);
+    filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.85));
+}
+
+.logo-dot {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #00d2ff;
+    -webkit-text-fill-color: #00d2ff;
+    display: inline-block;
+    animation: logo-dot-bounce 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px #00d2ff);
+    font-size: 2.4rem;
+    line-height: 0;
+}
+
+@keyframes logo-shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes logo-dot-bounce {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.4); opacity: 1; filter: drop-shadow(0 0 14px #00d2ff); }
 }
 
 nav ul {
@@ -3080,20 +3121,25 @@ body.about-page .btn-secondary {
 
 
 /* Simple Contact Layout */
+/* Balanced Open Contact Layout (No Outer Box) */
 .contact-section-simple {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 20px;
+    padding: 30px 20px;
     width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
 }
 
 .contact-subtitle-simple {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #9d70ff;
+    color: #00d2ff;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 12px;
@@ -3101,19 +3147,21 @@ body.about-page .btn-secondary {
 }
 
 .contact-title-simple {
-    font-size: clamp(2.6rem, 6.5vw, 4.8rem);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 16px;
     letter-spacing: -0.5px;
+    line-height: 1.15;
+    min-height: 1.2em;
 }
 
 .contact-desc-simple {
-    font-size: 1.05rem;
-    line-height: 1.5;
+    font-size: 1.02rem;
+    line-height: 1.6;
     color: #b2c2ea;
-    max-width: 500px;
-    margin: 0 auto 36px;
+    max-width: 540px;
+    margin: 0 auto 32px;
 }
 
 .social-icon.contact-icon {
@@ -3134,4 +3182,303 @@ body.about-page .btn-secondary {
     color: #ffffff;
     box-shadow: 0 5px 15px rgba(157, 112, 255, 0.3);
 }
+
+/* ==========================================================================
+   ADVANCED ANIMATIONS & MICRO-INTERACTIONS ENGINE
+   ========================================================================== */
+
+/* 1. Shimmer Sweep Beam Effect on Hover */
+.neo-card,
+.project-card,
+.focus-card,
+.stat-card,
+.education-card,
+.experience-card,
+.polaroid-frame {
+    position: relative;
+    overflow: hidden;
+}
+
+.neo-card::before,
+.project-card::before,
+.focus-card::before,
+.stat-card::before,
+.education-card::before,
+.experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 210, 255, 0.08) 35%,
+        rgba(255, 255, 255, 0.22) 50%,
+        rgba(126, 112, 255, 0.08) 65%,
+        transparent 100%
+    );
+    transform: skewX(-22deg);
+    transition: left 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+    z-index: 6;
+}
+
+.neo-card:hover::before,
+.project-card:hover::before,
+.focus-card:hover::before,
+.stat-card:hover::before,
+.education-card:hover::before,
+.experience-card:hover::before {
+    left: 160%;
+}
+
+/* 2. Floating Gentle Bouncing & Glow Keyframes */
+@keyframes float-smooth {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-7px) rotate(2deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.25), inset 0 0 15px rgba(0, 210, 255, 0.05);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(0, 210, 255, 0.55), inset 0 0 25px rgba(126, 112, 255, 0.2);
+    }
+}
+
+@keyframes title-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.title-sparkle {
+    animation: float-smooth 3s ease-in-out infinite, sparkle-glow 3s ease-in-out infinite !important;
+}
+
+.badge-icon,
+.academy-logo {
+    animation: float-smooth 4s ease-in-out infinite;
+}
+
+/* 3. Enhanced Focus Cards & Stat Cards Visuals */
+.focus-card {
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.focus-card:hover {
+    border-color: rgba(0, 210, 255, 0.5);
+    box-shadow: 0 16px 36px rgba(0, 210, 255, 0.2), inset 0 0 15px rgba(0, 210, 255, 0.08);
+}
+
+.stat-card {
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(126, 112, 255, 0.5);
+    box-shadow: 0 12px 30px rgba(126, 112, 255, 0.25);
+}
+
+/* 4. Glassmorphism Button Glow & Ripple Feedback */
+.btn-primary,
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6), 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 5. Smooth Scroll Indicator & Cursor Touchup */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 6. Contact Card Glassmorphism Showcase */
+.contact-card-container {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    padding: 60px 40px;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(0, 210, 255, 0.18) 0%, transparent 65%),
+        radial-gradient(circle at 10% 90%, rgba(126, 112, 255, 0.15) 0%, transparent 55%),
+        linear-gradient(135deg, rgba(12, 24, 62, 0.88) 0%, rgba(6, 14, 40, 0.96) 100%);
+    border: 1px solid rgba(0, 210, 255, 0.28);
+    border-radius: 36px;
+    box-shadow: 
+        0 24px 70px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 210, 255, 0.12),
+        inset 0 0 25px rgba(0, 210, 255, 0.06);
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    z-index: 5;
+}
+
+.contact-card-container:hover {
+    border-color: rgba(0, 210, 255, 0.55);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(0, 210, 255, 0.25),
+        inset 0 0 35px rgba(0, 210, 255, 0.1);
+}
+
+.contact-sparkle-top {
+    margin-bottom: 16px;
+    animation: float-smooth 3s ease-in-out infinite, sparkle-glow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.8));
+}
+
+.contact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 210, 255, 0.08);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #00d2ff;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #00d2ff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00d2ff;
+    animation: pulse-dot 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+.contact-social-row {
+    margin: 10px 0 28px;
+}
+
+.contact-social-row .social-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(5, 12, 38, 0.7);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    color: #00d2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.contact-social-row .social-icon svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
+}
+
+.contact-social-row .social-icon:hover {
+    background: #00d2ff;
+    border-color: #00d2ff;
+    color: #050c26;
+    transform: translateY(-8px) scale(1.15);
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.6);
+}
+
+.contact-social-row .social-icon:hover svg {
+    transform: scale(1.1);
+}
+
+.contact-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.chip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 10px 20px;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.chip-item:hover {
+    background: rgba(0, 210, 255, 0.12);
+    border-color: rgba(0, 210, 255, 0.45);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 210, 255, 0.25);
+}
+
+/* 7. CV Download Button Styling */
+.btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.18) 0%, rgba(126, 112, 255, 0.22) 100%);
+    border: 1px solid rgba(0, 210, 255, 0.45);
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 18px rgba(0, 210, 255, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.btn-cv:hover {
+    background: linear-gradient(135deg, #00d2ff 0%, #7e70ff 100%);
+    border-color: #00d2ff;
+    color: #050c26;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5);
+}
+
+.btn-cv svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-cv:hover svg {
+    transform: translateY(2px);
+}
+
+.btn-profile-link:hover {
+    background: rgba(0, 210, 255, 0.15);
+    border-color: #00d2ff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 210, 255, 0.25);
+}
+
 

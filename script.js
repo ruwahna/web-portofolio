@@ -24,7 +24,7 @@
     var HOVER  = window.matchMedia && window.matchMedia('(hover: hover)').matches;
     var MOBILE = window.innerWidth < 768;
     var ENABLE_CUSTOM_CURSOR = false;
-    var ENABLE_CURSOR_REACTIVE_MOTION = false;
+    var ENABLE_CURSOR_REACTIVE_MOTION = true;
 
     function q(s)   { return document.querySelector(s); }
     function qa(s)  { return Array.prototype.slice.call(document.querySelectorAll(s)); }
@@ -68,20 +68,22 @@
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       3. CUSTOM CURSOR — dot + lagging ring
+       3. CUSTOM CURSOR — dot + lagging glowing ring
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (ENABLE_CUSTOM_CURSOR && !RM && HOVER && !MOBILE) {
         var dot  = document.createElement('div');
         var ring = document.createElement('div');
         dot.style.cssText =
             'position:fixed;pointer-events:none;width:8px;height:8px;border-radius:50%;' +
-            'background:#4a5aa0;transform:translate(-50%,-50%);z-index:99998;' +
+            'background:#00d2ff;box-shadow:0 0 10px #00d2ff, 0 0 20px #00d2ff;' +
+            'transform:translate(-50%,-50%);z-index:99998;' +
             'top:0;left:0;opacity:0;transition:opacity 300ms ease,transform 150ms ease;';
         ring.style.cssText =
-            'position:fixed;pointer-events:none;width:38px;height:38px;border-radius:50%;' +
-            'border:1.5px solid rgba(74,90,160,.45);transform:translate(-50%,-50%);' +
+            'position:fixed;pointer-events:none;width:40px;height:40px;border-radius:50%;' +
+            'border:1.5px solid rgba(0,210,255,.5);box-shadow:0 0 15px rgba(0,210,255,.2);' +
+            'transform:translate(-50%,-50%);' +
             'z-index:99997;top:0;left:0;opacity:0;' +
-            'transition:width 250ms ease,height 250ms ease,border-color 250ms ease,opacity 300ms ease;';
+            'transition:width 250ms ease,height 250ms ease,border-color 250ms ease,background 250ms ease,opacity 300ms ease;';
         document.body.appendChild(dot);
         document.body.appendChild(ring);
 
@@ -94,7 +96,7 @@
             (function loop() {
                 crid = raf(function () {
                     crid = null;
-                    rx += (mx - rx) * .12; ry += (my - ry) * .12;
+                    rx += (mx - rx) * .15; ry += (my - ry) * .15;
                     ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
                     if (Math.abs(mx - rx) > .4 || Math.abs(my - ry) > .4) loop();
                 });
@@ -103,39 +105,52 @@
         document.addEventListener('mouseleave', function () {
             dot.style.opacity = ring.style.opacity = '0';
         });
-        var _hov = 'a,button,.btn,.project-card,.page-card,.feature-card,.tab,.tech-tags span,input,textarea,.cert-zoomable,[role=button]';
+        var _hov = 'a,button,.btn,.project-card,.page-card,.feature-card,.focus-card,.neo-card,.polaroid-frame,.tab,.tech-tags span,input,textarea,.cert-zoomable,[role=button],.social-icon';
         document.addEventListener('mouseover', function (e) {
             if (!e.target.closest(_hov)) return;
-            ring.style.width = ring.style.height = '56px';
-            ring.style.borderColor = 'rgba(74,90,160,.8)';
-            dot.style.transform = 'translate(-50%,-50%) scale(1.8)';
+            ring.style.width = ring.style.height = '60px';
+            ring.style.borderColor = 'rgba(126,112,255,.8)';
+            ring.style.background = 'rgba(0,210,255,.06)';
+            dot.style.transform = 'translate(-50%,-50%) scale(2)';
+            dot.style.background = '#7e70ff';
         });
         document.addEventListener('mouseout', function (e) {
             if (!e.target.closest(_hov)) return;
-            ring.style.width = ring.style.height = '38px';
-            ring.style.borderColor = 'rgba(74,90,160,.45)';
+            ring.style.width = ring.style.height = '40px';
+            ring.style.borderColor = 'rgba(0,210,255,.5)';
+            ring.style.background = 'transparent';
             dot.style.transform = 'translate(-50%,-50%) scale(1)';
+            dot.style.background = '#00d2ff';
         });
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       4. PARTICLE CONSTELLATION
+       4. PARTICLE CONSTELLATION (WITH MOUSE INTERACTION)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (!RM && !MOBILE) {
-        var hero = q('.hero') || q('header') || q('section');
+        var hero = q('.portfolio-hero') || q('.hero') || q('.page-section') || q('.contact-section-simple') || q('header') || q('section');
         if (hero) {
             var cv = document.createElement('canvas');
-            cv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.45;';
+            cv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.65;';
             if (getComputedStyle(hero).position === 'static') hero.style.position = 'relative';
             hero.insertBefore(cv, hero.firstChild);
             var ctx = cv.getContext('2d');
             var pts = [];
-            var PCNT = 55;
+            var PCNT = 60;
+            var mousePos = { x: -1000, y: -1000 };
+            hero.addEventListener('mousemove', function(e) {
+                var rect = hero.getBoundingClientRect();
+                mousePos.x = e.clientX - rect.left;
+                mousePos.y = e.clientY - rect.top;
+            });
+            hero.addEventListener('mouseleave', function() {
+                mousePos.x = -1000; mousePos.y = -1000;
+            });
             function presize() { cv.width = hero.offsetWidth; cv.height = hero.offsetHeight; }
             function mkpt() {
                 return { x: Math.random() * cv.width, y: Math.random() * cv.height,
-                         vx: (Math.random() - .5) * .45, vy: (Math.random() - .5) * .45,
-                         r: Math.random() * 1.8 + .8, a: Math.random() * .55 + .2 };
+                         vx: (Math.random() - .5) * .5, vy: (Math.random() - .5) * .5,
+                         r: Math.random() * 2 + 1, a: Math.random() * .6 + .2 };
             }
             presize();
             for (var _i = 0; _i < PCNT; _i++) pts.push(mkpt());
@@ -147,17 +162,30 @@
                     p.x += p.vx; p.y += p.vy;
                     if (p.x < 0) p.x = cv.width;  if (p.x > cv.width)  p.x = 0;
                     if (p.y < 0) p.y = cv.height; if (p.y > cv.height) p.y = 0;
+
+                    // Mouse repulsion / connection glow
+                    var mdx = p.x - mousePos.x, mdy = p.y - mousePos.y;
+                    var mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                    if (mdist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mousePos.x, mousePos.y);
+                        ctx.strokeStyle = 'rgba(0, 210, 255, ' + (0.4 * (1 - mdist / 120)) + ')';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+
                     ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = 'rgba(74,90,160,' + p.a + ')'; ctx.fill();
+                    ctx.fillStyle = 'rgba(0, 210, 255,' + p.a + ')'; ctx.fill();
                 });
                 for (var a = 0; a < pts.length; a++) {
                     for (var b = a + 1; b < pts.length; b++) {
                         var ddx = pts[a].x - pts[b].x, ddy = pts[a].y - pts[b].y;
                         var dd  = Math.sqrt(ddx * ddx + ddy * ddy);
-                        if (dd < 100) {
+                        if (dd < 110) {
                             ctx.beginPath(); ctx.moveTo(pts[a].x, pts[a].y); ctx.lineTo(pts[b].x, pts[b].y);
-                            ctx.strokeStyle = 'rgba(74,90,160,' + (.14 * (1 - dd / 100)) + ')';
-                            ctx.lineWidth = .6; ctx.stroke();
+                            ctx.strokeStyle = 'rgba(126,112,255,' + (.2 * (1 - dd / 110)) + ')';
+                            ctx.lineWidth = .7; ctx.stroke();
                         }
                     }
                 }
@@ -174,16 +202,6 @@
         var speed  = parseInt(el.getAttribute('data-typing-speed') || '85', 10);
         var pause  = parseInt(el.getAttribute('data-typing-pause') || '1600', 10);
         var wi = 0, ci = 0, del = false;
-        var cur = document.createElement('span');
-        cur.textContent = '|';
-        cur.style.cssText = 'display:inline-block;color:#4a5aa0;animation:_tblink .7s step-end infinite;margin-left:1px;';
-        el.after(cur);
-        if (!q('#_t-style')) {
-            var _ts = document.createElement('style');
-            _ts.id  = '_t-style';
-            _ts.textContent = '@keyframes _tblink{0%,100%{opacity:1}50%{opacity:0}}';
-            document.head.appendChild(_ts);
-        }
         function tick() {
             var word = words[wi];
             ci = del ? ci - 1 : ci + 1;
@@ -203,7 +221,8 @@
         var _sel = [
             'nav','header','h1','h2','h3','h4','p','blockquote',
             '.hero-text','.hero-image','.hero-intro','.hero-actions',
-            '.project-card','.page-card','.feature-card',
+            '.project-card','.page-card','.feature-card','.focus-card','.stat-card',
+            '.neo-card','.polaroid-frame','.about-photo-wrapper','.education-card','.experience-card',
             '.project-detail-shell','.project-preview','.project-thumb',
             '.project-actions','.portfolio-tabs','.portfolio-showcase',
             '.tech-tags span','.btn','.tab','.detail-back',
@@ -293,25 +312,26 @@
        9. 3-D TILT CARDS
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (ENABLE_CURSOR_REACTIVE_MOTION && !RM && HOVER && !MOBILE) {
+        var TILT_SEL = '.project-card, .page-card, .feature-card, .focus-card, .neo-card, .polaroid-frame, .stat-card, .about-photo-card, .education-card, .experience-card, .contact-card-container';
         document.addEventListener('mousemove', function (e) {
-            qa('.project-card,.page-card,.feature-card').forEach(function (card) {
+            qa(TILT_SEL).forEach(function (card) {
                 var r = card.getBoundingClientRect();
-                if (e.clientX < r.left - 30 || e.clientX > r.right  + 30 ||
-                    e.clientY < r.top  - 30 || e.clientY > r.bottom + 30) {
-                    card.style.transform  = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-                    card.style.transition = 'transform 500ms ease';
+                if (e.clientX < r.left - 20 || e.clientX > r.right  + 20 ||
+                    e.clientY < r.top  - 20 || e.clientY > r.bottom + 20) {
+                    card.style.transform  = 'perspective(900px) rotateX(0) rotateY(0) scale(1)';
+                    card.style.transition = 'transform 450ms ease';
                     return;
                 }
                 var cx = (e.clientX - r.left) / r.width  - .5;
                 var cy = (e.clientY - r.top)  / r.height - .5;
-                card.style.transform  = 'perspective(800px) rotateX(' + (cy * -7) + 'deg) rotateY(' + (cx * 7) + 'deg) scale(1.03)';
-                card.style.transition = 'transform 80ms ease';
+                card.style.transform  = 'perspective(900px) rotateX(' + (cy * -9) + 'deg) rotateY(' + (cx * 9) + 'deg) scale(1.025)';
+                card.style.transition = 'transform 80ms cubic-bezier(.1,.5,.2,1)';
             });
         }, { passive: true });
-        qa('.project-card,.page-card,.feature-card').forEach(function (c) {
+        qa(TILT_SEL).forEach(function (c) {
             c.addEventListener('mouseleave', function () {
-                c.style.transform  = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-                c.style.transition = 'transform 500ms cubic-bezier(.22,.61,.36,1)';
+                c.style.transform  = 'perspective(900px) rotateX(0) rotateY(0) scale(1)';
+                c.style.transition = 'transform 450ms cubic-bezier(.22,.61,.36,1)';
             });
         });
     }
@@ -507,6 +527,8 @@
             curtain.style.opacity = '.3';
             setTimeout(function () { window.location.href = href; }, 320);
         });
+    }
+
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        17. PORTFOLIO PROJECT CATEGORY FILTER
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -535,5 +557,244 @@
             }
         }
     };
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       18. LIVE INTERACTIVE DIRECT SEARCH ENGINE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    var SEARCH_DB = [
+        // Projects
+        { keywords: ['bukit', 'penganten', 'wisata'], title: 'Website Bukit Penganten', type: 'Proyek Web', url: 'pages/projects/bukit-penganten.html', desc: 'Website informasi destinasi wisata' },
+        { keywords: ['flower', 'bunga', 'e-commerce', 'ecommerce', 'toko'], title: 'E-Commerce Flower Shop', type: 'Proyek Web', url: 'pages/projects/ecommerce-flower.html', desc: 'Tampilan e-commerce toko bunga' },
+        { keywords: ['portofolio', 'portfolio', 'web indah', 'profil web'], title: 'Website Portofolio', type: 'Proyek Web', url: 'pages/projects/website-portofolio.html', desc: 'Website digital perangkum karya Indah' },
+        { keywords: ['kopi', 'kedai', 'coffee', 'cafe'], title: 'Website Kedai Kopi', type: 'Proyek Web', url: 'pages/projects/website-kedai-kopi.html', desc: 'Website kedai kopi nuansa hangat' },
+        { keywords: ['agripos', 'agri', 'pertanian', 'ritel', 'stok'], title: 'AGRI-POS Pertanian', type: 'App & Sistem', url: 'pages/projects/agripos.html', desc: 'Manajemen ritel & stok hasil pertanian' },
+        { keywords: ['posfy', 'kasir', 'sistem kasir', 'transaksi'], title: 'UI/UX Sistem Kasir Posfy', type: 'App & Sistem', url: 'pages/projects/posfy.html', desc: 'Alur kasir & transaksi intuitif' },
+        { keywords: ['eksbum', 'wisata eksbum', 'ux eksbum'], title: 'UI/UX Destinasi Wisata EKSBUM', type: 'Desain & UI/UX', url: 'pages/projects/eksbum.html', desc: 'Rancangan promosi & eksplorasi wisata' },
+        { keywords: ['ukm', 'manajemen ukm', 'umkm'], title: 'UI/UX Platform Manajemen UKM', type: 'Desain & UI/UX', url: 'pages/projects/ukm-terpadu.html', desc: 'Platform terpadu kelola kebutuhan UKM' },
+        
+        // Pages
+        { keywords: ['about', 'tentang', 'profil', 'biografi', 'indah'], title: 'About Me (Tentang Indah)', type: 'Halaman', url: 'about.html', desc: 'Profil, latar belakang, dan keahlian' },
+        { keywords: ['education', 'pendidikan', 'edukasi', 'upb', 'kuliah', 'kampus'], title: 'Education (Pendidikan)', type: 'Halaman', url: 'education.html', desc: 'Riwayat pendidikan & pencapaian' },
+        { keywords: ['experience', 'pengalaman', 'karir', 'organisasi'], title: 'Experience (Pengalaman)', type: 'Halaman', url: 'experience.html', desc: 'Pengalaman kerja & organisasi' },
+        { keywords: ['contact', 'kontak', 'hubungi', 'email', 'wa', 'whatsapp', 'telepon'], title: 'Contact (Hubungi Saya)', type: 'Halaman', url: 'contact.html', desc: 'Kirim pesan, WhatsApp, Email' },
+        { keywords: ['sertifikat', 'certificate', 'piagam', 'penghargaan'], title: 'Certificates (Sertifikat)', type: 'Halaman', url: 'portfolio.html', desc: 'Lihat koleksi sertifikat & piagam' },
+        { keywords: ['tech', 'stack', 'skill', 'keahlian', 'html', 'css', 'javascript', 'figma', 'git'], title: 'Tech Stack (Keahlian)', type: 'Halaman', url: 'portfolio-techstack.html', desc: 'Tools & bahasa pemrograman' },
+
+        // Categories
+        { keywords: ['website', 'web'], title: 'Lihat Semua Proyek Website', type: 'Kategori', url: 'portfolio-projects.html?cat=website', desc: '4 Proyek Website Interaktif' },
+        { keywords: ['desain', 'design', 'figma'], title: 'Lihat Semua Desain & UI/UX', type: 'Kategori', url: 'portfolio-projects.html?cat=desain', desc: 'Rancangan Antarmuka & Wireframe' },
+        { keywords: ['uiux', 'ui/ux', 'ui', 'ux'], title: 'Lihat Semua Proyek UI/UX', type: 'Kategori', url: 'portfolio-projects.html?cat=uiux', desc: 'Desain Pengalaman Pengguna' },
+        { keywords: ['app', 'sistem', 'aplikasi'], title: 'Lihat Semua Aplikasi & Sistem', type: 'Kategori', url: 'portfolio-projects.html?cat=app', desc: 'Aplikasi Web & Sistem Dashboard' }
+    ];
+
+    function getBaseUrl() {
+        return window.location.pathname.indexOf('/pages/') !== -1 ? '../../' : '';
+    }
+
+    function executeDirectSearch(qStr) {
+        var query = (qStr || '').trim().toLowerCase();
+        if (!query) return;
+
+        // 1. Check exact or high match in database
+        var bestMatch = null;
+        for (var i = 0; i < SEARCH_DB.length; i++) {
+            var item = SEARCH_DB[i];
+            for (var k = 0; k < item.keywords.length; k++) {
+                if (item.keywords[k] === query || (query.length > 2 && item.keywords[k].includes(query))) {
+                    bestMatch = item;
+                    break;
+                }
+            }
+            if (bestMatch) break;
+        }
+
+        if (bestMatch) {
+            window.location.href = getBaseUrl() + bestMatch.url;
+        } else {
+            window.location.href = getBaseUrl() + 'portfolio-projects.html?q=' + encodeURIComponent(query);
+        }
+    }
+
+    // Attach search handlers to inputs and search pills
+    qa('.search-pill').forEach(function (pill) {
+        var input = pill.querySelector('input');
+        var btn   = pill.querySelector('.search-btn');
+        if (!input) return;
+
+        // Ensure relative position for dropdown
+        if (getComputedStyle(pill).position === 'static') pill.style.position = 'relative';
+
+        // Dropdown container
+        var drop = document.createElement('div');
+        drop.className = 'search-dropdown-menu';
+        drop.style.cssText =
+            'position:absolute;top:calc(100% + 10px);left:0;right:0;background:rgba(8,18,52,0.96);' +
+            'border:1px solid rgba(0,210,255,0.35);border-radius:18px;backdrop-filter:blur(16px);' +
+            'box-shadow:0 18px 45px rgba(0,0,0,0.7), 0 0 25px rgba(0,210,255,0.15);' +
+            'z-index:99999;max-height:360px;overflow-y:auto;display:none;padding:10px 0;';
+        pill.appendChild(drop);
+
+        function renderMatches(val) {
+            var qVal = (val || '').trim().toLowerCase();
+            if (!qVal || qVal.length < 1) {
+                drop.style.display = 'none';
+                drop.innerHTML = '';
+                return;
+            }
+
+            var matches = SEARCH_DB.filter(function (item) {
+                if (item.title.toLowerCase().includes(qVal) || item.desc.toLowerCase().includes(qVal)) return true;
+                return item.keywords.some(function (k) { return k.includes(qVal); });
+            });
+
+            if (!matches.length) {
+                drop.innerHTML = '<div style="padding:16px 20px;font-size:0.88rem;color:rgba(255,255,255,0.6);text-align:center;">' +
+                    'Tekan <strong style="color:#00d2ff;">Enter</strong> untuk mencari "<strong>' + qVal + '</strong>" di halaman proyek</div>';
+                drop.style.display = 'block';
+                return;
+            }
+
+            var html = '';
+            matches.slice(0, 6).forEach(function (item) {
+                var targetUrl = getBaseUrl() + item.url;
+                html += '<a href="' + targetUrl + '" class="search-drop-item" style="' +
+                    'display:flex;align-items:center;justify-content:space-between;padding:12px 20px;' +
+                    'text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.2s ease;">' +
+                    '<div style="text-align:left;">' +
+                        '<div style="font-weight:700;font-size:0.93rem;color:#ffffff;">' + item.title + '</div>' +
+                        '<div style="font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:2px;">' + item.desc + '</div>' +
+                    '</div>' +
+                    '<span style="font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(0,210,255,0.12);color:#00d2ff;border:1px solid rgba(0,210,255,0.25);white-space:nowrap;margin-left:12px;">' +
+                        item.type +
+                    '</span>' +
+                '</a>';
+            });
+            drop.innerHTML = html;
+            drop.style.display = 'block';
+
+            // Hover effects on dropdown items
+            qa('.search-drop-item', drop).forEach(function (a) {
+                a.addEventListener('mouseenter', function () { a.style.background = 'rgba(0,210,255,0.12)'; });
+                a.addEventListener('mouseleave', function () { a.style.background = 'transparent'; });
+            });
+        }
+
+        var isProjectsPage = window.location.pathname.indexOf('portfolio-projects.html') !== -1;
+
+        input.addEventListener('input', function () {
+            if (!isProjectsPage) renderMatches(input.value);
+        });
+
+        input.addEventListener('focus', function () {
+            if (!isProjectsPage && input.value.trim()) renderMatches(input.value);
+        });
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                drop.style.display = 'none';
+                executeDirectSearch(input.value);
+            }
+        });
+
+        if (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                drop.style.display = 'none';
+                executeDirectSearch(input.value);
+            });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!pill.contains(e.target)) drop.style.display = 'none';
+        });
+    });
+
+    // Auto-filter on portfolio-projects.html when URL contains ?q= or ?cat=
+    if (window.location.pathname.indexOf('portfolio-projects.html') !== -1) {
+        var params = new URLSearchParams(window.location.search);
+        var qParam = params.get('q') || '';
+        var catParam = params.get('cat') || '';
+
+        if (catParam) {
+            var catBtn = q('.filter-btn[data-filter="' + catParam + '"]');
+            if (catBtn) window.filterProjects(catParam, catBtn);
+        } else if (qParam) {
+            var projInput = document.getElementById('projectSearchInput');
+            if (projInput) projInput.value = qParam;
+
+            var cards = qa('.project-card');
+            var qLower = qParam.toLowerCase();
+            cards.forEach(function (card) {
+                var text = card.textContent.toLowerCase();
+                if (text.includes(qLower)) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        var projInput = document.getElementById('projectSearchInput');
+        if (projInput) {
+            projInput.addEventListener('input', function () {
+                var val = projInput.value.trim().toLowerCase();
+                qa('.project-card').forEach(function (card) {
+                    var text = card.textContent.toLowerCase();
+                    if (!val || text.includes(val)) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       19. CV DOWNLOAD HANDLER WITH HELPER NOTICE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    qa('.btn-cv').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            var href = btn.getAttribute('href');
+            fetch(href, { method: 'HEAD' }).then(function (res) {
+                if (!res.ok) {
+                    showCvNotice();
+                }
+            }).catch(function () {
+                showCvNotice();
+            });
+        });
+    });
+
+    function showCvNotice() {
+        var modal = document.createElement('div');
+        modal.style.cssText =
+            'position:fixed;inset:0;background:rgba(5,12,38,0.85);backdrop-filter:blur(10px);' +
+            'z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
+        modal.innerHTML =
+            '<div style="background:rgba(12,24,62,0.95);border:1px solid rgba(0,210,255,0.4);padding:30px;' +
+            'border-radius:24px;max-width:480px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6);">' +
+                '<div style="font-size:2rem;margin-bottom:10px;">📄</div>' +
+                '<h3 style="color:#ffffff;font-size:1.3rem;margin-bottom:10px;">Tombol CV Siap Digunakan!</h3>' +
+                '<p style="color:#b2c2ea;font-size:0.92rem;line-height:1.5;margin-bottom:20px;">' +
+                    'Silakan simpan file PDF CV Anda dengan nama <strong style="color:#00d2ff;">CV_Indah_Ruwahna.pdf</strong> di dalam folder <strong style="color:#00d2ff;">assets/</strong>.<br><br>' +
+                    'Setelah ditaruh di folder <code>assets/CV_Indah_Ruwahna.pdf</code>, tombol ini akan mengunduh CV Anda secara otomatis!' +
+                '</p>' +
+                '<button type="button" class="btn-cv-close" style="background:#00d2ff;color:#050c26;border:0;padding:10px 24px;' +
+                'border-radius:999px;font-weight:700;cursor:pointer;font-size:0.9rem;">Siap, Mengerti!</button>' +
+            '</div>';
+        document.body.appendChild(modal);
+        modal.querySelector('.btn-cv-close').addEventListener('click', function () {
+            if (modal.parentNode) modal.parentNode.removeChild(modal);
+        });
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal && modal.parentNode) modal.parentNode.removeChild(modal);
+        });
+    }
 
 })();

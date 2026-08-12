@@ -8,7 +8,7 @@
 </head>
 <body class="home-page">
     <nav>
-        <div class="logo">Indah</div>
+        <a href="index.html" class="logo">Indah<span class="logo-dot">.</span></a>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About me</a></li>
@@ -46,7 +46,7 @@
             </h1>
 
             <div class="subtitle-row">
-                <div class="role">Front-end Developer</div>
+                <div class="role" data-typing="Front-end Developer|UI/UX Designer|Figma Designer|Web Developer">Front-end Developer</div>
                 <div class="name-badge">
                     <span class="name">Indah Ruwahna</span>
                     <span class="badge-icon">
@@ -62,14 +62,18 @@
                 <div class="progress"></div>
             </div>
 
-            <div class="search-pill">
-                <input type="text" placeholder="Cari proyek, desain, atau keahlian..." readonly>
-                <button class="search-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"/>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            <div class="hero-actions-home" style="display: flex; gap: 14px; margin-top: 24px; align-items: center; flex-wrap: wrap;">
+                <a href="assets/CV_Indah_Ruwahna.pdf" download="CV_Indah_Ruwahna.pdf" target="_blank" class="btn btn-cv">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                </button>
+                    <span>Unduh CV</span>
+                </a>
+                <a href="about.html" class="btn btn-profile-link" style="padding: 10px 22px; border-radius: 999px; border: 1px solid rgba(0, 210, 255, 0.4); color: #00d2ff; text-decoration: none; font-weight: 600; font-size: 0.9rem; backdrop-filter: blur(8px); transition: all 0.3s ease;">
+                    Lihat Profil &rarr;
+                </a>
             </div>
         </div>
 
