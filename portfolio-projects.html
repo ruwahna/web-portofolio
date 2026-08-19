@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Projects - Indah</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <a href="index.html" class="logo">Indah<span class="logo-dot">.</span></a>
@@ -21,153 +23,170 @@
 
     <main class="portfolio-page">
         <section class="portfolio-showcase">
-            <h1>Portfolio Showcase</h1>
-            <p>Bagian ini menampilkan proyek website yang saya kerjakan. Dari sini kamu bisa pindah ke detail proyek atau berpindah ke tab sertifikat.</p>
+            <h1><span data-typing="Portfolio Showcase|Karya Proyek Digital|Web & UI/UX Showcase">Portfolio Showcase</span></h1>
+            <p class="showcase-subtitle"><span data-typing="Bagian ini menampilkan proyek website yang saya kerjakan. Dari sini kamu bisa pindah ke detail proyek atau berpindah ke tab sertifikat.">Bagian ini menampilkan proyek website yang saya kerjakan. Dari sini kamu bisa pindah ke detail proyek atau berpindah ke tab sertifikat.</span></p>
 
             <div class="portfolio-tabs">
                 <a href="portfolio-projects.html" class="tab active">Projects</a>
                 <a href="portfolio.html" class="tab">Certificates</a>
                 <a href="portfolio-article.html" class="tab">Article</a>
-                <a href="portfolio-techstack.html" class="tab">Tech Stack</a>
             </div>
 
 
 
-            <!-- Sub-Category Filter Bar -->
-            <div class="project-filter-bar">
-                <button class="filter-btn active" data-filter="all" onclick="filterProjects('all', this)">Semua Proyek (8)</button>
-                <button class="filter-btn" data-filter="website" onclick="filterProjects('website', this)">🌐 Website (4)</button>
-                <button class="filter-btn" data-filter="desain" onclick="filterProjects('desain', this)">🎨 Desain (2)</button>
-                <button class="filter-btn" data-filter="uiux" onclick="filterProjects('uiux', this)">✨ UI/UX (3)</button>
-                <button class="filter-btn" data-filter="app" onclick="filterProjects('app', this)">⚙️ App & Sistem (3)</button>
-            </div>
 
-            <div class="portfolio-grid">
-                <!-- Card 1 -->
-                <article class="project-card" data-category="website">
-                    <div class="project-thumb">
-                        <img src="assets/website wisata bukit penganten .png" alt="Website Bukit Penganten" class="project-img">
+
+            <!-- UNIFORM 2-COLUMN GRID FOR ALL 8 PROJECTS -->
+            <div class="portfolio-grid-sweetspot">
+                <!-- Project 01 -->
+                <article class="sweetspot-card project-card" data-category="website uiux">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/e-commerce flower shop.png" alt="E-Commerce Flower Shop">
                     </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-website">WEBSITE</span>
-                    </div>
-                    <h3>Website Bukit Penganten</h3>
-                    <p>Website informasi destinasi wisata dengan tampilan modern dan pengalaman pengguna yang ramah.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Demo</a>
-                        <a href="pages/projects/bukit-penganten.html">Detail</a>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-uiux">📱 MOBILE & WEB SHOP</span>
+                            <span class="sweetspot-num">01</span>
+                        </div>
+                        <h3>E-Commerce Flower Shop</h3>
+                        <p>Desain antarmuka toko bunga berbasis aplikasi seluler dan web shop dengan fokus visual produk menawan.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/e-commerce flower shop.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/ecommerce-flower.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
                     </div>
                 </article>
 
-                <!-- Card 2 -->
-                <article class="project-card" data-category="website">
-                    <div class="project-thumb">
-                        <img src="assets/e-commerce flower shop.png" alt="E-Commerce Flower Shop" class="project-img">
+                <!-- Project 02 -->
+                <article class="sweetspot-card project-card" data-category="website">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/website wisata bukit penganten .png" alt="Website Bukit Penganten">
                     </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-website">WEBSITE</span>
-                    </div>
-                    <h3>E-Commerce Flower Shop</h3>
-                    <p>Tampilan e-commerce bunga dengan fokus pada visual produk, navigasi mudah, dan checkout sederhana.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Demo</a>
-                        <a href="pages/projects/ecommerce-flower.html">Detail</a>
-                    </div>
-                </article>
-
-                <!-- Card 3 -->
-                <article class="project-card" data-category="website">
-                    <div class="project-thumb">
-                        <img src="assets/portofolio.png" alt="Website Portofolio" class="project-img">
-                    </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-website">WEBSITE</span>
-                    </div>
-                    <h3>Website Portofolio</h3>
-                    <p>Website digital yang merangkum seluruh hasil pengembangan proyek web dan desain pengalaman pengguna.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Demo</a>
-                        <a href="pages/projects/website-portofolio.html">Detail</a>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-website">🌐 WEBSITE PROYEK</span>
+                            <span class="sweetspot-num">02</span>
+                        </div>
+                        <h3>Website Bukit Penganten</h3>
+                        <p>Website informasi destinasi wisata dengan tampilan antarmuka yang bersih, responsif, dan interaktif.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/website wisata bukit penganten .png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/bukit-penganten.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
                     </div>
                 </article>
 
-                <!-- Card 4 -->
-                <article class="project-card" data-category="website">
-                    <div class="project-thumb">
-                        <img src="assets/web kopi.png" alt="Website Kedai Kopi" class="project-img">
+                <!-- Project 03 -->
+                <article class="sweetspot-card project-card" data-category="website">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/web kopi.png" alt="Website Kedai Kopi">
                     </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-website">WEBSITE</span>
-                    </div>
-                    <h3>Website Kedai Kopi</h3>
-                    <p>Desain website kedai kopi dengan nuansa hangat, visual menu yang menonjol, dan navigasi sederhana.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Demo</a>
-                        <a href="pages/projects/website-kedai-kopi.html">Detail</a>
-                    </div>
-                </article>
-
-                <!-- Card 5 -->
-                <article class="project-card" data-category="app">
-                    <div class="project-thumb">
-                        <img src="assets/pos pertanian.png" alt="AGRI-POS" class="project-img">
-                    </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-webapp">APP & SISTEM</span>
-                    </div>
-                    <h3>AGRI-POS: Manajemen Ritel Pertanian</h3>
-                    <p>Organisasi pembelian dan stok hasil pertanian dalam dashboard modern yang membantu pencatatan terstruktur.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Demo</a>
-                        <a href="pages/projects/agripos.html">Detail</a>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-website">🌐 KEDAI KOPI</span>
+                            <span class="sweetspot-num">03</span>
+                        </div>
+                        <h3>Website Kedai Kopi Minimalis</h3>
+                        <p>Desain antarmuka kedai kopi bernuansa hangat dengan penataan menu favorit yang menonjol.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/web kopi.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/website-kedai-kopi.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
                     </div>
                 </article>
 
-                <!-- Card 6 -->
-                <article class="project-card" data-category="uiux app">
-                    <div class="project-thumb">
-                        <img src="assets/pos kasir.png" alt="Sistem Kasir Posfy" class="project-img">
+                <!-- Project 04 -->
+                <article class="sweetspot-card project-card" data-category="app">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/pos pertanian.png" alt="AGRI-POS">
                     </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-webapp">APP & SISTEM</span>
-                    </div>
-                    <h3>UI/UX Sistem Kasir Posfy</h3>
-                    <p>Sistem kasir dengan fokus pada alur transaksi cepat, informasi produk jelas, dan tampilan yang intuitif.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Desain</a>
-                        <a href="pages/projects/posfy.html">Detail</a>
-                    </div>
-                </article>
-
-                <!-- Card 7 -->
-                <article class="project-card" data-category="desain uiux">
-                    <div class="project-thumb">
-                        <img src="assets/ux eksbum.png" alt="EKSBUM" class="project-img">
-                    </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-uiux">DESAIN & UI/UX</span>
-                    </div>
-                    <h3>UX UI Destinasi Wisata EKSBUM</h3>
-                    <p>Rancangan antarmuka untuk promosi wisata dan pengalaman eksplorasi destinasi agar lebih mudah diakses.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Desain</a>
-                        <a href="pages/projects/eksbum.html">Detail</a>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-webapp">⚙️ RITEL PERTANIAN</span>
+                            <span class="sweetspot-num">04</span>
+                        </div>
+                        <h3>AGRI-POS: Manajemen Ritel</h3>
+                        <p>Sistem inventarisasi dan pencatatan hasil ritel pertanian dalam bentuk dashboard terstruktur.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/pos pertanian.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/agripos.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
                     </div>
                 </article>
 
-                <!-- Card 8 -->
-                <article class="project-card" data-category="desain uiux app">
-                    <div class="project-thumb">
-                        <img src="assets/ukm.png" alt="Platform Manajemen UKM Terpadu" class="project-img">
+                <!-- Project 05 -->
+                <article class="sweetspot-card project-card" data-category="uiux app">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/pos kasir.png" alt="Sistem Kasir Posfy">
                     </div>
-                    <div class="project-meta">
-                        <span class="project-badge badge-uiux">DESAIN & UI/UX</span>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-webapp">⚙️ SISTEM KASIR</span>
+                            <span class="sweetspot-num">05</span>
+                        </div>
+                        <h3>UI/UX Sistem Kasir POS (Posfy)</h3>
+                        <p>Rancangan antarmuka aplikasi mesin kasir serbaguna dengan tombol cepat (*quick action*).</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/pos kasir.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/posfy.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
                     </div>
-                    <h3>UX/UI Platform Manajemen UKM Terpadu</h3>
-                    <p>Platform terpusat untuk mengelola kebutuhan UKM dengan tampilan ringkas, informatif, dan mudah dipahami.</p>
-                    <div class="project-actions">
-                        <a href="#">Lihat Desain</a>
-                        <a href="pages/projects/ukm-terpadu.html">Detail</a>
+                </article>
+
+                <!-- Project 06 -->
+                <article class="sweetspot-card project-card" data-category="desain uiux">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/ux eksbum.png" alt="EKSBUM">
+                    </div>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-uiux">🎨 UI/UX DESIGN</span>
+                            <span class="sweetspot-num">06</span>
+                        </div>
+                        <h3>UX/UI Destinasi Wisata EKSBUM</h3>
+                        <p>Desain aplikasi eksplorasi destinasi wisata lokal dengan peta interaktif dan ulasan tempat.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/ux eksbum.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/eksbum.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 07 -->
+                <article class="sweetspot-card project-card" data-category="desain uiux app">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/ukm.png" alt="Platform UKM">
+                    </div>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-uiux">🎨 FIGMA PROTOTYPE</span>
+                            <span class="sweetspot-num">07</span>
+                        </div>
+                        <h3>UX/UI Platform Manajemen UKM</h3>
+                        <p>Rancangan platform digital terpadu untuk pelaku Usaha Kecil Menengah yang informatif.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/ukm.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/ukm-terpadu.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 08 -->
+                <article class="sweetspot-card project-card" data-category="website">
+                    <div class="sweetspot-thumb">
+                        <img src="assets/portofolio.png" alt="Website Portofolio">
+                    </div>
+                    <div class="sweetspot-content">
+                        <div class="sweetspot-meta">
+                            <span class="sweetspot-badge badge-website">🌐 PERSONAL WEB</span>
+                            <span class="sweetspot-num">08</span>
+                        </div>
+                        <h3>Website Portofolio Indah</h3>
+                        <p>Pengembangan website portofolio interaktif berbasis HTML, CSS, dan JavaScript modern.</p>
+                        <div class="sweetspot-actions">
+                            <a href="assets/portofolio.png" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>
+                            <a href="pages/projects/website-portofolio.html" class="btn-sm-detail">Detail &rarr;</a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -203,4 +222,5 @@
         }
     </script>
 </body>
+
 </html>

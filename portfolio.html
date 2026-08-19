@@ -21,50 +21,165 @@
 
     <main class="portfolio-page">
         <section class="portfolio-showcase">
-            <h1>Portfolio Showcase</h1>
-            <p>Bagian ini berisi sertifikat dan penghargaan. Tombol detail dan lihat sertifikat sudah diarahkan ke halaman yang sesuai.</p>
+            <h1><span data-typing="Portfolio Showcase|Sertifikat & Lisensi|Penghargaan & Diklat">Portfolio Showcase</span></h1>
+            <p class="showcase-subtitle"><span data-typing="Bagian ini berisi sertifikat dan penghargaan. Tombol detail dan lihat sertifikat sudah diarahkan ke halaman yang sesuai.">Bagian ini berisi sertifikat dan penghargaan. Tombol detail dan lihat sertifikat sudah diarahkan ke halaman yang sesuai.</span></p>
 
             <div class="portfolio-tabs">
                 <a href="portfolio-projects.html" class="tab">Projects</a>
                 <a href="portfolio.html" class="tab active">Certificates</a>
                 <a href="portfolio-article.html" class="tab">Article</a>
-                <a href="portfolio-techstack.html" class="tab">Tech Stack</a>
             </div>
 
             <div class="portfolio-grid certificate-grid">
-                <article class="project-card certificate-card">
-                    <div class="project-thumb cert-thumb" style="overflow:hidden;">
-                        <img src="assets/sertifikat Diksar.png" alt="Sertifikat Organisasi" style="width:100%;height:100%;object-fit:cover;background:#ffffff;padding:0;border-radius:8px;display:block;transform:scale(1.18);transform-origin:center;">
-                    </div>
-                    <h3>Sertifikat Organisasi</h3>
-                    <p>Penghargaan atas dedikasi dan kontribusi sebagai pemateri dan panitia dalam kegiatan organisasi.</p>
-                    <div class="project-actions cert-actions">
-                        <a href="pages/certificates/certificate-viewer.html?img=../../assets/sertifikat%20Diksar.png&back=certificate-organisasi.html">Lihat Demo</a>
-                        <a href="pages/certificates/certificate-organisasi.html">More</a>
-                    </div>
-                </article>
-
-                <article class="project-card certificate-card">
-                    <div class="project-thumb cert-thumb" style="overflow:hidden;">
-                        <img src="assets/piagam.jpg" alt="Sertifikat Kejuaraan" style="width:100%;height:100%;object-fit:cover;background:#ffffff;padding:0;border-radius:8px;display:block;transform:scale(1.12);transform-origin:center;">
-                    </div>
-                    <h3>Sertifikat Kejuaraan</h3>
-                    <p>Piagam penghargaan atas pencapaian juara pada cabang olahraga hockey outdoor tingkat provinsi.</p>
-                    <div class="project-actions cert-actions">
-                        <a href="pages/certificates/certificate-viewer.html?img=../../assets/piagam.jpg&back=certificate-kejuaraan.html">Lihat Demo</a>
-                        <a href="pages/certificates/certificate-kejuaraan.html">More</a>
-                    </div>
-                </article>
-
+                <!-- Cert 01 -->
                 <article class="project-card certificate-card">
                     <div class="project-thumb cert-thumb">
-                        <img src="assets/sertif-pelatihan.png" alt="Sertifikat Pelatihan" style="width:100%;height:100%;object-fit:contain;background:#ffffff;padding:2px;border-radius:8px;display:block;">
+                        <img src="assets/sertifikat_dicoding_frontend.png" alt="Dicoding Front-end Development" style="width:100%;height:100%;object-fit:cover;">
                     </div>
-                    <h3>Sertifikat Pelatihan</h3>
-                    <p>Sertifikat penghargaan atas kontribusi sebagai pemateri dalam sesi pelatihan intensif dengan pendekatan interaktif.</p>
-                    <div class="project-actions cert-actions">
-                        <a href="pages/certificates/certificate-viewer.html?img=../../assets/sertif-pelatihan.png&back=certificate-pelatihan.html">Lihat Demo</a>
-                        <a href="pages/certificates/certificate-pelatihan.html">More</a>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-website">🎓 DICODING ACADEMY</span>
+                            <span class="project-num">01</span>
+                        </div>
+                        <h3>Belajar Membuat Aplikasi Web Front-End</h3>
+                        <p>Sertifikat kompetensi resmi dari Dicoding Indonesia dalam membangun aplikasi web front-end yang interaktif, responsif, dan terstruktur.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/sertifikat_dicoding_frontend.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-viewer.html?img=../../assets/sertifikat_dicoding_frontend.png&back=../../portfolio.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 02 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/sertifikat_dicoding_js.png" alt="Dicoding JavaScript" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-website">🎓 DICODING ACADEMY</span>
+                            <span class="project-num">02</span>
+                        </div>
+                        <h3>Belajar Dasar Pemrograman JavaScript</h3>
+                        <p>Sertifikat kelulusan kelas JavaScript modern yang mencakup manipulasi DOM, konsep asynchronous, dan logika pemrograman web.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/sertifikat_dicoding_js.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-viewer.html?img=../../assets/sertifikat_dicoding_js.png&back=../../portfolio.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 03 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/sertifikat_dicoding_web.png" alt="Dicoding Web Dasar" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-website">🎓 DICODING ACADEMY</span>
+                            <span class="project-num">03</span>
+                        </div>
+                        <h3>Belajar Dasar Pemrograman Web</h3>
+                        <p>Sertifikat standar industri untuk pembuatan struktur HTML5 dan tata letak CSS3 yang bersih dan sesuai standar W3C.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/sertifikat_dicoding_web.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-viewer.html?img=../../assets/sertifikat_dicoding_web.png&back=../../portfolio.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 04 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/sertifikat_volunteer.png" alt="Sertifikat Volunteer" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-uiux">🤝 VOLUNTEER & PENGABDIAN</span>
+                            <span class="project-num">04</span>
+                        </div>
+                        <h3>Sertifikat Volunteer & Pengabdian Masyarakat</h3>
+                        <p>Penghargaan atas kontribusi aktif dan dedikasi sosial dalam kegiatan kerrelawanan dan pengabdian masyarakat.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/sertifikat_volunteer.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-viewer.html?img=../../assets/sertifikat_volunteer.png&back=../../portfolio.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 05 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/piagam.jpg" alt="Piagam Kejuaraan" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-webapp">🏆 KEJUARAAN OLAHRAGA</span>
+                            <span class="project-num">05</span>
+                        </div>
+                        <h3>Piagam Penghargaan Kejuaraan Hockey</h3>
+                        <p>Piagam kejuaraan atas prestasi meraih Juara dalam ajang turnamen Hockey Outdoor tingkat provinsi.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/piagam.jpg" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-kejuaraan.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 06 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/sertifikat Diksar.png" alt="Sertifikat Organisasi" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-website">👥 ORGANISASI & KEPEMIMPINAN</span>
+                            <span class="project-num">06</span>
+                        </div>
+                        <h3>Sertifikat Diksar Organisasi</h3>
+                        <p>Sertifikat Pendidikan Dasar Kepemimpinan dan Manajemen Organisasi kampus Universitas Putra Bangsa.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/sertifikat Diksar.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-organisasi.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 07 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/sertif-pelatihan.png" alt="Sertifikat Pelatihan" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-webapp">⚡ PELATIHAN INTENSIF</span>
+                            <span class="project-num">07</span>
+                        </div>
+                        <h3>Sertifikat Pelatihan Pemateri</h3>
+                        <p>Penghargaan atas kontribusi aktif sebagai pemateri dan fasilitator dalam sesi pelatihan intensif interaktif.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/sertif-pelatihan.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-pelatihan.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cert 08 -->
+                <article class="project-card certificate-card">
+                    <div class="project-thumb cert-thumb">
+                        <img src="assets/Sertifikat Camp Ceria.png" alt="Camp Ceria" style="width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="project-card-body">
+                        <div class="project-meta-row">
+                            <span class="project-badge badge-uiux">🏕️ KEGIATAN KAMPUS</span>
+                            <span class="project-num">08</span>
+                        </div>
+                        <h3>Sertifikat Pelaksanaan Camp Ceria</h3>
+                        <p>Sertifikat keikutsertaan dan pengorganisasian kegiatan bina karakter Camp Ceria kepemudaan.</p>
+                        <div class="project-actions cert-actions">
+                            <a href="assets/Sertifikat Camp Ceria.png" target="_blank" class="btn-demo">🔍 Zoom Fullscreen</a>
+                            <a href="pages/certificates/certificate-viewer.html?img=../../assets/Sertifikat%20Camp%20Ceria.png&back=../../portfolio.html" class="btn-detail">Lihat Detail &rarr;</a>
+                        </div>
                     </div>
                 </article>
             </div>

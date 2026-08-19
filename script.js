@@ -128,7 +128,7 @@
        4. PARTICLE CONSTELLATION (WITH MOUSE INTERACTION)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (!RM && !MOBILE) {
-        var hero = q('.portfolio-hero') || q('.hero') || q('.page-section') || q('.contact-section-simple') || q('header') || q('section');
+        var hero = q('.portfolio-hero') || q('.hero') || q('.page-section') || q('.contact-section-simple') || q('.hero-section-simple');
         if (hero) {
             var cv = document.createElement('canvas');
             cv.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.65;';
@@ -235,22 +235,37 @@
         _els.forEach(function (el) {
             if (el.dataset.rv) return;
             el.dataset.rv = '1';
-            el.style.opacity   = '0';
-            el.style.transform = 'translateY(22px)';
-            el.style.transition =
-                'opacity 560ms cubic-bezier(.22,.61,.36,1),' +
-                'transform 560ms cubic-bezier(.22,.61,.36,1)';
+            
+            // Check if element is already in or near top viewport on page load
+            var rect = el.getBoundingClientRect();
+            var isInViewport = rect.top < (window.innerHeight || document.documentElement.clientHeight) && rect.bottom > 0;
+
+            if (isInViewport || el.closest('nav') || el.closest('.portfolio-tabs') || el.closest('.project-filter-bar')) {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            } else {
+                el.style.opacity   = '0';
+                el.style.transform = 'translateY(22px)';
+                el.style.transition =
+                    'opacity 560ms cubic-bezier(.22,.61,.36,1),' +
+                    'transform 560ms cubic-bezier(.22,.61,.36,1)';
+            }
         });
         if ('IntersectionObserver' in window) {
             var _io = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (!entry.isIntersecting) return;
                     var el = entry.target;
-                    el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+                    el.style.opacity = '1'; 
+                    el.style.transform = 'translateY(0)';
                     _io.unobserve(el);
                 });
-            }, { threshold: .1, rootMargin: '0px 0px -36px 0px' });
-            _els.forEach(function (el) { _io.observe(el); });
+            }, { threshold: 0.05, rootMargin: '50px 0px 50px 0px' });
+            _els.forEach(function (el) { 
+                if (el.style.opacity === '0') {
+                    _io.observe(el); 
+                }
+            });
         } else {
             _els.forEach(function (el) { el.style.opacity = '1'; el.style.transform = 'none'; });
         }
@@ -261,7 +276,7 @@
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (ENABLE_CURSOR_REACTIVE_MOTION && !RM && HOVER && !MOBILE) {
         document.addEventListener('mousemove', function (e) {
-            qa('.btn,.project-actions a,nav a,.tab').forEach(function (el) {
+            qa('.btn,.project-actions a,nav a').forEach(function (el) {
                 var r  = el.getBoundingClientRect();
                 var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
                 var dx = e.clientX - cx, dy = e.clientY - cy;
@@ -794,6 +809,53 @@
         });
         modal.addEventListener('click', function (e) {
             if (e.target === modal && modal.parentNode) modal.parentNode.removeChild(modal);
+        });
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       20. TOOLS SHOWCASE FILTER TABS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    qa('.tool-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+            var filter = pill.getAttribute('data-filter');
+            qa('.tool-pill').forEach(function (p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+
+            qa('.tool-icon-item').forEach(function (item) {
+                var cat = item.getAttribute('data-category') || '';
+                if (filter === 'all' || cat.indexOf(filter) !== -1) {
+                    item.style.display = 'flex';
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                }
+            });
+        });
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       21. DYNAMIC 3D TILT CARD MOTION
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    if (!RM && HOVER && !MOBILE) {
+        qa('.sweetspot-card, .certificate-card, .article-item-minimal').forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var rect = card.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var cx = rect.width / 2;
+                var cy = rect.height / 2;
+                var rx = (cy - y) / 18;
+                var ry = (x - cx) / 18;
+                card.style.transform = 'perspective(1000px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-8px) scale(1.018)';
+                card.style.transition = 'transform 100ms ease-out';
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+                card.style.transition = 'transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1)';
+            });
         });
     }
 
