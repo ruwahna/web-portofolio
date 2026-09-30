@@ -856,7 +856,149 @@
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
                 card.style.transition = 'transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1)';
             });
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       22. PORTFOLIO STORAGE & ADMIN ENGINE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    var PortfolioStorage = {
+        KEYS: {
+            PROJECTS: 'indah_portfolio_projects',
+            ARTICLES: 'indah_portfolio_articles'
+        },
+        getProjects: function () {
+            try {
+                var data = localStorage.getItem(this.KEYS.PROJECTS);
+                return data ? JSON.parse(data) : [];
+            } catch (e) { return []; }
+        },
+        saveProjects: function (projects) {
+            localStorage.setItem(this.KEYS.PROJECTS, JSON.stringify(projects));
+        },
+        getArticles: function () {
+            try {
+                var data = localStorage.getItem(this.KEYS.ARTICLES);
+                return data ? JSON.parse(data) : [];
+            } catch (e) { return []; }
+        },
+        saveArticles: function (articles) {
+            localStorage.setItem(this.KEYS.ARTICLES, JSON.stringify(articles));
+        },
+        addProject: function (proj) {
+            var list = this.getProjects();
+            proj.id = 'proj_' + Date.now();
+            proj.createdAt = new Date().toISOString();
+            list.unshift(proj);
+            this.saveProjects(list);
+            return proj;
+        },
+        updateProject: function (id, updatedProj) {
+            var list = this.getProjects();
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].id === id) {
+                    updatedProj.id = id;
+                    updatedProj.createdAt = list[i].createdAt;
+                    list[i] = updatedProj;
+                    break;
+                }
+            }
+            this.saveProjects(list);
+        },
+        deleteProject: function (id) {
+            var list = this.getProjects().filter(function (p) { return p.id !== id; });
+            this.saveProjects(list);
+        },
+        addArticle: function (art) {
+            var list = this.getArticles();
+            art.id = 'art_' + Date.now();
+            art.createdAt = new Date().toISOString();
+            list.unshift(art);
+            this.saveArticles(list);
+            return art;
+        },
+        updateArticle: function (id, updatedArt) {
+            var list = this.getArticles();
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].id === id) {
+                    updatedArt.id = id;
+                    updatedArt.createdAt = list[i].createdAt;
+                    list[i] = updatedArt;
+                    break;
+                }
+            }
+            this.saveArticles(list);
+        },
+        deleteArticle: function (id) {
+            var list = this.getArticles().filter(function (a) { return a.id !== id; });
+            this.saveArticles(list);
+        }
+    };
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       23. DYNAMIC RENDERER ON PORTFOLIO PAGES
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function renderDynamicProjects() {
+        var grid = q('.portfolio-grid-sweetspot');
+        if (!grid) return;
+        var userProjects = PortfolioStorage.getProjects();
+        if (!userProjects || userProjects.length === 0) return;
+
+        userProjects.forEach(function (proj) {
+            var article = document.createElement('article');
+            article.className = 'sweetspot-card project-card user-uploaded-card';
+            article.setAttribute('data-category', 'website uiux user-upload');
+
+            var badgeClass = 'badge-website';
+            if (proj.badge.indexOf('MOBILE') !== -1) badgeClass = 'badge-uiux';
+
+            article.innerHTML =
+                '<div class="sweetspot-thumb">' +
+                    '<img src="' + (proj.img || 'assets/e-commerce flower shop.png') + '" alt="' + proj.title + '">' +
+                '</div>' +
+                '<div class="sweetspot-content">' +
+                    '<div class="sweetspot-meta">' +
+                        '<span class="sweetspot-badge ' + badgeClass + '">' + proj.badge + '</span>' +
+                        '<span class="sweetspot-num" style="color:#00d2ff;font-weight:bold;">NEW</span>' +
+                    '</div>' +
+                    '<h3>' + proj.title + '</h3>' +
+                    '<p>' + proj.desc + '</p>' +
+                    '<div class="sweetspot-actions">' +
+                        (proj.demoUrl ? '<a href="' + proj.demoUrl + '" target="_blank" class="btn-sm-demo">Lihat Preview 🚀</a>' : '') +
+                        (proj.detailUrl ? '<a href="' + proj.detailUrl + '" class="btn-sm-detail">Detail &rarr;</a>' : '<a href="#" class="btn-sm-detail">Detail &rarr;</a>') +
+                    '</div>' +
+                '</div>';
+
+            grid.insertBefore(article, grid.firstChild);
         });
     }
+
+    function renderDynamicArticles() {
+        var container = q('.article-list-minimal');
+        if (!container) return;
+        var userArticles = PortfolioStorage.getArticles();
+        if (!userArticles || userArticles.length === 0) return;
+
+        userArticles.forEach(function (art) {
+            var article = document.createElement('article');
+            article.className = 'article-item-minimal user-uploaded-article';
+
+            article.innerHTML =
+                '<div class="article-main-info">' +
+                    '<div class="article-meta-badge">' +
+                        '<span class="art-tag">' + art.tag + '</span>' +
+                        '<span class="art-date">' + art.date + ' • ' + art.readTime + '</span>' +
+                    '</div>' +
+                    '<h3 class="art-title">' + art.title + '</h3>' +
+                    '<p class="art-desc">' + art.desc + '</p>' +
+                '</div>' +
+                '<div class="article-action-cell">' +
+                    '<a href="' + (art.detailUrl || '#') + '" class="btn-read-minimal">Baca Artikel &rarr;</a>' +
+                '</div>';
+
+            container.insertBefore(article, container.firstChild);
+        });
+    }
+
+    // Run dynamic renderers
+    renderDynamicProjects();
+    renderDynamicArticles();
 
 })();

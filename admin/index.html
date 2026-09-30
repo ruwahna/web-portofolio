@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Indah Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="admin-body">
+
+    <!-- BACKGROUND AMBIENT GLOW ORBS & GRID PATTERN -->
+    <div class="admin-bg-decor">
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+        <div class="bg-grid-pattern"></div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="adminLoginOverlay" class="admin-login-overlay">
+        <div class="admin-login-card">
+            <div class="admin-login-icon">🔒</div>
+            <h2>Dashboard Admin Indah</h2>
+            <p>Masukkan Kata Sandi Admin untuk Mengakses Panel</p>
+            <form id="adminLoginForm">
+                <div class="admin-form-group">
+                    <input type="password" id="adminPasscode" class="admin-input" placeholder="Sandi Admin (Default: admin123)" required autofocus>
+                </div>
+                <div id="loginErrorMsg" class="admin-error-msg" style="display: none;">Kata sandi salah! Silakan coba lagi.</div>
+                <button type="submit" class="admin-btn-primary admin-btn-full">Masuk ke Panel Admin &rarr;</button>
+            </form>
+            <div class="admin-login-footer">
+                <a href="../index.html">&larr; Kembali ke Website Utama</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN ADMIN CONTENT LAYOUT -->
+    <div id="adminMainContent" class="admin-app-layout" style="display: none;">
+
+        <!-- MOBILE TOP NAVBAR -->
+        <header class="admin-mobile-topbar">
+            <button id="sidebarToggleBtn" class="mobile-toggle-btn" aria-label="Buka Navigation Menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <div class="mobile-logo-wrapper">
+                <span class="logo">Indah<span class="logo-dot">.</span></span>
+                <span class="admin-badge-label">ADMIN</span>
+            </div>
+            <button id="mobileLogoutBtn" class="mobile-logout-btn" title="Keluar">
+                <span>🔓</span>
+            </button>
+        </header>
+
+        <!-- BACKDROP OVERLAY FOR MOBILE SIDEBAR -->
+        <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+        <!-- LEFT SIDEBAR NAVIGATION -->
+        <aside id="adminSidebar" class="admin-sidebar">
+            <!-- SIDEBAR HEADER -->
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <span class="logo">Indah<span class="logo-dot">.</span></span>
+                    <span class="admin-badge-label">ADMIN PANEL</span>
+                </div>
+                <button id="sidebarCloseBtn" class="sidebar-close-btn" aria-label="Tutup Menu">&times;</button>
+            </div>
+
+            <!-- PROFILE CARD -->
+            <div class="sidebar-profile-card">
+                <div class="user-avatar-wrapper">
+                    <div class="user-avatar-img">IN</div>
+                    <span class="status-indicator-dot"></span>
+                </div>
+                <div class="user-profile-info">
+                    <h4 class="user-name">Indah Ruwahna</h4>
+                    <span class="user-role">Administrator</span>
+                </div>
+            </div>
+
+            <!-- NAV LINKS & TABS -->
+            <nav class="sidebar-nav">
+                <div class="sidebar-nav-section">
+                    <span class="sidebar-section-title">NAVIGASI UTAMA</span>
+                    <button class="admin-tab-btn active" data-target="tabUploadProject">
+                        <span class="nav-icon">🚀</span>
+                        <span class="nav-text">Tambah Proyek</span>
+                    </button>
+                    <button class="admin-tab-btn" data-target="tabUploadArticle">
+                        <span class="nav-icon">✍️</span>
+                        <span class="nav-text">Tambah Artikel</span>
+                    </button>
+                    <button class="admin-tab-btn" data-target="tabManageContent">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Kelola Konten</span>
+                        <span id="badgeTotalManage" class="tab-badge">0</span>
+                    </button>
+                    <button class="admin-tab-btn" data-target="tabDataBackup">
+                        <span class="nav-icon">⚙️</span>
+                        <span class="nav-text">Backup & Data</span>
+                    </button>
+                </div>
+
+                <div class="sidebar-nav-section">
+                    <span class="sidebar-section-title">AKSES CEPAT LIVE</span>
+                    <a href="../portfolio-projects.html" target="_blank" class="sidebar-link-btn">
+                        <span class="nav-icon">🌐</span>
+                        <span class="nav-text">Proyek Live</span>
+                        <span class="external-arrow">↗</span>
+                    </a>
+                    <a href="../portfolio-article.html" target="_blank" class="sidebar-link-btn">
+                        <span class="nav-icon">📝</span>
+                        <span class="nav-text">Artikel Live</span>
+                        <span class="external-arrow">↗</span>
+                    </a>
+                    <a href="../index.html" class="sidebar-link-btn">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Website Utama</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+                <button id="adminLogoutBtn" class="sidebar-logout-btn">
+                    <span>Keluar dari Panel</span>
+                    <span class="logout-icon">🔓</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN ADMIN CONTENT AREA -->
+        <main class="admin-main-wrapper">
+            <div class="admin-container">
+                <!-- WELCOME HEADER -->
+                <header class="admin-header-card">
+                    <div class="admin-header-info">
+                        <div class="admin-header-title-row">
+                            <h1>Pengelola Konten Portofolio ✨</h1>
+                            <span class="system-status-pill">
+                                <span class="status-dot"></span> Storage Ready
+                            </span>
+                        </div>
+                        <p>Pantau statistik, tambah, edit, dan kelola karya proyek serta artikel portofolio Anda secara real-time.</p>
+                    </div>
+
+                    <!-- STATS CARDS GRID -->
+                    <div class="admin-stats-grid">
+                        <div class="admin-stat-card stat-card-projects">
+                            <div class="stat-card-header">
+                                <div class="stat-icon-wrapper icon-blue">🚀</div>
+                                <span class="stat-trend-tag">Proyek Live</span>
+                            </div>
+                            <div class="stat-card-body">
+                                <h3 id="statProjectsCount" class="stat-number">0</h3>
+                                <span class="stat-label">Total Proyek Live</span>
+                            </div>
+                            <div class="stat-card-footer">
+                                <span id="statProjectsDetail" class="stat-subtext">Terdeteksi 8 Proyek</span>
+                            </div>
+                        </div>
+
+                        <div class="admin-stat-card stat-card-articles">
+                            <div class="stat-card-header">
+                                <div class="stat-icon-wrapper icon-purple">✍️</div>
+                                <span class="stat-trend-tag">Artikel Live</span>
+                            </div>
+                            <div class="stat-card-body">
+                                <h3 id="statArticlesCount" class="stat-number">0</h3>
+                                <span class="stat-label">Total Artikel Live</span>
+                            </div>
+                            <div class="stat-card-footer">
+                                <span id="statArticlesDetail" class="stat-subtext">Terdeteksi 2 Artikel</span>
+                            </div>
+                        </div>
+
+                        <div class="admin-stat-card stat-card-total">
+                            <div class="stat-card-header">
+                                <div class="stat-icon-wrapper icon-green">📊</div>
+                                <span class="stat-trend-tag">Total Portofolio</span>
+                            </div>
+                            <div class="stat-card-body">
+                                <h3 id="statTotalCount" class="stat-number">0</h3>
+                                <span class="stat-label">Total Karya & Konten</span>
+                            </div>
+                            <div class="stat-card-footer">
+                                <span id="statTotalDetail" class="stat-subtext">Tampil di Website Utama</span>
+                            </div>
+                        </div>
+
+                        <div class="admin-stat-card stat-card-status">
+                            <div class="stat-card-header">
+                                <div class="stat-icon-wrapper icon-amber">⚡</div>
+                                <span class="stat-trend-tag">Status Penyimpanan</span>
+                            </div>
+                            <div class="stat-card-body">
+                                <h3 class="stat-number-text">Tersimpan</h3>
+                                <span class="stat-label">Browser LocalStorage</span>
+                            </div>
+                            <div class="stat-card-footer">
+                                <span class="stat-subtext">✅ Opsi Backup Tersedia</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- TAB 1: FORM UPLOAD PROYEK -->
+                <section id="tabUploadProject" class="admin-tab-content active">
+                    <div class="admin-panel-card">
+                        <h2 class="panel-title">Form Tambah Proyek Baru</h2>
+                        <p class="panel-subtitle">Isi data di bawah ini untuk menambahkan proyek baru ke halaman portofolio proyek.</p>
+
+                        <form id="formAddProject" class="admin-form">
+                            <input type="hidden" id="editProjectId" value="">
+                            
+                            <div class="admin-form-row">
+                                <div class="admin-form-group flex-2">
+                                    <label for="projTitle">Judul Proyek <span class="req">*</span></label>
+                                    <input type="text" id="projTitle" class="admin-input" placeholder="Contoh: Website E-Commerce Toko Bunga" required>
+                                </div>
+                                <div class="admin-form-group flex-1">
+                                    <label for="projBadge">Kategori / Badge <span class="req">*</span></label>
+                                    <select id="projBadge" class="admin-select" required>
+                                        <option value="🌐 WEBSITE PROYEK">🌐 WEBSITE PROYEK</option>
+                                        <option value="📱 MOBILE & WEB SHOP">📱 MOBILE & WEB SHOP</option>
+                                        <option value="🎨 UI/UX DESIGN">🎨 UI/UX DESIGN</option>
+                                        <option value="💻 FRONT-END DEV">💻 FRONT-END DEV</option>
+                                        <option value="⚡ DASHBOARD APP">⚡ DASHBOARD APP</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label>Gambar Proyek Thumbnail <span class="req">*</span></label>
+                                <div class="image-upload-box">
+                                    <div class="image-mode-tabs">
+                                        <button type="button" class="img-mode-btn active" id="btnModeFile">📁 Upload File Foto</button>
+                                        <button type="button" class="img-mode-btn" id="btnModeUrl">🔗 Link URL Gambar</button>
+                                    </div>
+                                    
+                                    <div id="boxModeFile" class="img-input-container">
+                                        <input type="file" id="projFile" accept="image/*" class="admin-file-input">
+                                        <p class="file-hint">Pilih gambar dari komputer (PNG, JPG, WebP)</p>
+                                    </div>
+                                    <div id="boxModeUrl" class="img-input-container" style="display: none;">
+                                        <input type="url" id="projUrl" class="admin-input" placeholder="https://domain.com/gambar.png atau assets/nama-foto.png">
+                                    </div>
+
+                                    <div id="projImgPreviewBox" class="img-preview-wrapper" style="display: none;">
+                                        <span>Preview Gambar:</span>
+                                        <img id="projImgPreview" src="" alt="Preview">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="projDesc">Deskripsi Singkat Proyek <span class="req">*</span></label>
+                                <textarea id="projDesc" class="admin-textarea" rows="3" placeholder="Tuliskan deskripsi singkat mengenai proyek yang dibuat..." required></textarea>
+                            </div>
+
+                            <div class="admin-form-row">
+                                <div class="admin-form-group flex-1">
+                                    <label for="projDemoUrl">Link Preview / Demo Live</label>
+                                    <input type="text" id="projDemoUrl" class="admin-input" placeholder="Misal: assets/e-commerce flower shop.png atau https://demo.com">
+                                </div>
+                                <div class="admin-form-group flex-1">
+                                    <label for="projDetailUrl">Link Halaman Detail Proyek</label>
+                                    <input type="text" id="projDetailUrl" class="admin-input" placeholder="Misal: pages/projects/ecommerce-flower.html">
+                                </div>
+                            </div>
+
+                            <div class="form-action-row">
+                                <button type="submit" id="btnSubmitProject" class="admin-btn-primary">✨ Simpan & Publikasikan Proyek</button>
+                                <button type="button" id="btnCancelEditProject" class="admin-btn-secondary" style="display: none;">Batal Edit</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- TAB 2: FORM UPLOAD ARTIKEL -->
+                <section id="tabUploadArticle" class="admin-tab-content">
+                    <div class="admin-panel-card">
+                        <h2 class="panel-title">Form Tambah Artikel Baru</h2>
+                        <p class="panel-subtitle">Isi data di bawah ini untuk menambahkan catatan/artikel baru ke halaman Article Notes.</p>
+
+                        <form id="formAddArticle" class="admin-form">
+                            <input type="hidden" id="editArticleId" value="">
+
+                            <div class="admin-form-row">
+                                <div class="admin-form-group flex-2">
+                                    <label for="artTitle">Judul Artikel <span class="req">*</span></label>
+                                    <input type="text" id="artTitle" class="admin-input" placeholder="Contoh: Dasar UX Writing untuk Antarmuka Digital" required>
+                                </div>
+                                <div class="admin-form-group flex-1">
+                                    <label for="artTag">Tag / Kategori Topik <span class="req">*</span></label>
+                                    <select id="artTag" class="admin-select" required>
+                                        <option value="✍️ UX WRITING">✍️ UX WRITING</option>
+                                        <option value="💻 FRONT-END DEV">💻 FRONT-END DEV</option>
+                                        <option value="🎨 UI/UX DESIGN">🎨 UI/UX DESIGN</option>
+                                        <option value="🚀 WEB PERFORMANCE">🚀 WEB PERFORMANCE</option>
+                                        <option value="💡 TIPS & TRICKS">💡 TIPS & TRICKS</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-row">
+                                <div class="admin-form-group flex-1">
+                                    <label for="artDate">Tanggal Rilis <span class="req">*</span></label>
+                                    <input type="text" id="artDate" class="admin-input" placeholder="Contoh: 24 Mei 2026" required>
+                                </div>
+                                <div class="admin-form-group flex-1">
+                                    <label for="artReadTime">Estimasi Waktu Baca <span class="req">*</span></label>
+                                    <input type="text" id="artReadTime" class="admin-input" placeholder="Contoh: 3 min read" required>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="artDesc">Ringkasan / Deskripsi Artikel <span class="req">*</span></label>
+                                <textarea id="artDesc" class="admin-textarea" rows="3" placeholder="Tuliskan ringkasan singkat dari isi artikel..." required></textarea>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="artDetailUrl">Link Selengkapnya / Halaman Artikel</label>
+                                <input type="text" id="artDetailUrl" class="admin-input" placeholder="Misal: pages/articles/dasar-ux-writing.html atau https://medium.com/@indah">
+                            </div>
+
+                            <div class="form-action-row">
+                                <button type="submit" id="btnSubmitArticle" class="admin-btn-primary">✨ Simpan & Publikasikan Artikel</button>
+                                <button type="button" id="btnCancelEditArticle" class="admin-btn-secondary" style="display: none;">Batal Edit</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- TAB 3: KELOLA KONTEN -->
+                <section id="tabManageContent" class="admin-tab-content">
+                    <div class="admin-panel-card">
+                        <h2 class="panel-title">Daftar Konten Ter-Upload</h2>
+                        <p class="panel-subtitle">Anda dapat mengedit atau menghapus proyek dan artikel yang telah Anda tambahkan.</p>
+
+                        <!-- MANAGE PROJECTS -->
+                        <div class="manage-section">
+                            <h3 class="manage-subtitle">🚀 Proyek Ter-Upload (<span id="countProjList">0</span>)</h3>
+                            <div id="uploadedProjectsContainer" class="manage-grid">
+                                <!-- Dynamic Cards -->
+                            </div>
+                        </div>
+
+                        <!-- MANAGE ARTICLES -->
+                        <div class="manage-section" style="margin-top: 36px;">
+                            <h3 class="manage-subtitle">✍️ Artikel Ter-Upload (<span id="countArtList">0</span>)</h3>
+                            <div id="uploadedArticlesContainer" class="manage-list">
+                                <!-- Dynamic Items -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB 4: BACKUP & DATA -->
+                <section id="tabDataBackup" class="admin-tab-content">
+                    <div class="admin-panel-card">
+                        <h2 class="panel-title">Pengaturan Data & Backup</h2>
+                        <p class="panel-subtitle">Simpan atau cadangkan data proyek & artikel Anda ke dalam file JSON agar aman dan dapat dipindahkan ke perangkat lain.</p>
+
+                        <div class="backup-actions-grid">
+                            <div class="backup-card">
+                                <div class="backup-icon">📥</div>
+                                <h3>Export Data (Backup)</h3>
+                                <p>Unduh semua data proyek dan artikel yang telah di-upload sebagai file JSON untuk disimpan di laptop/PC Anda.</p>
+                                <button id="btnExportJSON" class="admin-btn-primary">Unduh Backup JSON 💾</button>
+                            </div>
+
+                            <div class="backup-card">
+                                <div class="backup-icon">📤</div>
+                                <h3>Import Data (Restore)</h3>
+                                <p>Unggah file backup JSON yang sebelumnya diunduh untuk memulihkan seluruh data proyek dan artikel.</p>
+                                <input type="file" id="importJSONFile" accept=".json" style="display: none;">
+                                <button id="btnTriggerImportJSON" class="admin-btn-secondary">Pilih File JSON & Import 📂</button>
+                            </div>
+
+                            <div class="backup-card danger-zone">
+                                <div class="backup-icon">⚠️</div>
+                                <h3>Reset Data Upload</h3>
+                                <p>Menghapus seluruh proyek dan artikel yang di-upload melalui admin. Konten asli bawaan HTML akan tetap aman.</p>
+                                <button id="btnResetData" class="admin-btn-danger">Reset Semua Data Upload 🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="adminToast" class="admin-toast">
+        <span id="adminToastMsg">Berhasil disimpan!</span>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+
+</html>
