@@ -777,9 +777,107 @@
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       19. CV DOWNLOAD HANDLER (DIRECT)
+       19. CV PREVIEW & DOWNLOAD MODAL VIEWER
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    // CV download is now direct via href="assets/CV_Indah_Ruwahna.png" download
+    qa('.btn-cv').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openCvPreviewModal();
+        });
+    });
+
+    function openCvPreviewModal() {
+        // Prevent duplicate modals
+        var existing = document.getElementById('cvPreviewModal');
+        if (existing) existing.remove();
+
+        var modal = document.createElement('div');
+        modal.id = 'cvPreviewModal';
+        modal.style.cssText =
+            'position:fixed;inset:0;background:rgba(5,12,38,0.88);backdrop-filter:blur(14px);' +
+            'z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;' +
+            'padding:20px;animation:cvModalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;';
+
+        var style = document.createElement('style');
+        style.innerHTML =
+            '@keyframes cvModalFadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }' +
+            '#cvPreviewModal img::-webkit-scrollbar { width: 6px; }' +
+            '#cvPreviewModal img::-webkit-scrollbar-thumb { background: rgba(0,210,255,0.4); border-radius: 4px; }';
+        document.head.appendChild(style);
+
+        modal.innerHTML =
+            '<div style="background:rgba(12,24,62,0.96);border:1px solid rgba(0,210,255,0.4);' +
+            'border-radius:24px;width:100%;max-width:780px;max-height:92vh;display:flex;flex-direction:column;' +
+            'box-shadow:0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,210,255,0.15);overflow:hidden;position:relative;">' +
+                
+                '<!-- Header -->' +
+                '<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;' +
+                'border-bottom:1px solid rgba(0,210,255,0.15);background:rgba(8,16,42,0.6);">' +
+                    '<div style="display:flex;align-items:center;gap:10px;">' +
+                        '<div style="width:34px;height:34px;border-radius:10px;background:rgba(0,210,255,0.15);' +
+                        'border:1px solid rgba(0,210,255,0.3);display:flex;align-items:center;justify-content:center;color:#00d2ff;">' +
+                            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
+                        '</div>' +
+                        '<div>' +
+                            '<h3 style="color:#ffffff;font-size:1.05rem;font-weight:700;margin:0;line-height:1.2;">Curriculum Vitae</h3>' +
+                            '<p style="color:#8ba4d0;font-size:0.78rem;margin:2px 0 0 0;">Indah Ruwahna Anugraheni, S.Kom</p>' +
+                        '</div>' +
+                    '</div>' +
+                    '<button type="button" class="close-cv-modal" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);' +
+                    'color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;' +
+                    'transition:all 0.2s;font-size:1.1rem;" title="Tutup">✕</button>' +
+                '</div>' +
+
+                '<!-- Body Image View -->' +
+                '<div style="padding:20px;overflow-y:auto;display:flex;justify-content:center;align-items:flex-start;background:#050c26;">' +
+                    '<img src="assets/CV_Indah_Ruwahna.png" alt="CV Indah Ruwahna Anugraheni" ' +
+                    'style="width:100%;max-width:680px;height:auto;border-radius:12px;border:1px solid rgba(0,210,255,0.25);' +
+                    'box-shadow:0 12px 40px rgba(0,0,0,0.6);">' +
+                '</div>' +
+
+                '<!-- Footer Action Bar -->' +
+                '<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;' +
+                'border-top:1px solid rgba(0,210,255,0.15);background:rgba(8,16,42,0.8);gap:12px;flex-wrap:wrap;">' +
+                    '<div style="color:#8ba4d0;font-size:0.82rem;display:flex;align-items:center;gap:6px;">' +
+                        '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#00d2ff;"></span>' +
+                        'Gambar CV Format HD (PNG)' +
+                    '</div>' +
+                    '<div style="display:flex;gap:10px;align-items:center;">' +
+                        '<a href="assets/CV_Indah_Ruwahna.png" target="_blank" style="padding:9px 18px;border-radius:999px;' +
+                        'border:1px solid rgba(0,210,255,0.4);color:#00d2ff;text-decoration:none;font-weight:600;font-size:0.85rem;' +
+                        'display:flex;align-items:center;gap:6px;background:rgba(0,210,255,0.08);transition:all 0.2s;">' +
+                            '<span>Buka Tab Baru ↗</span>' +
+                        '</a>' +
+                        '<a href="assets/CV_Indah_Ruwahna.png" download="CV_Indah_Ruwahna.png" style="padding:9px 20px;border-radius:999px;' +
+                        'background:linear-gradient(135deg, #00d2ff, #0072ff);color:#050c26;text-decoration:none;font-weight:700;' +
+                        'font-size:0.85rem;display:flex;align-items:center;gap:6px;box-shadow:0 4px 15px rgba(0,210,255,0.3);transition:all 0.2s;">' +
+                            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>' +
+                            '<span>Unduh File CV</span>' +
+                        '</a>' +
+                    '</div>' +
+                '</div>' +
+
+            '</div>';
+
+        document.body.appendChild(modal);
+
+        var closeBtn = modal.querySelector('.close-cv-modal');
+        closeBtn.addEventListener('click', function () {
+            modal.remove();
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) modal.remove();
+        });
+
+        var handleEsc = function (e) {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', handleEsc);
+            }
+        };
+        document.addEventListener('keydown', handleEsc);
+    }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        20. TOOLS SHOWCASE FILTER TABS
