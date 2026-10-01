@@ -10,6 +10,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    height: 100%;
 }
 
 body {
@@ -19,6 +20,8 @@ body {
     flex-direction: column;
     overflow-x: hidden;
     position: relative;
+    margin: 0;
+    padding: 0;
     background:
         radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.38) 0%, rgba(239, 68, 68, 0.18) 22%, transparent 45%),
         radial-gradient(circle at 100% 100%, rgba(244, 63, 94, 0.35) 0%, rgba(168, 85, 247, 0.22) 28%, transparent 55%),
@@ -900,9 +903,14 @@ body.about-page .btn-secondary {
     border: 1px solid rgba(179, 171, 255, 0.52);
 }
 
+main,
+.portfolio-hero {
+    flex: 1 0 auto;
+}
+
 .page-section {
-    min-height: calc(100vh - 82px);
-    padding: 42px 6% 56px;
+    flex: 1 0 auto;
+    padding: 32px 6% 40px;
     display: flex;
     align-items: flex-start;
 }
@@ -931,8 +939,8 @@ body.about-page .btn-secondary {
 }
 
 .portfolio-page {
-    min-height: calc(100vh - 82px);
-    padding: 30px 6% 54px;
+    flex: 1 0 auto;
+    padding: 24px 6% 36px;
     position: relative;
     isolation: isolate;
 }
@@ -6452,6 +6460,7 @@ animation: bottom-tag-glow 4s ease-in-out infinite;
     position: relative;
     z-index: 10;
     margin-top: auto;
+    flex-shrink: 0;
 }
 
 .footer-container {
