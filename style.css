@@ -6102,6 +6102,30 @@ animation: bottom-tag-glow 4s ease-in-out infinite;
     animation: continuousFloatEven 5s ease-in-out infinite, continuousBorderPulse 4.5s ease-in-out infinite;
 }
 
+.cert-thumb {
+    width: 100%;
+    height: 240px;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 18px;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    background: rgba(5, 12, 30, 0.95);
+}
+
+.cert-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center !important;
+    padding: 6px;
+    transition: transform 0.5s ease;
+}
+
+.certificate-card:hover .cert-thumb img {
+    transform: scale(1.04);
+}
+
 .sweetspot-thumb::before,
 .cert-thumb::before {
     animation: autoShimmerSheen 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
