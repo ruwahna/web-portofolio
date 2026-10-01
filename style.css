@@ -2574,76 +2574,115 @@ body.about-page .btn-secondary {
     }
 }
 
-/* Photo Wrapper & Container */
+/* Photo Wrapper & Container (Frameless HUD Reference Design) */
 .about-photo-wrapper {
     position: relative;
-    padding: 40px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.about-photo-card {
-    position: relative;
-    width: min(340px, 80vw);
-    aspect-ratio: 0.82;
-    border-radius: 32px;
-    overflow: hidden;
-    border: 1.5px solid rgba(0, 210, 255, 0.25);
-    background: rgba(5, 12, 38, 0.6);
-    box-shadow:
-        0 30px 60px rgba(0, 0, 0, 0.5),
-        0 0 35px rgba(0, 210, 255, 0.15);
-    z-index: 3;
-    backdrop-filter: blur(8px);
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.about-photo-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 210, 255, 0.5);
-    box-shadow:
-        0 40px 80px rgba(0, 0, 0, 0.6),
-        0 0 45px rgba(0, 210, 255, 0.25);
-}
-
-.about-photo-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.96) contrast(1.04);
-    transition: transform 0.5s ease;
-}
-
-.about-photo-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Background HUD Rings */
-.about-hud-ring {
+/* Concentric Neon Cyan HUD Rings directly behind Subject Photo */
+.hud-ring-system {
     position: absolute;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: repeating-radial-gradient(circle,
-            rgba(0, 210, 255, 0) 0 8px,
-            rgba(0, 210, 255, 0.35) 8px 9px);
-    opacity: 0.6;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 360px;
     z-index: 1;
     pointer-events: none;
-    transition: all 0.5s ease;
 }
 
-.ring-top-right {
-    top: 5px;
-    right: 5px;
-    animation: rotate-ring-clockwise 45s linear infinite;
+.hud-ring-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.45) 0%, rgba(126, 112, 255, 0.25) 45%, transparent 70%);
+    filter: blur(28px);
+    animation: pulse-hud-aura 4s ease-in-out infinite alternate;
 }
 
-.ring-bottom-left {
-    bottom: 5px;
-    left: 5px;
-    animation: rotate-ring-counter 45s linear infinite;
+.hud-ring-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(0, 210, 255, 0.7);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6), inset 0 0 25px rgba(0, 210, 255, 0.4);
+    animation: rotate-ring-clockwise 40s linear infinite;
+}
+
+.hud-ring-mid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 210, 255, 0.85);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.8);
+    animation: rotate-ring-counter 25s linear infinite;
+}
+
+.hud-ring-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(255, 255, 255, 0.75);
+    animation: rotate-ring-clockwise 18s linear infinite;
+}
+
+@keyframes pulse-hud-aura {
+    0% {
+        opacity: 0.65;
+        transform: scale(0.96);
+    }
+    100% {
+        opacity: 0.95;
+        transform: scale(1.08);
+    }
+}
+
+/* Frameless Photo Card (No Box / No Border Frame) */
+.about-photo-card.frameless {
+    position: relative;
+    width: min(320px, 85vw);
+    aspect-ratio: auto;
+    border-radius: 0;
+    overflow: visible;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.about-photo-card.frameless img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 25px rgba(0, 210, 255, 0.45));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+}
+
+.about-photo-card.frameless:hover img {
+    transform: translateY(-8px) scale(1.03);
+    filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 45px rgba(0, 210, 255, 0.75));
 }
 
 @keyframes rotate-ring-clockwise {
