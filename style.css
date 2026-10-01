@@ -15,6 +15,8 @@ html {
 body {
     color: #ffffff;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     overflow-x: hidden;
     position: relative;
     background:
@@ -213,10 +215,10 @@ nav ul li a.active {
     grid-template-columns: 1.15fr 0.85fr;
     gap: 32px;
     align-items: center;
-    padding: 64px 80px;
-    min-height: 560px;
+    padding: 48px 60px;
+    min-height: 480px;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 20px auto 32px;
     width: 90%;
     background:
         radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.16) 0%, transparent 45%),
@@ -6435,6 +6437,64 @@ animation: bottom-tag-glow 4s ease-in-out infinite;
     100% {
         transform: scale(1.18);
         box-shadow: 0 0 28px #a78bfa, 0 0 55px #8b5cf6, 0 0 85px rgba(167, 139, 250, 0.95);
+    }
+}
+
+/* ==========================================================================
+   26. SITE FOOTER (ELIMINATING EMPTY BOTTOM SPACE)
+   ========================================================================== */
+.site-footer {
+    width: 100%;
+    padding: 22px 6%;
+    background: rgba(8, 14, 38, 0.85);
+    border-top: 1px solid rgba(0, 210, 255, 0.15);
+    backdrop-filter: blur(14px);
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-container p {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+}
+
+.footer-container p strong {
+    color: #00d2ff;
+}
+
+.footer-links {
+    display: flex;
+    gap: 22px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.86rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: #00d2ff;
+}
+
+@media (max-width: 680px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
