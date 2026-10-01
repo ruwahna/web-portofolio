@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Indah Ruwahna Anugraheni, S.Kom.</title>
+    <link rel="stylesheet" href="style.css?v=3.0">
+    <style>
+        .cv-page-container {
+            max-width: 960px;
+            margin: 30px auto 50px;
+            padding: 0 20px;
+        }
+
+        .cv-top-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            background: rgba(12, 24, 62, 0.65);
+            border: 1px solid rgba(0, 210, 255, 0.25);
+            padding: 16px 24px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+        }
+
+        .cv-top-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cv-top-title h1 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .cv-btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cv-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-cv-download {
+            background: linear-gradient(135deg, #00d2ff 0%, #0077ff 100%);
+            color: #04091e;
+            box-shadow: 0 4px 18px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-cv-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 210, 255, 0.6);
+        }
+
+        .btn-cv-print {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-cv-print:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #00d2ff;
+            color: #00d2ff;
+        }
+
+        /* CV Paper Document Render (Light mode styled canvas matching the official CV document) */
+        .cv-paper-document {
+            background: #ffffff;
+            color: #1a1a1a;
+            padding: 48px 56px;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .cv-paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #333333;
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .cv-paper-name-block h2 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #000000;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .cv-paper-name-block .cv-degree-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #222222;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .cv-paper-contact-list {
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: #333333;
+        }
+
+        .cv-paper-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #a30b0b;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 2px solid #800000;
+        }
+
+        .cv-paper-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cv-paper-section {
+            margin-bottom: 22px;
+        }
+
+        .cv-paper-section-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1.5px solid #222222;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+        }
+
+        .cv-paper-section-title::after {
+            content: "●";
+            font-size: 0.8rem;
+        }
+
+        .cv-paper-body-text {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #222222;
+            text-align: justify;
+        }
+
+        .cv-paper-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #222222;
+        }
+
+        .cv-paper-list li {
+            margin-bottom: 6px;
+        }
+
+        .cv-paper-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .cv-paper-item-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.92rem;
+        }
+
+        .cv-paper-item-title {
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .cv-paper-item-date {
+            color: #444444;
+            font-weight: 500;
+        }
+
+        /* Full Resolution Image Card Section */
+        .cv-original-preview-card {
+            background: rgba(12, 24, 62, 0.75);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
+
+        .cv-original-preview-card h3 {
+            color: #00d2ff;
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+        }
+
+        .cv-original-img-wrapper {
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cv-original-img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            nav, .cv-top-actions, .cv-original-preview-card {
+                display: none !important;
+            }
+            .cv-paper-document {
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="portfolio-page">
+    <nav>
+        <a href="index.html" class="logo">Indah<span class="logo-dot">.</span></a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About me</a></li>
+            <li><a href="portfolio-projects.html">Portofolio</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="cv.html" class="active">Curriculum Vitae</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="cv-page-container">
+        <!-- Top Action Bar -->
+        <div class="cv-top-actions">
+            <div class="cv-top-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <h1>Curriculum Vitae Resmi</h1>
+            </div>
+            <div class="cv-btn-group">
+                <button onclick="window.print()" class="btn-cv-action btn-cv-print">
+                    🖨️ Cetak / Simpan PDF
+                </button>
+                <a href="assets/CV_Indah_Ruwahna.png" download="CV_Indah_Ruwahna.png" target="_blank" class="btn-cv-action btn-cv-download">
+                    📥 Download CV (PNG)
+                </a>
+            </div>
+        </div>
+
+        <!-- Rendered Digital CV Document (Exact Match with Uploaded CV) -->
+        <div class="cv-paper-document">
+            <!-- Header Block -->
+            <div class="cv-paper-header">
+                <div class="cv-paper-name-block">
+                    <h2>INDAH RUWAHNA ANUGRAHENI</h2>
+                    <div class="cv-degree-title">SARJANA ILMU KOMPUTER</div>
+                    <div class="cv-paper-contact-list">
+                        📞 0852-3374-9306<br>
+                        ✉️ indahruwahnaanugraheni@gmail.com<br>
+                        📍 Desa Watulawang Rt 01/Rw01, kec.Pejagoan, Kab.Kebumen
+                    </div>
+                </div>
+                <div class="cv-paper-avatar">
+                    <img src="assets/foto indah.png" alt="Foto Indah Ruwahna Anugraheni">
+                </div>
+            </div>
+
+            <!-- Section: TENTANG SAYA -->
+            <div class="cv-paper-section">
+                <div class="cv-paper-section-title">TENTANG SAYA</div>
+                <p class="cv-paper-body-text">
+                    Lulusan Sarjana Ilmu Komputer yang berfokus pada UI/UX Design dan Pengembangan Web, serta memiliki pemahaman kuat dalam pengelolaan bisnis. Berpengalaman merancang antarmuka digital yang intuitif dan estetik berdasarkan riset pengguna, sekaligus menyelaraskannya dengan kebutuhan strategi bisnis. Memiliki kemampuan analisis sistem, pemecahan masalah yang berorientasi pada data, serta kepemimpinan yang siap mendorong pertumbuhan bisnis melalui solusi teknologi yang tepat guna.
+                </p>
+            </div>
+
+            <!-- Section: PENGALAMAN KERJA -->
+            <div class="cv-paper-section">
+                <div class="cv-paper-section-title">PENGALAMAN KERJA</div>
+                <div class="cv-paper-item-row">
+                    <span class="cv-paper-item-title">Freelance Florist</span>
+                    <span class="cv-paper-item-date">(2024 - sekarang)</span>
+                </div>
+                <div class="cv-paper-item-row">
+                    <span class="cv-paper-item-title">Freelance Host Live</span>
+                    <span class="cv-paper-item-date">(2025 - sekarang)</span>
+                </div>
+            </div>
+
+            <!-- Section: PENGALAMAN PROYEK -->
+            <div class="cv-paper-section">
+                <div class="cv-paper-section-title">PENGALAMAN PROYEK</div>
+                <ul class="cv-paper-list">
+                    <li><strong>Pengembangan Sistem:</strong> Mengembangkan sistem informasi Posyandu berbasis web untuk digitalisasi Penginputan data lansia dan balita</li>
+                    <li>Membuat Website E-Commerce Florist</li>
+                    <li>Membuat Website Wisata Goa Asrep</li>
+                    <li>Membuat Website Portofolio</li>
+                    <li>Membuat Tampilan ux/ui pada website Menejemen Ukm</li>
+                    <li>Membuat Website E-Commerce kedai kopi</li>
+                </ul>
+            </div>
+
+            <!-- Section: PENDIDIKAN -->
+            <div class="cv-paper-section">
+                <div class="cv-paper-section-title">PENDIDIKAN</div>
+                <ul class="cv-paper-list">
+                    <li><strong>S1 Ilmu Komputer Universitas Putra Bangsa</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2024 - Sekarang)</li>
+                    <li><strong>SMAN 1 Pejagoan</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2021 - 2024)</li>
+                    <li><strong>SMPN 2 Pejagoan</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2018 - 2021)</li>
+                    <li><strong>SDN Watulawang</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2012 - 2018)</li>
+                </ul>
+            </div>
+
+            <!-- Section: SERTIFIKASI -->
+            <div class="cv-paper-section">
+                <div class="cv-paper-section-title">SERTIFIKASI</div>
+                <ul class="cv-paper-list">
+                    <li>Sertifikasi Juara 1 Praporprof Hockey Kebumen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 2025 )</li>
+                    <li>Sertifikasi Juara 1 Porprof Hockey Kebumen &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 2026 )</li>
+                    <li>Sertifikasi Web Development &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( 2026 )</li>
+                </ul>
+            </div>
+
+            <!-- Section: KEAHLIAN -->
+            <div class="cv-paper-section">
+                <div class="cv-paper-section-title">KEAHLIAN</div>
+                <div class="cv-paper-two-col">
+                    <div>
+                        <strong style="display:block; margin-bottom:6px; font-size:0.92rem;">Keahlian Teknis (Hard Skills):</strong>
+                        <ul class="cv-paper-list">
+                            <li>HTML5, CSS3, JavaScript</li>
+                            <li>Responsive Web Design &amp; Tailwind / Bootstrap</li>
+                            <li>Git &amp; GitHub (Version Control)</li>
+                            <li>UI/UX Design (Figma, Adobe XD)</li>
+                            <li>Database Management (MySQL / PostgreSQL)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="display:block; margin-bottom:6px; font-size:0.92rem;">Keahlian Interpersonal (Soft Skills):</strong>
+                        <ul class="cv-paper-list">
+                            <li>Problem Solving &amp; Analisis Sistem</li>
+                            <li>Manajemen Waktu &amp; Proyek</li>
+                            <li>Kerjasama Tim &amp; Komunikasi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- High Resolution Original Image Preview Card -->
+        <div class="cv-original-preview-card">
+            <h3>🖼️ Dokumen Asli CV (High Resolution Preview)</h3>
+            <div class="cv-original-img-wrapper">
+                <img src="assets/CV_Indah_Ruwahna.png" alt="Dokumen Resmi CV Indah Ruwahna Anugraheni">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
