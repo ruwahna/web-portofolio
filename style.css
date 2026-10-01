@@ -2497,7 +2497,7 @@ body.about-page .btn-secondary {
    ========================================== */
 .about-hero {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 24px auto 30px;
     width: 90%;
     background:
         radial-gradient(circle at 80% 20%, rgba(0, 210, 255, 0.15) 0%, transparent 45%),
@@ -2512,10 +2512,10 @@ body.about-page .btn-secondary {
         0 24px 70px rgba(0, 0, 0, 0.55),
         inset 0 0 24px rgba(0, 210, 255, 0.04);
     overflow: hidden;
-    padding: 60px 8%;
+    padding: 40px 6%;
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 50px;
     min-height: auto;
 }
 
@@ -2841,7 +2841,7 @@ body.about-page .btn-secondary {
 
 /* What I Focus On Section */
 .focus-section {
-    padding: 80px 8%;
+    padding: 48px 6% 36px;
     background: radial-gradient(circle at 50% 50%, rgba(5, 12, 38, 0.4) 0%, transparent 80%);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -4068,9 +4068,9 @@ html {
    SOFTWARE & CREATIVE TOOLS SHOWCASE SECTION
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .tools-showcase-section {
-    padding: 60px 6%;
+    padding: 36px 6% 28px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     position: relative;
     z-index: 2;
 }
