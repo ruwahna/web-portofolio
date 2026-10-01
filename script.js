@@ -34,15 +34,21 @@
        1. PAGE LOAD FADE + RISE
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (!RM && document.body) {
-        document.body.style.opacity   = '0';
-        document.body.style.transform = 'translateY(14px)';
-        document.body.style.transition =
-            'opacity 700ms cubic-bezier(.22,.61,.36,1),' +
-            'transform 700ms cubic-bezier(.22,.61,.36,1)';
-        raf(function () {
-            document.body.style.opacity   = '1';
-            document.body.style.transform = 'translateY(0)';
-        });
+        var hasSplash = document.getElementById('intro-splash');
+        var introPlayed = false;
+        try { introPlayed = sessionStorage.getItem('indah_intro_played') === 'true'; } catch(e){}
+
+        if (!hasSplash || introPlayed) {
+            document.body.style.opacity   = '0';
+            document.body.style.transform = 'translateY(14px)';
+            document.body.style.transition =
+                'opacity 700ms cubic-bezier(.22,.61,.36,1),' +
+                'transform 700ms cubic-bezier(.22,.61,.36,1)';
+            raf(function () {
+                document.body.style.opacity   = '1';
+                document.body.style.transform = 'translateY(0)';
+            });
+        }
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -228,7 +234,7 @@
             '.tech-tags span','.btn','.tab','.detail-back',
             '.detail-actions-row','.cert-more-title','.page-title',
             'section > *','footer > *',
-            '.about-content','.skills-list','.timeline-item','.contact-form','.social-links'
+            '.about-content','.skills-list','.timeline-item','.timeline-card','.edu-summary-card','.exp-summary-card','.experience-card','.contact-form','.social-links'
         ].join(',');
         var _els = [];
         try { _els = qa(_sel); } catch (e) {}
@@ -327,7 +333,7 @@
        9. 3-D TILT CARDS
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (ENABLE_CURSOR_REACTIVE_MOTION && !RM && HOVER && !MOBILE) {
-        var TILT_SEL = '.project-card, .page-card, .feature-card, .focus-card, .neo-card, .polaroid-frame, .stat-card, .about-photo-card, .education-card, .experience-card, .contact-card-container';
+        var TILT_SEL = '.project-card, .page-card, .feature-card, .focus-card, .neo-card, .polaroid-frame, .stat-card, .about-photo-card, .education-card, .experience-card, .contact-card-container, .timeline-card, .edu-summary-card, .exp-summary-card, .exp-gallery-card';
         document.addEventListener('mousemove', function (e) {
             qa(TILT_SEL).forEach(function (card) {
                 var r = card.getBoundingClientRect();
@@ -856,6 +862,8 @@
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
                 card.style.transition = 'transform 500ms cubic-bezier(0.22, 0.61, 0.36, 1)';
             });
+        });
+    }
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        22. PORTFOLIO STORAGE & ADMIN ENGINE
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -1000,5 +1008,118 @@
     // Run dynamic renderers
     renderDynamicProjects();
     renderDynamicArticles();
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       24. INTRO SPLASH SCREEN CONTROLLER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function initIntroSplash() {
+        var splash = q('#intro-splash');
+        if (!splash) return;
+
+        // Check if user has already seen the intro in this browser session
+        var hasSeenIntro = false;
+        try {
+            hasSeenIntro = sessionStorage.getItem('indah_intro_played') === 'true';
+        } catch (e) {
+            hasSeenIntro = false;
+        }
+
+        // If already seen during this session, hide intro instantly
+        if (hasSeenIntro) {
+            splash.style.display = 'none';
+            document.body.style.overflow = '';
+            return;
+        }
+
+        var purpleDot = q('#splash-purple-dot');
+        var replayBtn = q('#btn-replay-splash');
+        var isExiting = false;
+        var autoTimer = null;
+
+        // Prevent body scroll while splash screen is active
+        document.body.style.overflow = 'hidden';
+
+        function animateHeroReveal() {
+            var heroLeft = q('.portfolio-left');
+            var heroRight = q('.portfolio-right');
+            var nav = q('nav');
+
+            [nav, heroLeft, heroRight].forEach(function(el) {
+                if (!el) return;
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(24px)';
+                el.style.transition = 'opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1)';
+            });
+
+            raf(function() {
+                if (nav) { nav.style.opacity = '1'; nav.style.transform = 'translateY(0)'; }
+                setTimeout(function() {
+                    if (heroLeft) { heroLeft.style.opacity = '1'; heroLeft.style.transform = 'translateY(0)'; }
+                }, 150);
+                setTimeout(function() {
+                    if (heroRight) { heroRight.style.opacity = '1'; heroRight.style.transform = 'translateY(0)'; }
+                }, 300);
+            });
+        }
+
+        function exitSplash() {
+            if (isExiting) return;
+            isExiting = true;
+            if (autoTimer) clearTimeout(autoTimer);
+
+            // Save flag so it won't show again in current browser session
+            try {
+                sessionStorage.setItem('indah_intro_played', 'true');
+            } catch (e) {}
+
+            splash.classList.add('splash-exit');
+            document.body.style.overflow = '';
+
+            // Trigger hero entrance reveal
+            animateHeroReveal();
+
+            setTimeout(function () {
+                splash.style.display = 'none';
+            }, 850);
+        }
+
+        function playIntroSequence() {
+            splash.style.display = 'flex';
+            splash.classList.remove('splash-exit');
+            document.body.style.overflow = 'hidden';
+            isExiting = false;
+
+            // Auto exit after ~1.8 seconds of presentation
+            if (autoTimer) clearTimeout(autoTimer);
+            autoTimer = setTimeout(function() {
+                exitSplash();
+            }, 1800);
+        }
+
+        // Allow user to click anywhere on splash screen to enter site instantly
+        splash.addEventListener('click', function() {
+            exitSplash();
+        });
+
+        if (purpleDot) {
+            purpleDot.addEventListener('click', function (e) {
+                e.stopPropagation();
+                purpleDot.style.transform = 'scale(1.5) rotate(25deg)';
+                setTimeout(function () { purpleDot.style.transform = ''; }, 350);
+            });
+        }
+
+        if (replayBtn) {
+            replayBtn.addEventListener('click', function () {
+                try { sessionStorage.removeItem('indah_intro_played'); } catch(e) {}
+                playIntroSequence();
+            });
+        }
+
+        // Start cinematic sequence on first load
+        playIntroSequence();
+    }
+
+    initIntroSplash();
 
 })();
