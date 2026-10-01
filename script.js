@@ -1089,11 +1089,19 @@
             document.body.style.overflow = 'hidden';
             isExiting = false;
 
-            // Auto exit after ~1.8 seconds of presentation
+            // Re-trigger character animations if replaying
+            var animatedElements = splash.querySelectorAll('.splash-sub-label span, .splash-letters span, .splash-purple-dot');
+            animatedElements.forEach(function(el) {
+                el.style.animation = 'none';
+                el.offsetHeight; // force reflow
+                el.style.animation = '';
+            });
+
+            // Auto exit after ~2.2s so letter flips and purple dot pop finish gracefully
             if (autoTimer) clearTimeout(autoTimer);
             autoTimer = setTimeout(function() {
                 exitSplash();
-            }, 1800);
+            }, 2200);
         }
 
         // Allow user to click anywhere on splash screen to enter site instantly
