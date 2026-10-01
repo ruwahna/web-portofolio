@@ -777,46 +777,9 @@
     }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       19. CV DOWNLOAD HANDLER WITH HELPER NOTICE
+       19. CV DOWNLOAD HANDLER (DIRECT)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    qa('.btn-cv').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            var href = btn.getAttribute('href');
-            fetch(href, { method: 'HEAD' }).then(function (res) {
-                if (!res.ok) {
-                    showCvNotice();
-                }
-            }).catch(function () {
-                showCvNotice();
-            });
-        });
-    });
-
-    function showCvNotice() {
-        var modal = document.createElement('div');
-        modal.style.cssText =
-            'position:fixed;inset:0;background:rgba(5,12,38,0.85);backdrop-filter:blur(10px);' +
-            'z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;';
-        modal.innerHTML =
-            '<div style="background:rgba(12,24,62,0.95);border:1px solid rgba(0,210,255,0.4);padding:30px;' +
-            'border-radius:24px;max-width:480px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6);">' +
-                '<div style="font-size:2rem;margin-bottom:10px;">📄</div>' +
-                '<h3 style="color:#ffffff;font-size:1.3rem;margin-bottom:10px;">Tombol CV Siap Digunakan!</h3>' +
-                '<p style="color:#b2c2ea;font-size:0.92rem;line-height:1.5;margin-bottom:20px;">' +
-                    'Silakan simpan file PDF CV Anda dengan nama <strong style="color:#00d2ff;">CV_Indah_Ruwahna.pdf</strong> di dalam folder <strong style="color:#00d2ff;">assets/</strong>.<br><br>' +
-                    'Setelah ditaruh di folder <code>assets/CV_Indah_Ruwahna.pdf</code>, tombol ini akan mengunduh CV Anda secara otomatis!' +
-                '</p>' +
-                '<button type="button" class="btn-cv-close" style="background:#00d2ff;color:#050c26;border:0;padding:10px 24px;' +
-                'border-radius:999px;font-weight:700;cursor:pointer;font-size:0.9rem;">Siap, Mengerti!</button>' +
-            '</div>';
-        document.body.appendChild(modal);
-        modal.querySelector('.btn-cv-close').addEventListener('click', function () {
-            if (modal.parentNode) modal.parentNode.removeChild(modal);
-        });
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal && modal.parentNode) modal.parentNode.removeChild(modal);
-        });
-    }
+    // CV download is now direct via href="assets/CV_Indah_Ruwahna.png" download
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        20. TOOLS SHOWCASE FILTER TABS
