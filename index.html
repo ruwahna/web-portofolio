@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portofolio indah</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=29">
 </head>
 <body class="home-page">
     <!-- Intro Splash Screen / Preloader (Cinematic Text Entrance) -->
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <nav>
+    <nav class="nav-capsule">
         <a href="index.html" class="logo">Indah<span class="logo-dot">.</span></a>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -52,50 +52,71 @@
     </nav>
 
     <section class="portfolio-hero" id="home">
+        <!-- Background Ambient Glow Blobs -->
+        <div class="hero-ambient-blob blob-top-left"></div>
+        <div class="hero-ambient-blob blob-center-right"></div>
+
+        <!-- Abstract Blueprint Grid Accents (Kiri, Kanan, Atas, Bawah) -->
+        <div class="hero-grid-abstract" aria-hidden="true">
+            <div class="grid-patch patch-top-left"></div>
+            <div class="grid-patch patch-top-right"></div>
+            <div class="grid-patch patch-bottom-left"></div>
+            <div class="grid-patch patch-bottom-right">
+                <div class="patch-dense-sub"></div>
+                <div class="patch-glow-orb"></div>
+            </div>
+        </div>
+
         <div class="portfolio-left">
+            <!-- Academy Badge: Universitas Putra Bangsa -->
             <div class="hero-top">
                 <div class="academy">
                     <div class="academy-logo">
-                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 6L18 16L14 20L4 10L8 6Z" fill="#00d2ff"/>
-                            <path d="M16 12L26 22L22 26L12 16L16 12Z" fill="#7e70ff"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
                         </svg>
                     </div>
-                    <div class="academy-info">
-                        <span class="academy-name">Putra Bangsa</span>
-                        <span class="academy-tagline">Universitas</span>
-                    </div>
+                    <span class="academy-text">Universitas Putra Bangsa • S1 Teknik Informatika</span>
                 </div>
             </div>
 
-            <h1 class="portfolio-title">
-                Port<span>folio</span>
-                <span class="title-sparkle">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="#00d2ff"/>
+            <!-- Greeting -->
+            <span class="hero-greeting">Halo, saya</span>
+
+            <!-- Name as Primary Title -->
+            <h1 class="hero-name">
+                Indah <span class="name-highlight">Ruwahna</span>
+                <span class="name-sparkle">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" fill="#38BDF8"/>
                     </svg>
                 </span>
             </h1>
 
-            <div class="subtitle-row">
-                <div class="role" data-typing="Front-end Developer|UI/UX Designer|Figma Designer|Web Developer">Front-end Developer</div>
-                <div class="name-badge">
-                    <span class="name">Indah Ruwahna</span>
-                    <span class="badge-icon">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </span>
+            <!-- Dynamic Typing Role & User Capsule Badge (Reference Style) -->
+            <div class="hero-role-dynamic-bar">
+                <div class="typing-role-wrapper">
+                    <span class="typing-role-text" id="typing-role-text">Web Developer</span>
+                    <span class="typing-cursor" aria-hidden="true">|</span>
                 </div>
+                <a href="about.html" class="hero-user-capsule" title="About Me">
+                    <span class="capsule-name">About Me</span>
+                    <svg class="capsule-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </a>
             </div>
 
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
+            <!-- 1-Sentence Tagline -->
+            <p class="hero-tagline">
+                Saya merancang dan membangun antarmuka web yang rapi, responsif, dan mudah digunakan.
+            </p>
 
-            <div class="hero-actions-home" style="display: flex; gap: 14px; margin-top: 24px; align-items: center; flex-wrap: wrap;">
-                <a href="assets/CV_Indah_Ruwahna_Official.png?v=3" download="CV_Indah_Ruwahna_Official.png" target="_blank" class="btn btn-cv">
+            <!-- Balanced Hero Actions -->
+            <div class="hero-actions-home">
+                <a href="assets/CV_Indah_Ruwahna_Official.png?v=3" download="CV_Indah_Ruwahna_Official.png" target="_blank" class="btn btn-hero btn-cv">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                         <polyline points="7 10 12 15 17 10"/>
@@ -103,66 +124,70 @@
                     </svg>
                     <span>Unduh CV</span>
                 </a>
-                <a href="about.html" class="btn btn-profile-link" style="padding: 10px 22px; border-radius: 999px; border: 1px solid rgba(0, 210, 255, 0.4); color: #00d2ff; text-decoration: none; font-weight: 600; font-size: 0.9rem; backdrop-filter: blur(8px); transition: all 0.3s ease;">
-                    Lihat Profil &rarr;
+                <a href="about.html" class="btn btn-hero btn-profile-link">
+                    <span>Lihat Profil</span> &rarr;
                 </a>
             </div>
         </div>
 
         <div class="portfolio-right">
-            <div class="neo-card">
-                <!-- Top Header: year and major -->
-                <div class="neo-header">
-                    <span class="neo-year">2026</span>
-                    <span class="neo-sub">TEKNIK INFORMATIKA</span>
+            <!-- Sky Blue Glow behind Photo -->
+            <div class="photo-ambient-glow"></div>
+
+            <!-- Single Year & Major Badge -->
+            <div class="photo-info-badge">
+                <span class="dot-live"></span>
+                <span>2026 • Teknik Informatika</span>
+            </div>
+
+            <!-- Photo Arch Composition with Pop-out Effect & Floating Badges -->
+            <div class="photo-arch-composition">
+                <!-- Shifted Thin White Accent Ring behind Arch -->
+                <div class="photo-accent-ring"></div>
+
+                <!-- Gradient Arch Backdrop (#38BDF8 -> #2563EB) -->
+                <div class="photo-arch-backdrop"></div>
+
+                <!-- Pop-out Image with bottom gradient mask -->
+                <div class="photo-popout-wrap">
+                    <img src="assets/foto indah.png" alt="Indah Ruwahna" class="photo-popout-img">
                 </div>
 
-                <!-- Slanted top tape -->
-                <div class="neo-tape tape-top">
-                    <span class="tape-text">INFO // KOMINFO // UPB // FRONT-END //</span>
+                <!-- Floating Badges with staggered gentle float animation -->
+                <div class="hero-float-badge badge-uiux">
+                    <span class="badge-icon">🎨</span>
+                    <span class="badge-text">UI/UX Design</span>
                 </div>
 
-                <!-- Polaroid Frame containing the photo -->
-                <div class="polaroid-frame">
-                    <div class="polaroid-img-container">
-                        <img src="assets/foto indah.png" alt="Foto Indah">
-                    </div>
+                <div class="hero-float-badge badge-frontend">
+                    <span class="badge-icon">💻</span>
+                    <span class="badge-text">Front-end</span>
                 </div>
 
-                <!-- Slanted name banner -->
-                <div class="neo-name-banner">
-                    INDAH RUWAHNA A.
-                </div>
-
-                <!-- Slanted bottom tape -->
-                <div class="neo-tape tape-bottom">
-                    <span class="tape-text">DEVELOPER // DESIGNER // FIGMA //</span>
-                </div>
-
-                <!-- Floating Magnifying Glass SVG -->
-                <div class="floating-magnifier">
-                    <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="28" cy="28" r="16" stroke="#ff2a85" stroke-width="4" fill="rgba(255, 42, 133, 0.15)"/>
-                        <line x1="39" y1="39" x2="54" y2="54" stroke="#ff2a85" stroke-width="5" stroke-linecap="round"/>
-                        <path d="M20 20A10 10 0 0 1 34 20" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-
-                <!-- Interactive overlay controls -->
-                <div class="neo-controls">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 3 21 3 21 9"/>
-                        <polyline points="9 21 3 21 3 15"/>
-                        <line x1="21" y1="3" x2="14" y2="10"/>
-                        <line x1="3" y1="21" x2="10" y2="14"/>
-                    </svg>
+                <div class="hero-float-badge badge-figma">
+                    <span class="badge-icon">✏️</span>
+                    <span class="badge-text">Figma</span>
                 </div>
             </div>
         </div>
 
-        <button class="follow-btn">Follow</button>
+        <!-- Decorative Running Text Marquee -->
+        <div class="hero-marquee-wrap">
+            <div class="hero-marquee-track">
+                <span>DEVELOPER // DESIGNER // FIGMA // FRONT-END // UI/UX // WEBSITES // </span>
+                <span>DEVELOPER // DESIGNER // FIGMA // FRONT-END // UI/UX // WEBSITES // </span>
+                <span>DEVELOPER // DESIGNER // FIGMA // FRONT-END // UI/UX // WEBSITES // </span>
+            </div>
+        </div>
+
+        <!-- Wave SVG: Smooth transition from blue hero to next section -->
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 90" fill="none" preserveAspectRatio="none">
+                <path d="M0,35 C320,80 480,10 720,50 C960,90 1200,15 1440,35 L1440,90 L0,90 Z" fill="#F0F7FF"></path>
+            </svg>
+        </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=9"></script>
 </body>
 </html>

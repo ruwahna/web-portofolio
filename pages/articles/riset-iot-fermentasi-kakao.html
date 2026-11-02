@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riset IoT & Computer Vision Fermentasi Biji Kakao - Indah</title>
+    <link rel="stylesheet" href="../../style.css?v=39">
+    <style>
+        .article-paper-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #1e293b;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .paper-header {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #10B981, #2563EB);
+        }
+
+        .paper-title {
+            font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 18px;
+            letter-spacing: -0.4px;
+        }
+
+        .team-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .team-member-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .team-member-card.highlight {
+            background: #EFF6FF;
+            border-color: #93C5FD;
+        }
+
+        .team-member-card strong {
+            display: block;
+            color: #0f172a;
+            font-size: 0.96rem;
+        }
+
+        .team-member-card span {
+            color: #64748b;
+            font-size: 0.84rem;
+        }
+
+        .paper-hero-img {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 36px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .paper-body-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 42px 46px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
+        }
+
+        .summary-box {
+            background: #ECFDF5;
+            border: 1.5px solid #A7F3D0;
+            border-left: 6px solid #10B981;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 36px;
+        }
+
+        .summary-box h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #065F46;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-box p {
+            color: #047857;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .section-heading {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .paper-p {
+            margin-bottom: 18px;
+            color: #334155;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin: 24px 0 32px;
+        }
+
+        .spec-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.25s ease;
+        }
+
+        .spec-item:hover {
+            transform: translateY(-2px);
+            border-color: #6EE7B7;
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.08);
+        }
+
+        .spec-icon {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .spec-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        .spec-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.55;
+        }
+
+        .tech-pill-badge {
+            display: inline-block;
+            background: #DBEAFE;
+            color: #1E40AF;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 8px;
+        }
+
+        .callout-smart {
+            background: #EFF6FF;
+            border-left: 4px solid #2563EB;
+            padding: 18px 22px;
+            border-radius: 0 12px 12px 0;
+            margin: 22px 0;
+            color: #1e40af;
+            font-size: 0.96rem;
+        }
+
+        .step-numbered-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .step-numbered-list li {
+            position: relative;
+            padding-left: 40px;
+            color: #334155;
+        }
+
+        .step-num-badge {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #10B981;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .article-footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 28px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        @media (max-width: 768px) {
+            .paper-header, .paper-body-card {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="portfolio-page">
+    <nav>
+        <a href="../../index.html" class="logo">Indah<span class="logo-dot">.</span></a>
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About me</a></li>
+            <li><a href="../../portfolio-projects.html" class="active">Portofolio</a></li>
+            <li><a href="../../education.html">Education</a></li>
+            <li><a href="../../experience.html">Experience</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-detail-page cert-more-page">
+        <section class="project-detail-shell cert-more-shell article-paper-wrap">
+            <div class="project-detail-breadcrumb">
+                <a href="../../portfolio-article.html" class="detail-back">Back</a>
+                <span>Articles</span>
+                <span>Riset IoT & AI Kakao</span>
+            </div>
+
+            <!-- Paper Header -->
+            <div class="paper-header">
+                <span class="tech-pill-badge">🌿 SMART AGRICULTURE • IOT & COMPUTER VISION</span>
+                <h1 class="paper-title">Rancang Bangun Kotak Fermentasi Biji Kakao Berbasis IoT dengan Klasifikasi Tingkat Fermentasi Menggunakan Computer Vision</h1>
+                <p style="color:#64748b; font-size:0.95rem; margin-bottom:12px;">Proposal Lomba Riset Mahasiswa — Badan Pengelola Dana Perkebunan (BPDP) 2026</p>
+                
+                <div class="team-badge-grid">
+                    <div class="team-member-card">
+                        <strong>Vigian Agus Isnaeni</strong>
+                        <span>Ketua Pelaksana • S1 Ilmu Komputer</span>
+                    </div>
+                    <div class="team-member-card highlight">
+                        <strong>Indah Ruwahna Anugraheni</strong>
+                        <span>Anggota Peneliti • S1 Ilmu Komputer</span>
+                    </div>
+                    <div class="team-member-card">
+                        <strong>Wahyu Tri Cahya</strong>
+                        <span>Anggota Peneliti • S1 Ilmu Komputer</span>
+                    </div>
+                    <div class="team-member-card">
+                        <strong>M. Pandu Dewanata Y. H.</strong>
+                        <span>Anggota Peneliti • S1 Ilmu Komputer</span>
+                    </div>
+                    <div class="team-member-card" style="grid-column: 1 / -1;">
+                        <strong>Dosen Pembimbing: Sarjimin, S.Kom., M.Kom.</strong>
+                        <span>Universitas Putra Bangsa, Kebumen</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Illustration Image -->
+            <img class="paper-hero-img" src="../../assets/cocoa_iot_cover.jpg" alt="Ilustrasi Kotak Fermentasi Kakao IoT dan Computer Vision">
+
+            <!-- Paper Body -->
+            <div class="paper-body-card">
+                <!-- RINGKASAN EKSEKUTIF -->
+                <div class="summary-box">
+                    <h3><span>💡</span> Ringkasan Eksekutif Riset</h3>
+                    <p>
+                        Riset ini merancang prototipe kotak fermentasi biji kakao otomatis berbasis Internet of Things (IoT) yang dipadukan dengan Computer Vision (AI/CNN) untuk mendeteksi kematangan fermentasi secara real-time. Inovasi ini memadukan sensor presisi (suhu inti, suhu/kelembapan lingkungan, dan pH pulp), pengaduk motorik otomatis, kamera ESP32-CAM, serta model klasifikasi Convolutional Neural Network (ResNet50 & MobileNetV2) yang divalidasi langsung melalui uji laboratorium dan uji belah (<em>cut test</em>).
+                    </p>
+                </div>
+
+                <!-- 1. LATAR BELAKANG & URGENSI -->
+                <h2 class="section-heading"><span>1.</span> Urgensi & Masalah Nyata</h2>
+                <p class="paper-p">
+                    Produksi dan mutu ekspor kakao Indonesia terus mengalami tantangan berat. Sebagian besar petani kakao rakyat masih memfermentasi biji secara tradisional di peti kayu atau keranjang daun pisang tanpa instrumen ukur yang terkontrol. Biji dibalik hanya berdasarkan perkiraan hari, sehingga sering menghasilkan biji berwarna ungu atau keabu-abuan (<em>slaty</em>) yang rasanya sepat, pahit, dan terkena potongan harga di pasar internasional.
+                </p>
+                <div class="callout-smart">
+                    <strong>Tujuan Utama:</strong> Menggantikan metode konvensional dengan sistem cerdas terkendali agar petani dapat mencapai kualitas fermentasi optimal (keping cokelat remah, aroma cuka khas, dan kadar air SNI &le; 7%) secara konsisten dan terukur.
+                </div>
+
+                <!-- 2. ARSITEKTUR PERANGKAT IOT -->
+                <h2 class="section-heading"><span>2.</span> Inovasi Perangkat Keras & IoT</h2>
+                <p class="paper-p">
+                    Prototipe kotak dirancang menggunakan kayu penahan panas berkapasitas &plusmn;15 kg biji basah per batch, dilengkapi sensor dan aktuator cerdas:
+                </p>
+
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <span class="spec-icon">🌡️</span>
+                        <h4 class="spec-title">Sensor Suhu Inti DS18B20</h4>
+                        <p class="spec-desc">Probe stainless tahan air yang mengukur suhu tumpukan biji kakao secara kontinu (target akurasi &ge; 98%).</p>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">💧</span>
+                        <h4 class="spec-title">Sensor SHT20 & Probe pH</h4>
+                        <p class="spec-desc">Memantau kelembapan/suhu ruang fermentasi serta tingkat keasaman (pH) pulp kakao dengan sensor PH-4502C.</p>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">🔄</span>
+                        <h4 class="spec-title">Pengadukan Otomatis</h4>
+                        <p class="spec-desc">Motor DC bertenaga dan relai yang memutar biji otomatis pada jam ke-48 atau saat suhu mencapai batas &ge; 50&deg;C.</p>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-icon">📷</span>
+                        <h4 class="spec-title">ESP32 & ESP32-CAM</h4>
+                        <p class="spec-desc">Mikrokontroler pengirim data telemetri ke server, serta modul kamera dengan pencahayaan LED tetap untuk memotret biji berkala.</p>
+                    </div>
+                </div>
+
+                <!-- 3. KLASIFIKASI DENGAN COMPUTER VISION -->
+                <h2 class="section-heading"><span>3.</span> Klasifikasi Mutu Berbasis AI / CNN</h2>
+                <p class="paper-p">
+                    Model kecerdasan buatan dilatih untuk mengklasifikasi kondisi fermentasi ke dalam 3 kategori: <strong>Kurang Fermentasi</strong>, <strong>Optimal</strong>, dan <strong>Fermentasi Berlebih</strong>.
+                </p>
+
+                <ul class="step-numbered-list">
+                    <li>
+                        <span class="step-num-badge">A</span>
+                        <strong>Arsitektur Model:</strong> Menggunakan <em>Transfer Learning</em> ResNet50 (ekstraksi fitur mendalam) dan MobileNetV2 (arsitektur ringan untuk komputasi cepat di perangkat seluler).
+                    </li>
+                    <li>
+                        <span class="step-num-badge">B</span>
+                        <strong>Validasi Bebas Bias:</strong> Menggunakan protokol <em>leave-one-batch-out</em> pada 5 batch riset dan diuji pada 1 batch independen yang sama sekali baru, divalidasi dengan uji belah laboratorium (bukan sekadar pelabelan operasional).
+                    </li>
+                    <li>
+                        <span class="step-num-badge">C</span>
+                        <strong>Visualisasi Grad-CAM:</strong> Memastikan algoritma CNN benar-benar mengenali tekstur dan warna keping biji kakao, bukan terdistraksi oleh latar kotak.
+                    </li>
+                </ul>
+
+                <!-- 4. APLIKASI SELULER PETANI -->
+                <h2 class="section-heading"><span>4.</span> Ekosistem Aplikasi Seluler (Flutter & Cloud)</h2>
+                <p class="paper-p">
+                    Data sensor dan hasil prediksi citra dikirim ke backend API (Flask & basis data MySQL) lalu divisualisasikan dalam aplikasi seluler berbasis <strong>Flutter</strong>:
+                </p>
+                <ul>
+                    <li style="margin-bottom:8px;"><strong>Dashboard Real-Time:</strong> Grafik perkembangan suhu inti, kelembapan, dan pH jam demi jam.</li>
+                    <li style="margin-bottom:8px;"><strong>Status Prediksi Otomatis:</strong> Memberi tahu petani kapan proses fermentasi telah selesai dan siap dijemur.</li>
+                    <li style="margin-bottom:8px;"><strong>Remote Control Pengaduk:</strong> Tombol interaktif untuk memicu pengadukan manual dari jarak jauh kapan pun dibutuhkan.</li>
+                </ul>
+
+                <!-- 5. TARGET LUARAN -->
+                <h2 class="section-heading"><span>5.</span> Target & Luaran Riset</h2>
+                <div class="spec-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div class="spec-item" style="text-align:center;">
+                        <span style="font-size:1.8rem;">📦</span>
+                        <h4 class="spec-title" style="margin-top:6px;">3 Unit Prototipe</h4>
+                        <p class="spec-desc">Kotak fermentasi IoT siap uji lapangan.</p>
+                    </div>
+                    <div class="spec-item" style="text-align:center;">
+                        <span style="font-size:1.8rem;">📊</span>
+                        <h4 class="spec-title" style="margin-top:6px;">&ge; 3.000 Citra</h4>
+                        <p class="spec-desc">Dataset citra kakao terlabel dan tervalidasi lab.</p>
+                    </div>
+                    <div class="spec-item" style="text-align:center;">
+                        <span style="font-size:1.8rem;">📱</span>
+                        <h4 class="spec-title" style="margin-top:6px;">Aplikasi Mobile</h4>
+                        <p class="spec-desc">Aplikasi monitoring untuk kelompok tani.</p>
+                    </div>
+                    <div class="spec-item" style="text-align:center;">
+                        <span style="font-size:1.8rem;">📑</span>
+                        <h4 class="spec-title" style="margin-top:6px;">Artikel Ilmiah</h4>
+                        <p class="spec-desc">Publikasi riset di jurnal nasional bereputasi.</p>
+                    </div>
+                </div>
+
+                <!-- Footer Navigation -->
+                <div class="article-footer-nav">
+                    <a href="../../portfolio-article.html" class="btn-detail">&larr; Kembali ke Daftar Artikel</a>
+                    <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" class="btn-demo">Ke Atas Halaman &uarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../script.js?v=14"></script>
+</body>
+</html>

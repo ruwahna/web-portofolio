@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koordinasi Antarlembaga Pengawasan Distribusi LPG 3 kg di Kebumen - Indah</title>
+    <link rel="stylesheet" href="../../style.css?v=39">
+    <style>
+        .article-paper-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #1e293b;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .paper-header {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+
+        .paper-title {
+            font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 18px;
+            letter-spacing: -0.4px;
+        }
+
+        .paper-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.92rem;
+            color: #64748b;
+        }
+
+        .author-box strong {
+            display: block;
+            color: #1e293b;
+            font-size: 1.02rem;
+        }
+
+        .author-box span {
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        .paper-hero-img {
+            width: 100%;
+            max-height: 440px;
+            object-fit: cover;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 36px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .paper-body-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 42px 46px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
+        }
+
+        .abstract-box {
+            background: #F0F7FF;
+            border: 1.5px solid #BFDBFE;
+            border-left: 6px solid #2563EB;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 36px;
+        }
+
+        .abstract-box h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #1D4ED8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .abstract-box p {
+            color: #334155;
+            font-size: 0.98rem;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        .keywords-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .keyword-chip {
+            background: #DBEAFE;
+            color: #1E40AF;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: var(--radius-pill);
+            border: 1px solid #BFDBFE;
+        }
+
+        .section-heading {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 40px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sub-heading {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 28px 0 12px;
+        }
+
+        .paper-p {
+            margin-bottom: 18px;
+            color: #334155;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .feature-callout {
+            background: #FAF5FF;
+            border-left: 4px solid #9333EA;
+            padding: 18px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+            color: #4c1d95;
+            font-size: 0.98rem;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 24px 0 32px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .paper-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.94rem;
+            text-align: left;
+        }
+
+        .paper-table th {
+            background: #F1F5F9;
+            color: #1e293b;
+            font-weight: 700;
+            padding: 14px 18px;
+            border-bottom: 1.5px solid #CBD5E1;
+        }
+
+        .paper-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #E2E8F0;
+            vertical-align: top;
+            color: #334155;
+        }
+
+        .paper-table tr:hover {
+            background: #F8FAFC;
+        }
+
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 24px 0 32px;
+        }
+
+        .pathway-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 22px;
+            transition: all 0.25s ease;
+        }
+
+        .pathway-card:hover {
+            transform: translateY(-3px);
+            border-color: #93C5FD;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.08);
+        }
+
+        .pathway-num {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #2563EB;
+            background: #DBEAFE;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            margin-bottom: 10px;
+        }
+
+        .pathway-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .pathway-desc {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .recommendation-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .recommendation-list li {
+            position: relative;
+            padding-left: 38px;
+            color: #334155;
+        }
+
+        .recommendation-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #DCFCE7;
+            color: #16A34A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+
+        .biblio-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            font-size: 0.92rem;
+            color: #475569;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .biblio-list li {
+            padding-left: 28px;
+            text-indent: -28px;
+            line-height: 1.65;
+        }
+
+        .article-footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 28px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        @media (max-width: 768px) {
+            .paper-header, .paper-body-card {
+                padding: 24px 20px;
+            }
+            .section-heading {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body class="portfolio-page">
+    <nav>
+        <a href="../../index.html" class="logo">Indah<span class="logo-dot">.</span></a>
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About me</a></li>
+            <li><a href="../../portfolio-projects.html" class="active">Portofolio</a></li>
+            <li><a href="../../education.html">Education</a></li>
+            <li><a href="../../experience.html">Experience</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-detail-page cert-more-page">
+        <section class="project-detail-shell cert-more-shell article-paper-wrap">
+            <div class="project-detail-breadcrumb">
+                <a href="../../portfolio-article.html" class="detail-back">Back</a>
+                <span>Articles</span>
+                <span>Jurnal Kebijakan Publik</span>
+            </div>
+
+            <!-- Paper Header -->
+            <div class="paper-header">
+                <span class="art-tag" style="display:inline-block; margin-bottom:12px;">📑 JURNAL ILMU ADMINISTRASI PUBLIK</span>
+                <h1 class="paper-title">Koordinasi Antarlembaga dalam Pengawasan Distribusi LPG 3 kg Bersubsidi di Kabupaten Kebumen</h1>
+                
+                <div class="paper-meta-grid">
+                    <div class="author-box">
+                        <strong>Agus Kurnianto¹</strong>
+                        <span>Mahasiswa Prodi Ilmu Administrasi Negara, FHISIP Universitas Terbuka</span>
+                        <br><span style="font-size:0.8rem; color:#2563EB;">049354897@ecampus.ut.ac.id</span>
+                    </div>
+                    <div class="author-box">
+                        <strong>Anwar Parawangi, M.Si.²</strong>
+                        <span>Pembimbing, Prodi Ilmu Administrasi Negara, FHISIP Universitas Terbuka</span>
+                        <br><span style="font-size:0.8rem; color:#2563EB;">parawangianwar@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Illustration Image -->
+            <img class="paper-hero-img" src="../../assets/lpg_kebumen_cover.jpg" alt="Ilustrasi Tata Kelola Pengawasan Distribusi Gas LPG 3kg Kebumen">
+
+            <!-- Paper Body -->
+            <div class="paper-body-card">
+                <!-- ABSTRAK -->
+                <div class="abstract-box">
+                    <h3><span>📌</span> ABSTRAK</h3>
+                    <p>
+                        Distribusi LPG 3 kg bersubsidi melibatkan pemerintah daerah, aparat penegak hukum, badan usaha, dan pelaku rantai pasok sehingga koordinasi antarlembaga menjadi penting untuk menjaga ketepatan sasaran, ketersediaan, dan kepatuhan harga. Artikel ini menganalisis bagaimana koordinasi antarlembaga dalam pengawasan distribusi LPG 3 kg bersubsidi di Kabupaten Kebumen berdasarkan dokumen publik.
+                    </p>
+                    <p>
+                        Penelitian menggunakan pendekatan kualitatif deskriptif dengan studi dokumentasi atas regulasi, publikasi resmi pemerintah daerah pada 2025, catatan tindak lanjut pengaduan pada 2026, dan penelitian terdahulu yang relevan. Data dianalisis secara tematik melalui tiga aspek: lembaga yang terlibat beserta perannya, sistem koordinasi pengawasan di lapangan, serta hambatan dan tindak lanjut pengawasan.
+                    </p>
+                    <p>
+                        Hasil analisis menunjukkan bahwa pengawasan melibatkan Bupati dan perangkat daerah (DisperindagKUKM, Bagian Perekonomian & SDA, Satpol PP, Kesbangpol), unsur kepolisian dan kejaksaan, Pertamina Patra Niaga, Hiswana Migas, agen, pangkalan, serta masyarakat melalui kanal pengaduan. Koordinasi di lapangan berjalan melalui koordinasi pasokan oleh pimpinan daerah, pemantauan bersama secara berjenjang dari SPBE hingga pangkalan, dan penanganan pengaduan yang ditutup dengan sanksi dari agen. Namun, dokumen juga mencatat perbedaan harga jual antarpangkalan pada Maret 2025 dan penjualan di atas HET pada Agustus 2026. Temuan ini menunjukkan bahwa koordinasi telah berlangsung, tetapi kepatuhan distribusi tetap memerlukan pemantauan berulang, pencatatan tindak lanjut yang konsisten, dan pertukaran informasi yang dapat ditelusuri.
+                    </p>
+                    <div class="keywords-tag-row">
+                        <strong>Kata Kunci:</strong>
+                        <span class="keyword-chip">Distribusi</span>
+                        <span class="keyword-chip">Koordinasi</span>
+                        <span class="keyword-chip">LPG Bersubsidi</span>
+                        <span class="keyword-chip">Pengawasan</span>
+                        <span class="keyword-chip">Tata Kelola Kolaboratif</span>
+                    </div>
+                </div>
+
+                <!-- 1. PENDAHULUAN -->
+                <h2 class="section-heading"><span>1.</span> Pendahuluan</h2>
+                <p class="paper-p">
+                    LPG tabung 3 kg merupakan komoditas bersubsidi yang ditujukan bagi kelompok pengguna tertentu. Karena harga dan distribusinya diatur oleh pemerintah, pengawasan tidak cukup hanya memastikan tabung tersedia di tingkat pangkalan. Pengawasan juga perlu menelusuri apakah LPG disalurkan kepada pengguna yang berhak, dijual sesuai ketentuan harga yang berlaku, dan didistribusikan melalui rantai pasok yang dapat dipertanggungjawabkan.
+                </p>
+                <p class="paper-p">
+                    Kerangka penyediaan dan pendistribusian LPG 3 kg antara lain diatur melalui <strong>Peraturan Presiden Nomor 104 Tahun 2007</strong> sebagaimana diubah dengan <strong>Perpres Nomor 70 Tahun 2021</strong>, serta <strong>Peraturan Menteri ESDM Nomor 26 Tahun 2009</strong> yang disempurnakan dengan <strong>Permen ESDM Nomor 28 Tahun 2021</strong>. Kerangka regulasi tersebut menempatkan distribusi LPG sebagai urusan yang memerlukan keterhubungan antara pembuat kebijakan, pelaksana distribusi, dan pengawas di lapangan.
+                </p>
+                <div class="feature-callout">
+                    <strong>Konteks Kabupaten Kebumen:</strong> Pada Februari 2025, Pemerintah Kabupaten Kebumen mengarahkan penyaluran LPG 3 kg langsung dari pangkalan kepada konsumen akhir (bukan melalui pengecer). Skala distribusi di Kebumen mencakup <strong>22 agen resmi dan 1.939 pangkalan</strong>, menuntut koordinasi pengawasan lintas instansi yang sangat luas.
+                </div>
+                <p class="paper-p">
+                    Tata kelola kolaboratif (Ansell & Gash, 2008) menekankan bahwa keterlibatan lembaga publik dan non-pemerintah harus terhubung dalam proses pengambilan keputusan formal dan konsensus. Di Kebumen, kegiatan lintas instansi tidak cukup dinilai dari hadirnya aktor di lokasi, melainkan bagaimana peran, arus data, dan tindakan korektif dihubungkan secara nyata.
+                </p>
+
+                <!-- 2. METODE -->
+                <h2 class="section-heading"><span>2.</span> Metode Penelitian</h2>
+                <p class="paper-p">
+                    Artikel ini menggunakan pendekatan <strong>kualitatif deskriptif</strong> dengan strategi studi dokumentasi (Bowen, 2009; Creswell & Poth, 2018; Moleong, 2017). Korpus dokumen daerah yang ditelaah mencakup publikasi resmi Pemkab Kebumen (Februari & Maret 2025), laporan pengawasan DisperindagKUKM (Maret & Juni 2025), serta catatan tindak lanjut pengaduan publik LaporBup pada 28–30 Agustus 2026.
+                </p>
+                <p class="paper-p">
+                    Data dianalisis melalui pengodean tematik (Braun & Clarke, 2006, 2022) dalam tiga aspek analisis: pemetaan peran lembaga, tiga alur koordinasi lapangan, serta hambatan dan tindak lanjut korektif.
+                </p>
+
+                <!-- 3. HASIL DAN PEMBAHASAN -->
+                <h2 class="section-heading"><span>3.</span> Hasil dan Pembahasan</h2>
+
+                <h3 class="sub-heading">A. Lembaga yang Terlibat dan Pembagian Perannya</h3>
+                <p class="paper-p">
+                    Berdasarkan telaah dokumen, pengawasan distribusi LPG 3 kg di Kabupaten Kebumen melibatkan tiga klaster pemangku kepentingan utama ditambah peran aktif masyarakat:
+                </p>
+
+                <div class="table-responsive">
+                    <table class="paper-table">
+                        <thead>
+                            <tr>
+                                <th>Klaster / Unsur</th>
+                                <th>Instansi / Aktor</th>
+                                <th>Peran Utama dalam Pengawasan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pemerintah Daerah</strong></td>
+                                <td>Bupati, DisperindagKUKM, Bagian Perekonomian & SDA, Satpol PP, Kesbangpol</td>
+                                <td>Menetapkan arah kebijakan, pemantauan ketersediaan stok di SPBE/agen/pangkalan, edukasi pelaku usaha, dan penindaklanjut aduan.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aparat Penegak Hukum</strong></td>
+                                <td>Polres Kebumen (Satreskrim Ekonomi) & Kejaksaan Negeri Kebumen</td>
+                                <td>Pendampingan preventif, pencegahan penimbunan/penyelewengan subsidi, dan membuka ruang penegakan hukum pidana ekonomi.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Badan Usaha & Pasok</strong></td>
+                                <td>PT Pertamina Patra Niaga, Hiswana Migas, Agen, Pangkalan</td>
+                                <td>Menjaga kecukupan pasokan fakultatif, logistik hulu-hilir, pencatatan NIK pembeli, serta penjatuhan sanksi administratif ke pangkalan.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Masyarakat</strong></td>
+                                <td>Konsumen Rumah Tangga & Usaha Mikro</td>
+                                <td>Penyampai informasi awal dan pelapor pelanggaran harga melalui kanal pengaduan resmi LaporBup.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="sub-heading">B. Tiga Jalur Koordinasi Pengawasan Lapangan</h3>
+                <div class="pathway-grid">
+                    <div class="pathway-card">
+                        <span class="pathway-num">JALUR 1</span>
+                        <h4 class="pathway-title">Koordinasi Pasokan Pimpinan</h4>
+                        <p class="pathway-desc">
+                            Koordinasi strategis Bupati bersama Pertamina dan Hiswana Migas. Contoh: usulan tambahan kuota fakultatif sebesar 12% pada Maret 2025 untuk mengantisipasi lonjakan konsumsi Ramadan & Idulfitri.
+                        </p>
+                    </div>
+                    <div class="pathway-card">
+                        <span class="pathway-num">JALUR 2</span>
+                        <h4 class="pathway-title">Inspeksi Berjenjang Hulu-Hilir</h4>
+                        <p class="pathway-desc">
+                            Pemantauan serentak dari SPBE (kesiapan tangki & armada truk), Agen (pengiriman alokasi), hingga Pangkalan (pencatatan NIK KTP pembeli & kepatuhan HET).
+                        </p>
+                    </div>
+                    <div class="pathway-card">
+                        <span class="pathway-num">JALUR 3</span>
+                        <h4 class="pathway-title">Penanganan Pengaduan Publik</h4>
+                        <p class="pathway-desc">
+                            Respon cepat atas aduan masyarakat di kanal Pemda. Laporan harga di atas HET langsung diverifikasi oleh DisperindagKUKM bersama agen dalam kurun 48 jam.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="sub-heading">C. Hambatan Pengawasan dan Respons Korektif</h3>
+                <p class="paper-p">
+                    Dokumen resmi mencatat masih adanya ketidakpatuhan harga di tingkat pangkalan:
+                </p>
+                <ul>
+                    <li style="margin-bottom:10px;"><strong>Temuan Maret 2025:</strong> Ditemukan pangkalan di Desa Adikarso yang menjual Rp19.000/tabung (berbeda dengan pangkalan lain yang menjual Rp18.000). Petugas memberikan edukasi dan menyurati agen penanggung jawab.</li>
+                    <li style="margin-bottom:10px;"><strong>Kasus Aduan Agustus 2026:</strong> Warga melaporkan harga Rp25.000/tabung. Hasil verifikasi gabungan DisperindagKUKM dan agen berujung pada pemberian Surat Peringatan I (SP 1) dan sanksi skorsing pasokan selama satu minggu bagi pangkalan pelanggar.</li>
+                </ul>
+
+                <h3 class="sub-heading">D. 4 Langkah Penguatan Koordinasi (Rekomendasi Kebijakan)</h3>
+                <ul class="recommendation-list">
+                    <li><strong>Standardisasi Format Laporan:</strong> Menetapkan instrumen pemantauan terpadu yang memuat temuan faktual, penanggung jawab, tenggat perbaikan, dan bukti pemeriksaan ulang (*re-inspection*).</li>
+                    <li><strong>Alur Eskalasi Sanksi yang Jelas:</strong> Menyepakati tahapan sanksi berjenjang (edukasi, SP 1, skorsing pengiriman, hingga pemutusan hubungan usaha) yang transparan antardinas dan agen.</li>
+                    <li><strong>Integrasi Data Pengaduan & Jadwal Sidak:</strong> Menggunakan rekam jejak aduan masyarakat di LaporBup sebagai basis penentuan peta kerawanan dan lokasi inspeksi berkala.</li>
+                    <li><strong>Evaluasi Berbasis Efektivitas Penyelesaian:</strong> Mengukur keberhasilan pengawasan bukan dari kuantitas kunjungan, melainkan persentase kasus yang terselesaikan dan stabilitas harga riil di masyarakat.</li>
+                </ul>
+
+                <!-- 4. SIMPULAN -->
+                <h2 class="section-heading"><span>4.</span> Simpulan dan Saran</h2>
+                <p class="paper-p">
+                    Koordinasi antarlembaga dalam pengawasan LPG 3 kg di Kebumen telah berjalan efektif pada ranah deteksi dan penanganan responsif. DisperindagKUKM berperan sebagai motor penggerak teknis, sementara agen menjadi jembatan eksekusi sanksi kepada pangkalan yang melanggar.
+                </p>
+                <p class="paper-p">
+                    Untuk menjamin keadilan subsidi energi bagi masyarakat rentan, Pemerintah Kabupaten Kebumen disarankan memperkuat sistem pendataan digital terintegrasi, mengoptimalkan koordinasi berkala dengan aparat penegak hukum, dan melakukan audit kepatuhan rutin pasca-tindakan korektif.
+                </p>
+
+                <!-- DAFTAR PUSTAKA -->
+                <h2 class="section-heading"><span>📚</span> Daftar Pustaka</h2>
+                <ul class="biblio-list">
+                    <li>Ansell, C., & Gash, A. (2008). Collaborative governance in theory and practice. <em>Journal of Public Administration Research and Theory</em>, 18(4), 543–571.</li>
+                    <li>Bowen, G. A. (2009). Document analysis as a qualitative research method. <em>Qualitative Research Journal</em>, 9(2), 27–40.</li>
+                    <li>Braun, V., & Clarke, V. (2006). Using thematic analysis in psychology. <em>Qualitative Research in Psychology</em>, 3(2), 77–101.</li>
+                    <li>Braun, V., & Clarke, V. (2022). <em>Thematic analysis: A practical guide</em>. SAGE Publications.</li>
+                    <li>Creswell, J. W., & Poth, C. N. (2018). <em>Qualitative inquiry and research design: Choosing among five approaches</em> (4th ed.). SAGE Publications.</li>
+                    <li>Dewi, S. R., Nurlaily, & Seroja, T. D. (2023). Pengawasan pendistribusian gas LPG 3 kg bersubsidi di Kota Batam. <em>Jurnal Ilmiah Penegakan Hukum</em>, 10(1), 67–78.</li>
+                    <li>DisperindagKUKM Kabupaten Kebumen. (2025a, 30 Maret). <em>Meninjau ketersediaan bahan bakar minyak dan LPG 3 kg menjelang Hari Raya Idulfitri 1446 H</em>.</li>
+                    <li>DisperindagKUKM Kabupaten Kebumen. (2025b, 26 Juni). <em>Monitoring ketersediaan dan kepatuhan terhadap HET LPG 3 kg</em>.</li>
+                    <li>Febrian, A. T. S., dkk. (2024). Evaluasi program distribusi subsidi LPG 3 kg di Kota Surabaya. <em>PRAJA: Jurnal Ilmiah Pemerintahan</em>, 12(2), 191–201.</li>
+                    <li>Gafar, M., & Melani. (2024). Efektivitas pengawasan Dinas Perdagangan dalam pendistribusian gas LPG 3 kg di Kelurahan Baru. <em>Jurnal Sektor Publik</em>, 1(1), 59–64.</li>
+                    <li>Gil-Garcia, J. R., & Sayogo, D. S. (2016). Government inter-organizational information sharing initiatives. <em>Government Information Quarterly</em>, 33(3), 572–582.</li>
+                    <li>Kementerian ESDM RI. (2009). <em>Peraturan Menteri ESDM Nomor 26 Tahun 2009 jo Permen ESDM Nomor 28 Tahun 2021 tentang Penyediaan dan Pendistribusian LPG</em>.</li>
+                    <li>Lægreid, P., & Rykkja, L. H. (2022). Accountability and inter-organizational collaboration within the state. <em>Public Management Review</em>, 24(5), 683–703.</li>
+                    <li>Pemerintah Kabupaten Kebumen. (2025a, 3 Februari). <em>Larangan pengecer jual gas LPG 3 kg sudah berlaku di Kebumen</em>.</li>
+                    <li>Pemerintah Kabupaten Kebumen. (2025b, 12 Maret). <em>Tinjau pangkalan LPG, Bupati sebut kebutuhan gas jelang Lebaran aman</em>.</li>
+                    <li>Pemerintah Kabupaten Kebumen. (2026, 30 Agustus). <em>Detail aduan masyarakat mengenai harga LPG di atas HET di pangkalan (kode pelacakan 2600001108)</em>.</li>
+                    <li>Pemerintah Republik Indonesia. (2007). <em>Peraturan Presiden Nomor 104 Tahun 2007 jo Perpres Nomor 70 Tahun 2021</em>.</li>
+                    <li>Rochman, N. N., Kasim, A., & Atmoko, A. W. (2023). Analysis of governance complexity on subsidized LPG in Indonesia. <em>KnE Social Sciences</em>, 8(5), 36–55.</li>
+                    <li>Sayogo, D. S., Yuli, S. B. C., & Wiyono, W. (2020). Challenges and critical factors of interagency information sharing in Indonesia. <em>Transforming Government: People, Process and Policy</em>, 14(5), 791–806.</li>
+                    <li>Siahaan, S. T., dkk. (2025). Bounded rationality in energy policy: Analyzing the ban on retail sales of subsidized 3-kilogram LPG in Indonesia. <em>Journal Governance Bureaucratic Review</em>, 2(2), 118–129.</li>
+                    <li>Wahyuni, E., Rusli, B., & Candradewini. (2026). Transformation of the 3 kg liquefied petroleum gas (LPG) subsidy policy in Indonesia. <em>Ilomata International Journal of Social Science</em>, 7(3), 862–870.</li>
+                </ul>
+
+                <!-- Footer Navigation -->
+                <div class="article-footer-nav">
+                    <a href="../../portfolio-article.html" class="btn-detail">&larr; Kembali ke Daftar Artikel</a>
+                    <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" class="btn-demo">Ke Atas Halaman &uarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../script.js?v=14"></script>
+</body>
+</html>

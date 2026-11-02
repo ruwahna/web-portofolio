@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Article - Indah</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=39">
 </head>
 <body class="portfolio-page">
     <nav>
-        <div class="logo">Indah</div>
+        <a href="index.html" class="logo">Indah<span class="logo-dot">.</span></a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About me</a></li>
@@ -21,8 +21,8 @@
 
     <main class="portfolio-page">
         <section class="portfolio-showcase">
-            <h1>Article Notes</h1>
-            <p>Kumpulan catatan singkat tentang desain, front-end, dan proses belajar saya.</p>
+            <h1>Article Notes & Research</h1>
+            <p>Kumpulan artikel ilmiah, kajian tata kelola kebijakan publik, dan catatan proses belajar antarmuka digital.</p>
 
             <div class="portfolio-tabs">
                 <a href="portfolio-projects.html" class="tab">Projects</a>
@@ -31,7 +31,37 @@
             </div>
 
             <div class="article-list-minimal">
-                <!-- Article 01 -->
+                <!-- Article 01: Academic Policy Paper -->
+                <article class="article-item-minimal" style="border-left: 4px solid #2563EB;">
+                    <div class="article-main-info">
+                        <div class="article-meta-badge">
+                            <span class="art-tag" style="background:#EFF6FF; color:#1D4ED8; border-color:#93C5FD;">📑 JURNAL ILMIAH & KEBIJAKAN</span>
+                            <span class="art-date">Oktober 2026 • 12 min read • Agus Kurnianto & Anwar Parawangi, M.Si.</span>
+                        </div>
+                        <h3 class="art-title" style="font-size: 1.25rem; margin-top: 6px; line-height: 1.4;">Koordinasi Antarlembaga dalam Pengawasan Distribusi LPG 3 kg Bersubsidi di Kabupaten Kebumen</h3>
+                        <p class="art-desc">Kajian tata kelola kolaboratif lintas sektor (Pemkab Kebumen, DisperindagKUKM, Kepolisian, Kejaksaan, Pertamina Patra Niaga, Agen, dan Pangkalan) dalam mengawasi stabilitas pasokan serta kepatuhan HET di lapangan.</p>
+                    </div>
+                    <div class="article-action-cell">
+                        <a href="pages/articles/distribusi-lpg-kebumen.html" class="btn-read-minimal" style="white-space: nowrap;">Baca Artikel &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Article 02: Smart Agriculture IoT & AI Research -->
+                <article class="article-item-minimal" style="border-left: 4px solid #10B981;">
+                    <div class="article-main-info">
+                        <div class="article-meta-badge">
+                            <span class="art-tag" style="background:#ECFDF5; color:#047857; border-color:#A7F3D0;">🌿 RISET IOT & COMPUTER VISION</span>
+                            <span class="art-date">Oktober 2026 • 6 min read • Tim Mahasiswa UPB (Indah Ruwahna & Tim)</span>
+                        </div>
+                        <h3 class="art-title" style="font-size: 1.25rem; margin-top: 6px; line-height: 1.4;">Rancang Bangun Kotak Fermentasi Biji Kakao Berbasis IoT dengan Klasifikasi Computer Vision</h3>
+                        <p class="art-desc">Ringkasan proposal riset smart agriculture: perancangan kotak fermentasi otomatis terintegrasi multi-sensor (suhu & pH), pengaduk motorik cerdas, dan klasifikasi mutu biji kakao menggunakan CNN (ResNet50 & MobileNetV2).</p>
+                    </div>
+                    <div class="article-action-cell">
+                        <a href="pages/articles/riset-iot-fermentasi-kakao.html" class="btn-read-minimal" style="white-space: nowrap;">Baca Artikel &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Article 02: UX Writing -->
                 <article class="article-item-minimal">
                     <div class="article-main-info">
                         <div class="article-meta-badge">
@@ -46,7 +76,7 @@
                     </div>
                 </article>
 
-                <!-- Article 02 -->
+                <!-- Article 03: Front-End -->
                 <article class="article-item-minimal">
                     <div class="article-main-info">
                         <div class="article-meta-badge">
@@ -64,6 +94,6 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=14"></script>
 </body>
 </html>

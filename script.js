@@ -31,25 +31,17 @@
     function raf(f) { return requestAnimationFrame(f); }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       1. PAGE LOAD FADE + RISE
+       1. PAGE LOAD FADE (Smooth & Safe)
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    if (!RM && document.body) {
-        var hasSplash = document.getElementById('intro-splash');
-        var introPlayed = false;
-        try { introPlayed = sessionStorage.getItem('indah_intro_played') === 'true'; } catch(e){}
-
-        if (!hasSplash || introPlayed) {
-            document.body.style.opacity   = '0';
-            document.body.style.transform = 'translateY(14px)';
-            document.body.style.transition =
-                'opacity 700ms cubic-bezier(.22,.61,.36,1),' +
-                'transform 700ms cubic-bezier(.22,.61,.36,1)';
-            raf(function () {
-                document.body.style.opacity   = '1';
-                document.body.style.transform = 'translateY(0)';
-            });
-        }
+    if (document.body) {
+        document.body.style.opacity = '1';
     }
+    window.addEventListener('pageshow', function () {
+        if (document.body) {
+            document.body.style.opacity = '1';
+            document.body.style.transition = '';
+        }
+    });
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        2. SCROLL PROGRESS BAR
@@ -211,7 +203,7 @@
         function tick() {
             var word = words[wi];
             ci = del ? ci - 1 : ci + 1;
-            el.textContent = word.substring(0, ci);
+            el.textContent = word.substring(0, ci) || '\u00A0';
             var next = del ? speed / 2 : speed;
             if (!del && ci === word.length) { next = pause; del = true; }
             else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; next = 380; }
@@ -225,7 +217,7 @@
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     if (!RM) {
         var _sel = [
-            'nav','header','h1','h2','h3','h4','p','blockquote',
+            'header','h1','h2','h3','h4','p','blockquote',
             '.hero-text','.hero-image','.hero-intro','.hero-actions',
             '.project-card','.page-card','.feature-card','.focus-card','.stat-card',
             '.neo-card','.polaroid-frame','.about-photo-wrapper','.education-card','.experience-card',
@@ -527,28 +519,19 @@
         });
     }
 
-    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-       16. PAGE TRANSITION CURTAIN
-    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    if (!RM) {
-        var curtain = document.createElement('div');
-        curtain.style.cssText =
-            'position:fixed;inset:0;background:#4a5aa0;z-index:999999;' +
-            'opacity:0;pointer-events:none;transition:opacity 300ms ease;';
-        document.body.appendChild(curtain);
-        document.addEventListener('click', function (e) {
-            var link = e.target.closest('a[href]');
-            if (!link) return;
-            var href = link.getAttribute('href');
-            if (!href || href[0] === '#' || href.indexOf('javascript') === 0) return;
-            if (link.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey) return;
-            if (/^https?:\/\//.test(href) && !href.includes(window.location.hostname)) return;
-            e.preventDefault();
-            curtain.style.pointerEvents = 'all';
-            curtain.style.opacity = '.3';
-            setTimeout(function () { window.location.href = href; }, 320);
+    qa('.detail-back').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            if (window.history.length > 1 && document.referrer) {
+                e.preventDefault();
+                window.history.back();
+            }
         });
-    }
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       16. PAGE TRANSITIONS (NATIVE & INSTANT)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    // Clean native navigation without blocking overlays or delay curtain
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        17. PORTFOLIO PROJECT CATEGORY FILTER
@@ -591,7 +574,8 @@
         { keywords: ['agripos', 'agri', 'pertanian', 'ritel', 'stok'], title: 'AGRI-POS Pertanian', type: 'App & Sistem', url: 'pages/projects/agripos.html', desc: 'Manajemen ritel & stok hasil pertanian' },
         { keywords: ['posfy', 'kasir', 'sistem kasir', 'transaksi'], title: 'UI/UX Sistem Kasir Posfy', type: 'App & Sistem', url: 'pages/projects/posfy.html', desc: 'Alur kasir & transaksi intuitif' },
         { keywords: ['eksbum', 'wisata eksbum', 'ux eksbum'], title: 'UI/UX Destinasi Wisata EKSBUM', type: 'Desain & UI/UX', url: 'pages/projects/eksbum.html', desc: 'Rancangan promosi & eksplorasi wisata' },
-        { keywords: ['ukm', 'manajemen ukm', 'umkm'], title: 'UI/UX Platform Manajemen UKM', type: 'Desain & UI/UX', url: 'pages/projects/ukm-terpadu.html', desc: 'Platform terpadu kelola kebutuhan UKM' },
+        { keywords: ['lpg', 'kebumen', 'distribusi', 'kebijakan', 'jurnal', 'artikel', 'pengawasan', 'subsidi'], title: 'Jurnal Pengawasan Distribusi LPG 3 kg Kebumen', type: 'Artikel Ilmiah', url: 'pages/articles/distribusi-lpg-kebumen.html', desc: 'Kajian tata kelola koordinasi pengawasan LPG 3 kg di Kebumen' },
+        { keywords: ['kakao', 'fermentasi', 'iot', 'computer vision', 'cnn', 'biji kakao', 'riset', 'bpdp'], title: 'Riset IoT & Computer Vision Fermentasi Biji Kakao', type: 'Riset Mahasiswa', url: 'pages/articles/riset-iot-fermentasi-kakao.html', desc: 'Riset smart agriculture fermentasi kakao berbasis IoT dan AI' },
         
         // Pages
         { keywords: ['about', 'tentang', 'profil', 'biografi', 'indah'], title: 'About Me (Tentang Indah)', type: 'Halaman', url: 'about.html', desc: 'Profil, latar belakang, dan keahlian' },
@@ -796,6 +780,12 @@
                     item.style.display = 'flex';
                     item.style.opacity = '1';
                     item.style.transform = 'scale(1)';
+                    qa('*', item).forEach(function (child) {
+                        if (child.style.opacity === '0') child.style.opacity = '1';
+                        if (child.style.transform && child.style.transform.indexOf('translateY') !== -1) {
+                            child.style.transform = 'translateY(0)';
+                        }
+                    });
                 } else {
                     item.style.display = 'none';
                     item.style.opacity = '0';
@@ -804,6 +794,45 @@
             });
         });
     });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       20B. CERTIFICATES CATEGORY FILTER (KEJUARAAN & PENGHARGAAN)
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function applyCertFilter(filter) {
+        qa('.certificate-card').forEach(function (item) {
+            var cat = item.getAttribute('data-category') || '';
+            if (filter === 'all' || cat.indexOf(filter) !== -1) {
+                item.style.display = 'flex';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+                qa('*', item).forEach(function (child) {
+                    if (child.style.opacity === '0') child.style.opacity = '1';
+                    if (child.style.transform && child.style.transform.indexOf('translateY') !== -1) {
+                        child.style.transform = 'translateY(0)';
+                    }
+                });
+            } else {
+                item.style.display = 'none';
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.85)';
+            }
+        });
+    }
+
+    qa('.cert-filter-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+            var filter = pill.getAttribute('data-filter');
+            qa('.cert-filter-pill').forEach(function (p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+            applyCertFilter(filter);
+        });
+    });
+
+    // Run initial filter on page load if active filter pill is present
+    var initCertPill = q('.cert-filter-pill.active');
+    if (initCertPill) {
+        applyCertFilter(initCertPill.getAttribute('data-filter') || 'kejuaraan');
+    }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        21. DYNAMIC 3D TILT CARD MOTION
@@ -1015,7 +1044,11 @@
             });
 
             raf(function() {
-                if (nav) { nav.style.opacity = '1'; nav.style.transform = 'translateY(0)'; }
+                if (nav) { 
+                    nav.style.opacity = '1'; 
+                    nav.style.transform = 'translateY(0)';
+                    setTimeout(function() { if (nav) nav.style.transform = ''; }, 850);
+                }
                 setTimeout(function() {
                     if (heroLeft) { heroLeft.style.opacity = '1'; heroLeft.style.transform = 'translateY(0)'; }
                 }, 150);
@@ -1091,6 +1124,73 @@
         playIntroSequence();
     }
 
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NAV SCROLL STATE LISTENER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function initNavScroll() {
+        var nav = document.querySelector('nav');
+        if (!nav) return;
+        function updateNav() {
+            if (window.scrollY > 30) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        }
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+    }
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       ROLE TITLE TYPEWRITER ANIMATION (User Reference Style)
+       Smoothly types: Web Developer, UI/UX Designer, Front-end Developer, Figma Designer
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function initRoleTypewriter() {
+        var el = document.getElementById('typing-role-text');
+        if (!el) return;
+
+        var roles = [
+            'Web Developer',
+            'UI/UX Designer',
+            'Front-end Developer',
+            'Figma Designer'
+        ];
+
+        var roleIdx = 0;
+        var charIdx = 0;
+        var isDeleting = false;
+        var typingSpeed = 95;
+
+        el.textContent = '';
+
+        function type() {
+            var currentRole = roles[roleIdx];
+
+            if (isDeleting) {
+                charIdx--;
+                el.textContent = currentRole.substring(0, charIdx);
+                typingSpeed = 45;
+            } else {
+                charIdx++;
+                el.textContent = currentRole.substring(0, charIdx);
+                typingSpeed = 90 + Math.random() * 20;
+            }
+
+            if (!isDeleting && charIdx === currentRole.length) {
+                typingSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                roleIdx = (roleIdx + 1) % roles.length;
+                typingSpeed = 450;
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        setTimeout(type, 800);
+    }
+
+    initRoleTypewriter();
     initIntroSplash();
 
 })();
