@@ -1947,6 +1947,352 @@ body.home-page .hero-wave {
 }
 
 /* ==========================================================================
+   CREATIVE STUDIO & SOCIAL BENTO HUB (about.html)
+   ========================================================================== */
+.bento-hub-section {
+    max-width: 1220px;
+    margin: 40px auto 70px;
+    padding: 44px 5%;
+    background: linear-gradient(145deg, #EEF6FF 0%, #E0F0FE 45%, #E8EEFF 100%);
+    border-radius: var(--radius-lg);
+    border: 1.5px solid #BFDBFE;
+    box-shadow: 0 16px 40px rgba(37, 99, 235, 0.08);
+}
+
+.hub-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: var(--blue);
+    background: #ffffff;
+    border: 1px solid #BFDBFE;
+    padding: 4px 14px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
+}
+
+.bento-hub-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 26px;
+    align-items: stretch;
+    margin-top: 10px;
+}
+
+.bento-card {
+    background: #ffffff;
+    border: 1.5px solid #BFDBFE;
+    border-radius: 22px;
+    padding: 26px 24px;
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.06);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+}
+
+.bento-panel-top {
+    margin-bottom: 20px;
+}
+
+.panel-heading-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.panel-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0 0 2px;
+}
+
+.panel-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Bento Tools Grid */
+.bento-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.bento-tool-card {
+    background: #F8FAFC;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 12px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+    user-select: none;
+}
+
+.bento-tool-card:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    border-color: var(--glow-color, #38BDF8);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12), 0 0 10px rgba(56, 189, 248, 0.12);
+}
+
+.tool-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease;
+}
+
+.bento-tool-card:hover .tool-icon-wrapper {
+    transform: scale(1.1) rotate(4deg);
+}
+
+.tool-meta {
+    min-width: 0;
+}
+
+.tool-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tool-role {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Social Connect Panel & Widgets */
+.social-widget-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    flex-grow: 1;
+}
+
+.social-widget-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    border: 1.5px solid #E2E8F0;
+    background: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-widget-card:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.12);
+}
+
+.widget-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.social-widget-card:hover .widget-icon {
+    transform: scale(1.1) rotate(6deg);
+}
+
+.ig-icon-gradient {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.in-icon-bg {
+    background: #0A66C2;
+}
+
+.gh-icon-bg {
+    background: #181717;
+}
+
+.wa-icon-bg {
+    background: #25D366;
+}
+
+.widget-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.widget-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+.widget-platform {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.widget-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 9999px;
+}
+
+.ig-badge { background: #FDF2F8; color: #DB2777; border: 1px solid #FBCFE8; }
+.in-badge { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+.gh-badge { background: #F1F5F9; color: #334155; border: 1px solid #CBD5E1; }
+.wa-badge { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+
+.widget-handle {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.widget-sub {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.widget-arrow {
+    color: #94A3B8;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.social-widget-card:hover .widget-arrow {
+    color: var(--blue);
+    transform: translateX(4px);
+}
+
+.ig-widget:hover { border-color: #E1306C; background: #FFFBFD; }
+.linkedin-widget:hover { border-color: #0A66C2; background: #F8FAFF; }
+.github-widget:hover { border-color: #181717; background: #F8FAFC; }
+.wa-widget:hover { border-color: #25D366; background: #F6FEF9; }
+
+/* Quick Footer Pill Links */
+.social-quick-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #E2E8F0;
+}
+
+.quick-pill {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.mail-pill {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+}
+
+.mail-pill:hover {
+    background: #DBEAFE;
+    transform: translateY(-2px);
+}
+
+.yt-pill {
+    background: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+}
+
+.yt-pill:hover {
+    background: #FEE2E2;
+    transform: translateY(-2px);
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 960px) {
+    .bento-hub-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .bento-tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================================================
    8. PORTFOLIO SHOWCASE (portfolio-projects.html, portfolio.html, etc.)
    ========================================================================== */
 .portfolio-page {
@@ -2759,14 +3105,44 @@ body.home-page .hero-wave {
 .experience-card {
     background: #ffffff;
     border: 1px solid #E2E8F0;
-    border-radius: var(--radius-card);
-    padding: 26px;
-    box-shadow: var(--shadow-card);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.06);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.exp-card-info {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 4px 4px;
+    flex-grow: 1;
+}
+
+.exp-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.exp-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    margin: 0 0 4px;
+}
+
+.exp-subtitle {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin: 0 0 14px;
 }
 
 .experience-card::before {
@@ -2863,6 +3239,664 @@ body.home-page .hero-wave {
     border: 1px solid #BFDBFE;
     padding: 3px 10px;
     border-radius: var(--radius-pill);
+}
+
+/* Sub-sections within Experience */
+.exp-sub-section {
+    margin-bottom: 56px;
+    width: 100%;
+}
+
+.exp-sub-header {
+    text-align: center;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: var(--blue);
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    padding: 4px 14px;
+    border-radius: var(--radius-pill);
+    margin: 0 auto 8px;
+    text-transform: uppercase;
+}
+
+.sub-section-title {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0 0 6px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   INTERACTIVE CAREER STRIPS (MODERN NON-BOX WORK EXPERIENCE)
+   ========================================================================== */
+.career-strips-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.career-strip-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: #ffffff;
+    border: 1px solid #E2E8F0;
+    border-left: 5px solid #38BDF8;
+    border-radius: 16px;
+    padding: 22px 28px;
+    box-shadow: 0 4px 18px rgba(37, 99, 235, 0.05);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.career-strip-item.strip-florist { border-left-color: #06B6D4; }
+.career-strip-item.strip-host { border-left-color: #F59E0B; }
+.career-strip-item.strip-frontend { border-left-color: #8B5CF6; }
+
+.career-strip-item:hover {
+    transform: translateX(8px);
+    background: #ffffff;
+    border-color: #BFDBFE;
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
+}
+
+.career-strip-item.strip-florist:hover { border-left-color: #0891B2; border-left-width: 7px; }
+.career-strip-item.strip-host:hover { border-left-color: #D97706; border-left-width: 7px; }
+.career-strip-item.strip-frontend:hover { border-left-color: #7C3AED; border-left-width: 7px; }
+
+/* Strip Watermark Number */
+.strip-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    color: #CBD5E1;
+    line-height: 1;
+    flex-shrink: 0;
+    letter-spacing: -1px;
+    transition: all 0.3s ease;
+}
+
+.career-strip-item:hover .strip-num {
+    color: var(--blue);
+    transform: scale(1.1);
+}
+
+/* Strip Icon Box */
+.strip-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.strip-florist .strip-icon { background: #ECFEFF; color: #0891B2; }
+.strip-host .strip-icon { background: #FFFBEB; color: #D97706; }
+.strip-frontend .strip-icon { background: #F5F3FF; color: #7C3AED; }
+
+.career-strip-item:hover .strip-icon {
+    transform: rotate(6deg) scale(1.08);
+}
+
+/* Strip Main Info */
+.strip-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.strip-top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.strip-title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0;
+}
+
+.strip-date-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--blue);
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    padding: 2px 10px;
+    border-radius: var(--radius-pill);
+}
+
+.strip-subtitle {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin: 0 0 6px;
+}
+
+.strip-desc {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Strip Side Tags */
+.strip-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+    align-items: flex-end;
+}
+
+.strip-tags span {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--blue);
+    background: var(--blue-soft);
+    border: 1px solid #BFDBFE;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+}
+
+/* Mobile Responsiveness for Career Strips */
+@media (max-width: 768px) {
+    .career-strip-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 20px;
+    }
+
+    .strip-tags {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-top: 4px;
+    }
+
+    .strip-num {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Campus Activity Photo Grid */
+.activity-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 26px;
+}
+
+/* ==========================================================================
+   POLAROID MEMORY BOARD / SCRAPBOOK (INFORMAL CAMPUS ACTIVITIES)
+   ========================================================================== */
+.scrapbook-container {
+    background: radial-gradient(circle at 50% 20%, rgba(224, 242, 254, 0.45) 0%, rgba(248, 250, 252, 0.3) 100%);
+    border-radius: 28px;
+    padding: 38px 24px 54px;
+    border: 1.5px dashed #BFDBFE;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.scrapbook-header {
+    text-align: center;
+    margin-bottom: 44px;
+}
+
+.scrapbook-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #0369A1;
+    background: #E0F2FE;
+    border: 1px solid #BAE6FD;
+    padding: 4px 14px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 8px;
+}
+
+.scrapbook-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0 0 6px;
+}
+
+.scrapbook-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.polaroid-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 42px 32px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.polaroid-card {
+    background: #ffffff;
+    width: 320px;
+    padding: 13px 13px 20px;
+    border-radius: 4px;
+    box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Natural Scattered Tilts (Informal memory board look) */
+.polaroid-card.tilt-1 { transform: rotate(-2.6deg); }
+.polaroid-card.tilt-2 { transform: rotate(2.4deg); margin-top: 8px; }
+.polaroid-card.tilt-3 { transform: rotate(-1.5deg); }
+.polaroid-card.tilt-4 { transform: rotate(2.8deg); margin-top: -6px; }
+.polaroid-card.tilt-5 { transform: rotate(-2.2deg); margin-top: 10px; }
+.polaroid-card.tilt-6 { transform: rotate(1.8deg); }
+
+.polaroid-card:hover {
+    transform: translateY(-12px) rotate(0deg) scale(1.04);
+    box-shadow: 0 24px 48px -10px rgba(37, 99, 235, 0.22), 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 15;
+}
+
+/* Washi Tape Decor on Top */
+.washi-tape {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1.5deg);
+    width: 86px;
+    height: 22px;
+    border-left: 2px dashed rgba(255, 255, 255, 0.8);
+    border-right: 2px dashed rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.tape-blue { background: rgba(147, 197, 253, 0.65); }
+.tape-amber { background: rgba(253, 230, 138, 0.7); }
+.tape-emerald { background: rgba(167, 243, 208, 0.7); }
+.tape-purple { background: rgba(216, 180, 254, 0.7); }
+.tape-rose { background: rgba(254, 205, 211, 0.7); }
+.tape-cyan { background: rgba(165, 243, 252, 0.7); }
+
+/* Polaroid Photographic Image Frame */
+.polaroid-img-frame {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: #0f172a;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.polaroid-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    cursor: zoom-in;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.polaroid-card:hover .polaroid-img-frame img {
+    transform: scale(1.05);
+}
+
+/* Multi-photo slider slides inside polaroid */
+.polaroid-img-frame .polaroid-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, transform 0.4s ease;
+}
+
+.polaroid-img-frame .polaroid-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Floating Zoom & Counter Stamps */
+.polaroid-stamp {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.polaroid-zoom-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 5;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.polaroid-card:hover .polaroid-zoom-btn {
+    background: rgba(37, 99, 235, 0.92);
+    border-color: #93C5FD;
+}
+
+/* Polaroid Mini Film Strip (Thumbnail Switcher for 2-3 photos) */
+.polaroid-film-strip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.film-thumb {
+    width: 44px;
+    height: 32px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1.5px solid #CBD5E1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.film-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.film-thumb:hover {
+    opacity: 1;
+    border-color: #3B82F6;
+    transform: scale(1.08);
+}
+
+.film-thumb.active {
+    opacity: 1;
+    border-color: #2563EB;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+    transform: scale(1.08);
+}
+
+.film-strip-hint {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-left: auto;
+}
+
+/* Polaroid Caption Area */
+.polaroid-info {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2px;
+}
+
+.polaroid-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.polaroid-sticker {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    display: inline-block;
+}
+
+.sticker-organisasi { background: #F3E8FF; color: #7E22CE; border: 1px dashed #D8B4FE; }
+.sticker-lomba { background: #FEF3C7; color: #B45309; border: 1px dashed #FDE68A; }
+.sticker-kepanitiaan { background: #ECFDF5; color: #047857; border: 1px dashed #A7F3D0; }
+.sticker-workshop { background: #EFF6FF; color: #1D4ED8; border: 1px dashed #BFDBFE; }
+.sticker-expo { background: #FEF2F2; color: #DC2626; border: 1px dashed #FECACA; }
+
+.polaroid-date {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--blue);
+    background: #EFF6FF;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+}
+
+.polaroid-title {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.35;
+    margin: 0 0 4px;
+}
+
+.polaroid-sub {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Experience Filter Bar */
+.exp-filter-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 auto 36px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.exp-filter-pill {
+    background: #ffffff;
+    border: 1.5px solid #BFDBFE;
+    color: #1E40AF;
+    padding: 9px 18px;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.06);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.exp-filter-pill:hover {
+    background: #EFF6FF;
+    border-color: #3B82F6;
+    color: #1D4ED8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.12);
+}
+
+.exp-filter-pill.active {
+    background: var(--gradient-accent);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.28);
+    transform: translateY(-2px);
+}
+
+.exp-filter-count {
+    background: #DBEAFE;
+    color: #1E40AF;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    transition: all 0.25s ease;
+}
+
+.exp-filter-pill.active .exp-filter-count {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+/* Category Badges & Color Accents */
+.badge-category {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    display: inline-block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.badge-organisasi {
+    background: #F3E8FF;
+    color: #7E22CE;
+    border: 1px solid #D8B4FE;
+}
+
+.badge-lomba {
+    background: #FEF3C7;
+    color: #B45309;
+    border: 1px solid #FDE68A;
+}
+
+.badge-kepanitiaan {
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+}
+
+.badge-workshop {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #BFDBFE;
+}
+
+/* Color Accents for Experience Icon Box */
+.exp-icon-box.icon-purple {
+    background: #F3E8FF;
+}
+.exp-icon-box.icon-purple svg {
+    stroke: #7E22CE !important;
+}
+
+.exp-icon-box.icon-amber {
+    background: #FEF3C7;
+}
+.exp-icon-box.icon-amber svg {
+    stroke: #B45309 !important;
+}
+
+.exp-icon-box.icon-emerald {
+    background: #ECFDF5;
+}
+.exp-icon-box.icon-emerald svg {
+    stroke: #047857 !important;
+}
+
+.exp-icon-box.icon-cyan {
+    background: #EFF6FF;
+}
+.exp-icon-box.icon-cyan svg {
+    stroke: #1D4ED8 !important;
+}
+
+/* Experience Bullet List */
+.exp-list {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.exp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+.list-bullet-icon {
+    flex-shrink: 0;
+    margin-top: 3px;
 }
 
 /* ==========================================================================
@@ -3606,5 +4640,235 @@ body.home-page .hero-wave {
     .about-photo-card {
         width: 185px;
         height: 185px;
+    }
+}
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PHONE STORY STRIP & SOCIAL MINI CARD (about.html)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.phone-device {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.phone-device:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 54px rgba(15, 42, 92, 0.24), 0 0 24px rgba(37, 99, 235, 0.16);
+}
+
+.phone-story-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 6px 2px 10px;
+    margin-bottom: 8px;
+    scrollbar-width: none;
+}
+
+.phone-story-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.story-ring {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.22s ease;
+}
+
+.story-item:hover .story-ring {
+    transform: scale(1.12);
+}
+
+.story-ring.ig-ring {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.story-ring.in-ring {
+    background: #0A66C2;
+}
+
+.story-ring.gh-ring {
+    background: #181717;
+}
+
+.story-ring.wa-ring {
+    background: #25D366;
+}
+
+.story-emoji {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+.story-lbl {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+/* Tools Social Connect Card */
+.tools-social-card {
+    background: #ffffff;
+    border: 1.5px solid #BFDBFE;
+    border-radius: var(--radius-card);
+    padding: 18px 22px;
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.tools-social-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5px;
+    background: linear-gradient(90deg, #E1306C, #0A66C2, #25D366, #2563EB);
+}
+
+.social-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.social-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-title-icon {
+    font-size: 1.15rem;
+}
+
+.social-main-title {
+    font-size: 0.96rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 0;
+}
+
+.social-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #047857;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+}
+
+.status-online-dot {
+    width: 6.5px;
+    height: 6.5px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.social-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.social-mini-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1.5px solid #E2E8F0;
+    background: #F8FAFC;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-mini-item:hover {
+    transform: translateY(-3px);
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+
+.social-mini-item.ig-item:hover { border-color: #E1306C; }
+.social-mini-item.li-item:hover { border-color: #0A66C2; }
+.social-mini-item.gh-item:hover { border-color: #181717; }
+.social-mini-item.wa-item:hover { border-color: #25D366; }
+
+.mini-icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #ffffff;
+}
+
+.mini-meta {
+    min-width: 0;
+    flex-grow: 1;
+}
+
+.mini-name {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 1px;
+}
+
+.mini-handle {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 820px) {
+    .social-mini-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

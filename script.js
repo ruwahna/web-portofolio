@@ -774,7 +774,7 @@
             qa('.tool-pill').forEach(function (p) { p.classList.remove('active'); });
             pill.classList.add('active');
 
-            qa('.tool-icon-item').forEach(function (item) {
+            qa('.tool-icon-item, .bento-tool-card').forEach(function (item) {
                 var cat = item.getAttribute('data-category') || '';
                 if (filter === 'all' || cat.indexOf(filter) !== -1) {
                     item.style.display = 'flex';
@@ -833,6 +833,114 @@
     if (initCertPill) {
         applyCertFilter(initCertPill.getAttribute('data-filter') || 'kejuaraan');
     }
+
+    // 20B. EXPERIENCE & ACTIVITIES CATEGORY FILTER
+    function applyExpFilter(filter) {
+        qa('.experience-card').forEach(function (item) {
+            var cat = item.getAttribute('data-category') || '';
+            if (filter === 'all' || cat.indexOf(filter) !== -1) {
+                item.style.display = 'flex';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            } else {
+                item.style.display = 'none';
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.9)';
+            }
+        });
+    }
+
+    qa('.exp-filter-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+            var filter = pill.getAttribute('data-filter');
+            qa('.exp-filter-pill').forEach(function (p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+            applyExpFilter(filter);
+        });
+    });
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       20C. ACTIVITY MULTI-PHOTO SLIDERS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function initActivitySliders() {
+        qa('.activity-slider').forEach(function (slider) {
+            var images = qa('.slider-track img', slider);
+            var dots = qa('.slider-dots .dot', slider);
+            var counter = q('.slider-counter', slider);
+            var prevBtn = q('.prev-btn', slider);
+            var nextBtn = q('.next-btn', slider);
+            var total = images.length;
+            if (total <= 1) return;
+            var current = 0;
+            function showSlide(idx) {
+                current = (idx + total) % total;
+                images.forEach(function (img, i) {
+                    if (i === current) img.classList.add('active');
+                    else img.classList.remove('active');
+                });
+                dots.forEach(function (dot, i) {
+                    if (i === current) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+                if (counter) counter.textContent = (current + 1) + '/' + total;
+            }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function (e) {
+                    e.stopPropagation(); e.preventDefault(); showSlide(current - 1);
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function (e) {
+                    e.stopPropagation(); e.preventDefault(); showSlide(current + 1);
+                });
+            }
+            dots.forEach(function (dot, i) {
+                dot.addEventListener('click', function (e) {
+                    e.stopPropagation(); e.preventDefault(); showSlide(i);
+                });
+            });
+            var startX = 0;
+            slider.addEventListener('touchstart', function (e) {
+                if (e.touches && e.touches.length === 1) startX = e.touches[0].clientX;
+            }, { passive: true });
+            slider.addEventListener('touchend', function (e) {
+                if (!startX) return;
+                var endX = (e.changedTouches && e.changedTouches.length) ? e.changedTouches[0].clientX : 0;
+                var diff = endX - startX;
+                if (Math.abs(diff) > 35) {
+                    if (diff < 0) showSlide(current + 1);
+                    else showSlide(current - 1);
+                }
+                startX = 0;
+            }, { passive: true });
+        });
+    }
+    initActivitySliders();
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       20D. POLAROID FILM STRIP SWITCHER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    function initPolaroidFilmStrips() {
+        qa('.polaroid-card').forEach(function (card) {
+            var thumbs = qa('.film-thumb', card);
+            var slides = qa('.polaroid-slide', card);
+            var counter = q('.polaroid-stamp', card);
+            if (thumbs.length === 0 || slides.length === 0) return;
+            thumbs.forEach(function (thumb, idx) {
+                thumb.addEventListener('click', function (e) {
+                    e.stopPropagation(); e.preventDefault();
+                    thumbs.forEach(function (t) { t.classList.remove('active'); });
+                    thumb.classList.add('active');
+                    slides.forEach(function (s, sIdx) {
+                        if (sIdx === idx) s.classList.add('active');
+                        else s.classList.remove('active');
+                    });
+                    if (counter) counter.textContent = '📸 ' + (idx + 1) + ' / ' + thumbs.length;
+                });
+            });
+        });
+    }
+    initPolaroidFilmStrips();
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        21. DYNAMIC 3D TILT CARD MOTION
