@@ -26,8 +26,8 @@
     var ENABLE_CUSTOM_CURSOR = false;
     var ENABLE_CURSOR_REACTIVE_MOTION = true;
 
-    function q(s)   { return document.querySelector(s); }
-    function qa(s)  { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+    function q(s, p)   { return (p || document).querySelector(s); }
+    function qa(s, p)  { return Array.prototype.slice.call((p || document).querySelectorAll(s)); }
     function raf(f) { return requestAnimationFrame(f); }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -922,20 +922,51 @@
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     function initPolaroidFilmStrips() {
         qa('.polaroid-card').forEach(function (card) {
+            // Strictly query within this specific card only
             var thumbs = qa('.film-thumb', card);
             var slides = qa('.polaroid-slide', card);
             var counter = q('.polaroid-stamp', card);
             if (thumbs.length === 0 || slides.length === 0) return;
+
+            // Make sure the active slide is visible and non-active are hidden
+            var activeIdx = -1;
+            thumbs.forEach(function (t, i) {
+                if (t.classList.contains('active')) activeIdx = i;
+            });
+            if (activeIdx === -1) {
+                activeIdx = 0;
+                thumbs[0].classList.add('active');
+            }
+            slides.forEach(function (s, sIdx) {
+                if (sIdx === activeIdx) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+
             thumbs.forEach(function (thumb, idx) {
                 thumb.addEventListener('click', function (e) {
-                    e.stopPropagation(); e.preventDefault();
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    // 1. Update thumbs inside THIS card only
                     thumbs.forEach(function (t) { t.classList.remove('active'); });
                     thumb.classList.add('active');
+
+                    // 2. Update slides inside THIS card only
                     slides.forEach(function (s, sIdx) {
-                        if (sIdx === idx) s.classList.add('active');
-                        else s.classList.remove('active');
+                        if (sIdx === idx) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
                     });
-                    if (counter) counter.textContent = '📸 ' + (idx + 1) + ' / ' + thumbs.length;
+
+                    // 3. Update counter inside THIS card only
+                    if (counter) {
+                        counter.textContent = '📸 ' + (idx + 1) + ' / ' + thumbs.length;
+                    }
                 });
             });
         });
@@ -1116,23 +1147,7 @@
         var splash = q('#intro-splash');
         if (!splash) return;
 
-        // Check if user has already seen the intro in this browser session
-        var hasSeenIntro = false;
-        try {
-            hasSeenIntro = sessionStorage.getItem('indah_intro_played') === 'true';
-        } catch (e) {
-            hasSeenIntro = false;
-        }
-
-        // If already seen during this session, hide intro instantly
-        if (hasSeenIntro) {
-            splash.style.display = 'none';
-            document.body.style.overflow = '';
-            return;
-        }
-
-        var purpleDot = q('#splash-purple-dot');
-        var replayBtn = q('#btn-replay-splash');
+        // Play cinematic intro sequence on visit
         var isExiting = false;
         var autoTimer = null;
 
@@ -1205,7 +1220,7 @@
             if (autoTimer) clearTimeout(autoTimer);
             autoTimer = setTimeout(function() {
                 exitSplash();
-            }, 2200);
+            }, 2800);
         }
 
         // Allow user to click anywhere on splash screen to enter site instantly
