@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Energy Selamatkan Bumi Pertiwi: Kurangi Batu Bara, Tingkatkan Blue Hydrogen - Indah</title>
+    <link rel="stylesheet" href="../../style.css?v=55">
+    <style>
+        .article-paper-wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            color: #1e293b;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            padding: 20px 16px 80px;
+        }
+
+        .paper-header {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #0284C7, #06B6D4, #2563EB);
+        }
+
+        .paper-meta-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .meta-pill {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-pill.pill-blue {
+            background: #E0F2FE;
+            color: #0369A1;
+            border: 1px solid #BAE6FD;
+        }
+
+        .meta-pill.pill-green {
+            background: #ECFDF5;
+            color: #047857;
+            border: 1px solid #A7F3D0;
+        }
+
+        .paper-title {
+            font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 14px;
+            letter-spacing: -0.4px;
+        }
+
+        .paper-sub-intro {
+            font-size: 1.08rem;
+            color: #475569;
+            line-height: 1.7;
+            margin: 0 0 20px;
+        }
+
+        .team-meta-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            padding-top: 18px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.88rem;
+        }
+
+        .team-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 10px 14px;
+        }
+
+        .team-item strong {
+            display: block;
+            color: #0f172a;
+            font-size: 0.92rem;
+        }
+
+        .team-item span {
+            color: #64748b;
+        }
+
+        /* Poster Showcase Card */
+        .poster-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .poster-img-wrap {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+            border: 1px solid #E2E8F0;
+            background: #F8FAFC;
+        }
+
+        .poster-img-wrap img {
+            width: 100%;
+            height: auto;
+            max-height: 780px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .poster-img-wrap img:hover {
+            transform: scale(1.01);
+        }
+
+        .poster-caption {
+            margin-top: 14px;
+            font-size: 0.88rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .poster-caption a {
+            color: var(--blue);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Metric Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: transform 0.25s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            border-color: #93C5FD;
+        }
+
+        .metric-val {
+            font-size: 1.85rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .metric-val.c-blue { color: #0284C7; }
+        .metric-val.c-amber { color: #D97706; }
+        .metric-val.c-emerald { color: #059669; }
+        .metric-val.c-purple { color: #7C3AED; }
+
+        .metric-label {
+            font-size: 0.82rem;
+            color: #64748b;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Paper Body */
+        .paper-body-card {
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-card);
+            padding: 40px 44px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 28px;
+        }
+
+        .summary-box {
+            background: #F0F9FF;
+            border: 1.5px solid #BAE6FD;
+            border-left: 6px solid #0284C7;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 32px;
+        }
+
+        .summary-box h3 {
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: #0369A1;
+            margin: 0 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-box p {
+            color: #0c4a6e;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .section-heading {
+            font-size: 1.42rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #F1F5F9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .paper-p {
+            margin-bottom: 18px;
+            color: #334155;
+            text-align: justify;
+        }
+
+        /* Data Island Table */
+        .data-table-wrap {
+            overflow-x: auto;
+            margin: 22px 0 30px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            text-align: left;
+        }
+
+        .data-table th {
+            background: #F8FAFC;
+            color: #0f172a;
+            font-weight: 700;
+            padding: 12px 18px;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .data-table td {
+            padding: 12px 18px;
+            border-bottom: 1px solid #F1F5F9;
+            color: #334155;
+        }
+
+        .data-table tr:hover td {
+            background: #F8FAFC;
+        }
+
+        /* Key Highlights List */
+        .feature-bullets {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 22px 0;
+        }
+
+        .bullet-item {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 18px 22px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .bullet-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+            background: #ffffff;
+            border: 1px solid #E2E8F0;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bullet-content h4 {
+            margin: 0 0 4px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .bullet-content p {
+            margin: 0;
+            font-size: 0.94rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Back Button Bar */
+        .back-nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .btn-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--blue);
+            background: #ffffff;
+            padding: 8px 18px;
+            border-radius: var(--radius-pill);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+        }
+
+        .btn-back-link:hover {
+            background: #EFF6FF;
+            border-color: #BFDBFE;
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .paper-header {
+                padding: 26px 22px;
+            }
+            .paper-body-card {
+                padding: 26px 20px;
+            }
+        }
+    </style>
+</head>
+<body class="portfolio-page">
+    <nav>
+        <a href="../../index.html" class="logo">Indah<span class="logo-dot">.</span></a>
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../about.html">About me</a></li>
+            <li><a href="../../portfolio-projects.html" class="active">Portofolio</a></li>
+            <li><a href="../../education.html">Education</a></li>
+            <li><a href="../../experience.html">Experience</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-section" style="padding-top: 100px;">
+        <div class="article-paper-wrap">
+            
+            <!-- Back Navigation Bar -->
+            <div class="back-nav-bar">
+                <a href="../../portfolio-article.html" class="btn-back-link">
+                    &larr; Kembali ke Daftar Artikel
+                </a>
+                <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;">Subtema: Lingkungan & Energi</span>
+            </div>
+
+            <!-- Paper Header -->
+            <header class="paper-header">
+                <div class="paper-meta-badge">
+                    <span class="meta-pill pill-blue">🌍 RISET LINGKUNGAN &amp; ENERGI</span>
+                    <span class="meta-pill pill-green">DIKTISAINTEK BERDAMPAK &bull; BELMAWA</span>
+                    <span style="font-size: 0.82rem; color: #64748b; font-weight: 600;">ID Tim: SD2026030000612</span>
+                </div>
+
+                <h1 class="paper-title">
+                    BLUE ENERGY SELAMATKAN BUMI PERTIWI: KURANGI BATU BARA, TINGKATKAN BLUE HYDROGEN
+                </h1>
+
+                <p class="paper-sub-intro">
+                    Strategi transisi energi realistis menuju <em>Net Zero Emission</em> (NZE) 2060 melalui pemanfaatan <strong>Blue Hydrogen</strong> berteknologi <em>Carbon Capture, Utilization, and Storage</em> (CCUS) untuk mengatasi ketergantungan pembangkit listrik batu bara di Indonesia.
+                </p>
+
+                <div class="team-meta-box">
+                    <div class="team-item">
+                        <strong>Lembaga &amp; Program</strong>
+                        <span>Kemendikbudristek &bull; Diktisaintek Berdampak</span>
+                    </div>
+                    <div class="team-item">
+                        <strong>Afiliasi Akademik</strong>
+                        <span>Universitas Putra Bangsa (UPB) Kebumen</span>
+                    </div>
+                    <div class="team-item">
+                        <strong>Fokus Penelitian</strong>
+                        <span>Transisi Energi Bersih, CCS &amp; Hidrogen Biru</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Visual Infographic Poster Showcase -->
+            <div class="poster-card">
+                <div class="poster-img-wrap">
+                    <img src="../../assets/blue_energy_poster.jpg" alt="Poster Ilmiah: Blue Energy Selamatkan Bumi Pertiwi - Kurangi Batu Bara, Tingkatkan Blue Hydrogen" class="cert-zoomable" title="Klik foto untuk melihat poster dalam resolusi penuh">
+                </div>
+                <div class="poster-caption">
+                    <span>🔍 <strong>Infografis Ilmiah Resmi Tim Mahasiswa UPB</strong> &bull; Klik gambar poster di atas untuk zoom resolusi penuh.</span>
+                </div>
+            </div>
+
+            <!-- Metric Highlights Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-val c-amber">#4 Dunia</div>
+                    <div class="metric-label">Peringkat Indonesia dalam pembangkitan listrik batu bara (299.628 GWh)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val c-blue">66.34%</div>
+                    <div class="metric-label">Porsi batu bara dalam bauran pembangkit listrik nasional (ESDM 2024)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val c-purple">861.625 GWh</div>
+                    <div class="metric-label">Prediksi lonjakan konsumsi listrik nasional pada tahun 2040 (naik 2x lipat)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-val c-emerald">126 Juta Ton</div>
+                    <div class="metric-label">Target penurunan emisi nasional CO2 via teknologi Blue Hydrogen &amp; CCS</div>
+                </div>
+            </div>
+
+            <!-- Paper Body -->
+            <div class="paper-body-card">
+                
+                <!-- Executive Summary -->
+                <div class="summary-box">
+                    <h3>💡 Ringkasan Eksekutif</h3>
+                    <p>
+                        Indonesia saat ini masih sangat bergantung pada energi fosil, khususnya batu bara (66,34%), untuk memenuhi pasokan kelistrikan nasional. Demi mencapai target <em>Net Zero Emission</em> (NZE) pada tahun 2060 di tengah lonjakan kebutuhan listrik yang diproyeksikan berlipat ganda, diperlukan jembatan transisi energi yang realistis. <strong>Hidrogen Biru (Blue Hydrogen)</strong> yang diintegrasikan dengan teknologi penangkapan dan penyimpanan karbon (<em>Carbon Capture and Storage / CCS</em>) hadir sebagai jalan tengah paling aplikatif: memangkas emisi karbon hingga puluhan juta ton tanpa mengorbankan stabilitas dan ketahanan energi nasional.
+                    </p>
+                </div>
+
+                <!-- Section 1: Kondisi Kelistrikan Nasional -->
+                <h2 class="section-heading">
+                    <span>⚡</span> 1. Kondisi Kelistrikan Nasional &amp; Ancaman Ketergantungan Batu Bara
+                </h2>
+                <p class="paper-p">
+                    Berdasarkan data dari <em>International Energy Agency</em> (IEA) dan Kementerian ESDM, Indonesia menempati <strong>peringkat ke-4 di dunia</strong> sebagai negara dengan kapasitas pembangkitan listrik dari batu bara terbesar, mencapai angka <strong>299.628 GWh</strong> pada tahun 2023, berada tepat di bawah China (5.856.538 GWh), India (1.478.683 GWh), dan Amerika Serikat (741.966 GWh).
+                </p>
+                <p class="paper-p">
+                    Pada tahun 2024, struktur bauran energi pembangkit listrik Indonesia masih sangat timpang dan didominasi oleh energi fosil kotor:
+                </p>
+
+                <!-- Data Table: Bauran Energi -->
+                <div class="data-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Sumber Energi Pembangkit</th>
+                                <th>Persentase Pangsa</th>
+                                <th>Karakteristik &amp; Dampak Emisi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Batu Bara (PLTU)</strong></td>
+                                <td><span style="color: #DC2626; font-weight: 800;">66.34%</span></td>
+                                <td>Penyumbang emisi gas rumah kaca (GRK) dan polusi karbon terbesar di Indonesia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gas Alam (PLTG / PLTGU)</strong></td>
+                                <td><span style="color: #0284C7; font-weight: 700;">17.65%</span></td>
+                                <td>Fosil yang lebih bersih; menjadi bahan baku potensial untuk produksi Blue Hydrogen.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Energi Terbarukan &amp; Lainnya</strong></td>
+                                <td><span style="color: #059669; font-weight: 700;">15.92%</span></td>
+                                <td>Air (6,25%), Panas Bumi (5,57%), Biomassa/BBN, Surya, dan Angin.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="paper-p">
+                    Kondisi ini diperparah oleh proyeksi pertumbuhan konsumsi listrik yang terus meningkat pesat seiring industrialisasi, elektrifikasi transportasi, dan pertumbuhan populasi. Kebutuhan listrik nasional diproyeksikan meroket dari <strong>426.270 GWh (2025)</strong> menjadi <strong>861.625 GWh pada tahun 2040</strong>. Jika pasokan tambahan tersebut tetap dipasok oleh PLTU batu bara konvensional, lonjakan emisi karbon akan menggagalkan seluruh komitmen iklim global Indonesia.
+                </p>
+
+                <!-- Section 2: Pemetaan Produksi Listrik Antar-Pulau -->
+                <h2 class="section-heading">
+                    <span>🗺️</span> 2. Pemetaan &amp; Ketimpangan Produksi Listrik Antar-Pulau
+                </h2>
+                <p class="paper-p">
+                    Produksi listrik di Indonesia juga menghadapi tantangan geografis kepulauan yang luar biasa. Dari total produksi listrik nasional sebesar <strong>343.831,7 GWh</strong> (ESDM 2024), distribusi antar pulau menunjukkan konsentrasi beban yang sangat terpusat di wilayah barat:
+                </p>
+
+                <!-- Data Table: Per Pulau -->
+                <div class="data-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Wilayah Kepulauan</th>
+                                <th>Produksi Listrik (GWh)</th>
+                                <th>Pangsa Nasional</th>
+                                <th>Sorotan Kondisi Wilayah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pulau Jawa</strong></td>
+                                <td><strong>233.264,52 GWh</strong></td>
+                                <td><span style="color: #0284C7; font-weight: 700;">67.8%</span></td>
+                                <td>Pusat kepadatan penduduk, kawasan industri manufaktur, dan jaringan grid interkoneksi utama.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pulau Sumatera</strong></td>
+                                <td><strong>60.534,51 GWh</strong></td>
+                                <td>17.6%</td>
+                                <td>Pusat perkebunan, pertambangan, dan industri pengolahan sumber daya.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kalimantan</strong></td>
+                                <td><strong>17.839,98 GWh</strong></td>
+                                <td>5.2%</td>
+                                <td>Wilayah lumbung batu bara dan calon kawasan Ibu Kota Nusantara (IKN).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sulawesi</strong></td>
+                                <td><strong>17.613,20 GWh</strong></td>
+                                <td>5.1%</td>
+                                <td>Peningkatan pesat kebutuhan energi akibat hilirisasi industri smelter nikel.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bali &amp; Nusa Tenggara</strong></td>
+                                <td><strong>10.522,30 GWh</strong></td>
+                                <td>3.1%</td>
+                                <td>Konsumsi sektor pariwisata; potensi surya dan angin yang sangat tinggi.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Maluku &amp; Papua</strong></td>
+                                <td><strong>4.117,28 GWh</strong></td>
+                                <td>1.2%</td>
+                                <td>Tantangan elektrifikasi daerah terisolasi, grid terfragmentasi, dan biaya logistik tinggi.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 3: Blue Hydrogen Solusi Transisi -->
+                <h2 class="section-heading">
+                    <span>🔬</span> 3. Blue Hydrogen: Jalan Tengah Transisi Energi Menuju NZE 2060
+                </h2>
+                <p class="paper-p">
+                    Meskipun energi terbarukan murni seperti <em>Green Hydrogen</em> (dari elektrolisis air bertenaga surya/angin) adalah tujuan akhir, biaya investasinya saat ini masih sangat mahal dan kapasitas jaringannya belum mampu menggantikan <em>baseload</em> PLTU skala gigawatt dalam jangka pendek.
+                </p>
+                <p class="paper-p">
+                    Di sinilah <strong>Hidrogen Biru (Blue Hydrogen)</strong> mengambil peranan strategis sebagai <em>game-changer</em>:
+                </p>
+
+                <div class="summary-box" style="background: #F8FAFC; border-color: #CBD5E1; border-left-color: #0284C7;">
+                    <h3 style="color: #0F172A;">⚙️ Mekanisme Kerja Blue Hydrogen + CCS:</h3>
+                    <p style="color: #334155;">
+                        Hidrogen diproduksi dari gas alam (CH4) melalui proses <em>Steam Methane Reforming</em> (SMR). Alih-alih melepaskan karbon dioksida (CO2) ke atmosfer seperti metode konvensional (Grey Hydrogen), teknologi <strong>Carbon Capture and Storage (CCS)</strong> menangkap lebih dari 90% gas CO2 tersebut, mengompresinya, dan menyimpannya secara permanen di lapisan geologis dalam bumi atau reservoir bawah laut (*subsea aquifer*).
+                    </p>
+                </div>
+
+                <!-- Section 4: Keunggulan Utama -->
+                <h2 class="section-heading">
+                    <span>🏆</span> 4. Tiga Keunggulan Kunci Blue Hydrogen untuk Indonesia
+                </h2>
+
+                <div class="feature-bullets">
+                    <div class="bullet-item">
+                        <div class="bullet-icon">🌱</div>
+                        <div class="bullet-content">
+                            <h4>Pengurangan Emisi Karbon Skala Masif</h4>
+                            <p>
+                                Pemanfaatan hidrogen biru ditargetkan mampu memangkas emisi karbon nasional hingga <strong>126 Juta Ton CO2 pada tahun 2060</strong>. Pada sektor pembangkit listrik, substitusi bahan bakar ini terbukti mampu mereduksi hingga <strong>70.640 Ton CO2 per tahun</strong> untuk setiap pembangkit yang dikonversi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bullet-item">
+                        <div class="bullet-icon">🏭</div>
+                        <div class="bullet-content">
+                            <h4>Pemanfaatan Infrastruktur Eksisting (Cost-Efficient)</h4>
+                            <p>
+                                Indonesia tidak perlu memensiunkan seluruh infrastruktur transmisi dan kilang gas secara mendadak. Pipa gas, terminal LNG, dan turbin gas yang telah ada (seperti di Jawa dan Sumatera) dapat dimanfaatkan kembali melalui teknik <em>blending</em> maupun konversi bertahap, menghemat triliunan rupiah biaya modal transisi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bullet-item">
+                        <div class="bullet-icon">⚡</div>
+                        <div class="bullet-content">
+                            <h4>Ketersediaan &amp; Kecepatan Pasokan (Baseload Reliability)</h4>
+                            <p>
+                                Berbeda dengan energi surya atau angin yang bersifat intermiten (bergantung cuaca), produksi Blue Hydrogen dapat berjalan stabil 24/7 untuk menjamin keandalan pasokan listrik industri tanpa risiko pemadaman mendadak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Kesimpulan -->
+                <h2 class="section-heading">
+                    <span>🇮🇩</span> 5. Kesimpulan &amp; Rekomendasi
+                </h2>
+                <p class="paper-p">
+                    Sebagai negara yang masih sangat bergantung pada batu bara, Indonesia membutuhkan langkah transisi yang realistis, terukur, dan tidak mengorbankan pertumbuhan ekonomi. <strong>Blue Hydrogen</strong> yang mengintegrasikan potensi gas laut dengan teknologi <em>Carbon Capture and Storage</em> (CCS) merupakan solusi jembatan terbaik untuk menekan emisi secara drastis dalam dua dekade ke depan.
+                </p>
+                <p class="paper-p">
+                    Langkah ini sekaligus mempersiapkan fondasi infrastruktur nasional menuju era <em>Green Hydrogen</em> seutuhnya pada tahun 2060, demi menjaga kedaulatan energi serta <strong>menyelamatkan Bumi Pertiwi</strong> dari krisis perubahan iklim.
+                </p>
+
+                <!-- Document Citation Footer -->
+                <div style="margin-top: 36px; padding-top: 20px; border-top: 1px solid #E2E8F0; font-size: 0.85rem; color: #64748b;">
+                    <strong>Sumber &amp; Referensi Data:</strong><br>
+                    1. Kementerian Energi dan Sumber Daya Mineral (ESDM) Republik Indonesia, <em>Statistik Ketenagalistrikan 2024</em>.<br>
+                    2. International Energy Agency (IEA), <em>Indonesia: Countries &amp; Regions Energy Agency Report</em>.<br>
+                    3. Kementerian ESDM, <em>Peta Jalan Hidrogen dan Amonia Nasional Menuju Net Zero Emission 2060</em>.<br>
+                    4. Program Pembinaan Mahasiswa Diktisaintek Berdampak &bull; Belmawa &bull; Universitas Putra Bangsa Kebumen.
+                </div>
+            </div>
+
+            <!-- Bottom Back Navigation -->
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="../../portfolio-article.html" class="btn-back-link" style="padding: 12px 28px; font-size: 1rem;">
+                    &larr; Kembali ke Daftar Artikel Portofolio
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../../script.js?v=55"></script>
+</body>
+</html>
+

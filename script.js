@@ -1147,7 +1147,33 @@
         var splash = q('#intro-splash');
         if (!splash) return;
 
-        // Play cinematic intro sequence on visit
+        // Hanya tampilkan animasi jika pengunjung baru pertama kali membuka website di sesi ini
+        var hasSeenIntro = false;
+        try {
+            hasSeenIntro = sessionStorage.getItem('indah_intro_played') === 'true';
+        } catch (e) {
+            hasSeenIntro = false;
+        }
+
+        // Jika sudah pernah melihat intro (misal pindah dari About me ke Home), langsung tampilkan Home tanpa animasi
+        if (hasSeenIntro) {
+            splash.style.display = 'none';
+            document.body.style.overflow = '';
+            var heroLeft = q('.portfolio-left');
+            var heroRight = q('.portfolio-right');
+            var nav = q('nav');
+            if (nav) { nav.style.opacity = '1'; nav.style.transform = 'none'; }
+            if (heroLeft) { heroLeft.style.opacity = '1'; heroLeft.style.transform = 'none'; }
+            if (heroRight) { heroRight.style.opacity = '1'; heroRight.style.transform = 'none'; }
+            return;
+        }
+
+        // Set flag segera agar jika berpindah halaman tidak terulang kembali di sesi ini
+        try {
+            sessionStorage.setItem('indah_intro_played', 'true');
+        } catch (e) {}
+
+        // Play cinematic intro sequence on first visit
         var isExiting = false;
         var autoTimer = null;
 
